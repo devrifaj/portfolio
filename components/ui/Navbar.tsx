@@ -1,8 +1,9 @@
+import { DarkThemeToggle } from 'flowbite-react'
 import React from 'react'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div>Navbar <DarkThemeToggle /></div>
   )
 }
 
