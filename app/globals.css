@@ -1,5 +1,4 @@
 /* Google font */
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
 
 @tailwind base;
@@ -9,12 +8,7 @@
 @layer base {
   :root {
     /* font */
-    --font-urbanist: "Urbanist", sans-serif;
     --font-dm-mono: "DM Mono", monospace;
-
-    --body-font-family: "Urbanist", sans-serif;
-    --heading-font-family: "Urbanist", sans-serif;
-    --display-font-family: "Urbanist", sans-serif;
 
     /* bg image */
     --hero-bg-img: url("/hero/hero-bg.png");
@@ -134,10 +128,6 @@
 
     /* shadow */
 
-    /* Custom Classes */
-    .brand-logo {
-      @apply bg-neutral-800 hover:bg-[#242424] hover:!border-0;
-    }
     .bg-overlay {
       background: linear-gradient(180deg, rgba(39, 39, 48, 0) 0%, #272730 100%);
     }
@@ -162,11 +152,15 @@
   }
 
   body {
-    @apply bg-bg-5 font-normal text-base text-neutral-200 leading-normal;
+    @apply bg-bg-5 font-body font-normal text-base text-neutral-200 leading-normal;
   }
 
   button {
     @apply active:outline-none;
+  }
+
+  p {
+    @apply leading-[26px]
   }
 }
 
@@ -174,33 +168,48 @@
   .container {
     @apply w-full mx-auto px-[12px];
     @apply sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1320px];
-  }  
+  }
 }
 
 @layer utilities {
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-neutral-0;
+    margin-top: 0px;
+    margin-bottom: 16px;
+    text-transform: unset;
+  }
+  
   /* TYPOGRAPHY */
-  .h1-bold {
-    @apply text-[36px] font-bold leading-[140%] tracking-tighter;
+  .h1 {
+    @apply text-[49px] font-medium;
   }
 
-  .h1-semibold {
-    @apply text-[36px] font-semibold leading-[140%] tracking-tighter;
+  .h2 {
+    @apply text-[42px] font-medium;
   }
 
-  .h2-bold {
-    @apply text-[30px] font-bold leading-[140%] tracking-tighter;
+  .h3 {
+    @apply text-[35px] font-medium leading-extra-tight;
   }
 
-  .h3-bold {
-    @apply text-[24px] font-bold leading-[140%] tracking-tighter;
+  .h4 {
+    @apply text-[29px] font-medium;
   }
 
+  .h5 {
+    @apply text-[24px] font-medium;
+  }
+
+  .h6 {
+    @apply text-[20px] font-medium;
+  }
+  
   .base-semibold {
-    @apply text-[16px] font-semibold leading-[140%] tracking-tighter;
+    @apply text-[16px] font-semibold;
   }
 
   .base-medium {
-    @apply text-[16px] font-medium leading-[140%];
+    @apply text-[16px] font-medium;
   }
 
   .base-regular {

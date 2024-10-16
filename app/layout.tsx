@@ -22,9 +22,11 @@ export default function RootLayout({
       </head>
       <body>
         <Flowbite>
+          {/* header */}
           <Header />
 
-          <main className="container">{children}</main>
+          {/* main */}
+          <main className="z-10 relative container">{children}</main>
         </Flowbite>
       </body>
     </html>

@@ -69,7 +69,6 @@ const config: Config = {
 
       fontFamily: {
         body: "var(--font-dm-mono)",
-        secondary: "var(--font-urbanist)",
       },
 
       keyframes: {
@@ -151,6 +150,15 @@ const config: Config = {
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
+      
+      transitionTimingFunction: {
+        'custom-ease': 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
+        'custom-ease-2': 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+      },
+
+      lineHeight: {
+        'extra-tight': '1.2',
+      }
     },
   },
   plugins: [flowbite.plugin(),],
