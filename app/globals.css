@@ -1,5 +1,6 @@
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -9,6 +10,7 @@
   :root {
     /* font */
     --font-dm-mono: "DM Mono", monospace;
+    --font-urbanist: "Urbanist", sans-serif;
 
     /* bg image */
     --hero-bg-img: url("/hero/hero-bg.png");
@@ -70,6 +72,9 @@
     /* shadow */
     --shadow-1: 0 13px 35px -12px rgba(35, 35, 35, 0.1);
     --shadow-2: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);
+
+    /* degree */
+    --angle: 360deg;
   }
 
   .dark {
@@ -160,7 +165,7 @@
   }
 
   p {
-    @apply leading-[26px]
+    @apply leading-[26px];
   }
 }
 
@@ -172,13 +177,18 @@
 }
 
 @layer utilities {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply text-neutral-0;
     margin-top: 0px;
     margin-bottom: 16px;
     text-transform: unset;
   }
-  
+
   /* TYPOGRAPHY */
   .h1 {
     @apply text-[49px] font-medium;
@@ -203,7 +213,7 @@
   .h6 {
     @apply text-[20px] font-medium;
   }
-  
+
   .base-semibold {
     @apply text-[16px] font-semibold;
   }
@@ -259,6 +269,38 @@
 
   .flex-start {
     @apply flex justify-start items-center;
+  }
+
+  .text-linear-4 {
+    background: var(--linear-4);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .box-linear-animation {
+    border-radius: 8px;
+    border: 1px solid #0000;
+    background: linear-gradient(var(--bg-3), var(--bg-3)) padding-box,
+      linear-gradient(
+          var(--angle),
+          var(--bg-3) 90%,
+          var(--theme-primary-2) 100%
+        )
+        border-box;
+    animation: 8s rotate linear infinite;
+  }
+
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
   }
 
   /*   .custom-scrollbar::-webkit-scrollbar {

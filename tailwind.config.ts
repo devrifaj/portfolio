@@ -10,7 +10,6 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
     flowbite.content(),
   ],
   theme: {
@@ -56,7 +55,6 @@ const config: Config = {
         border: {
           1: "var(--border-1)",
         },
-
         bg: {
           "1": "var(--bg-1)",
           "2": "var(--bg-2)",
@@ -66,101 +64,51 @@ const config: Config = {
           "6": "var(--bg-6)",
         },
       },
-
       fontFamily: {
         body: "var(--font-dm-mono)",
+        secondary: "var(--font-urbanist)",
       },
-
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+        typing: {
+          from: { width: "0" },
+          to: { width: "100%" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+        "blink-caret": {
+          "0%, 100%": { borderColor: "transparent" },
+          "50%": { borderColor: "orange" },
         },
-        spotlight: {
-          "0%": {
-            opacity: "0",
-            transform: "translate(-72%, -62%) scale(0.5)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translate(-50%,-40%) scale(1)",
-          },
+        flicker: {
+          "0%": { color: "transparent" },
+          "50%": { color: "var(--neutral-0)" },
+          "100%": { color: "transparent" },
         },
-        shimmer: {
-          from: {
-            backgroundPosition: "0 0",
-          },
-          to: {
-            backgroundPosition: "-200% 0",
-          },
-        },
-        moveHorizontal: {
-          "0%": {
-            transform: "translateX(-50%) translateY(-10%)",
-          },
-          "50%": {
-            transform: "translateX(50%) translateY(10%)",
-          },
-          "100%": {
-            transform: "translateX(-50%) translateY(-10%)",
-          },
-        },
-        moveInCircle: {
-          "0%": {
-            transform: "rotate(0deg)",
-          },
-          "50%": {
-            transform: "rotate(180deg)",
-          },
-          "100%": {
-            transform: "rotate(360deg)",
-          },
-        },
-        moveVertical: {
-          "0%": {
-            transform: "translateY(-50%)",
-          },
-          "50%": {
-            transform: "translateY(50%)",
-          },
-          "100%": {
-            transform: "translateY(-50%)",
-          },
+        flickering: {
+          "0%": { transform: "scale(0.9)" },
+          "50%": { transform: "scale(1.3)" },
+          "100%": { transform: "scale(0.9)" },
         },
         scroll: {
-          to: {
-            transform: "translate(calc(-50% - 0.5rem))",
-          },
+          to: { transform: "translate(calc(-50% - 0.5rem))" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        spotlight: "spotlight 2s ease .75s 1 forwards",
-        shimmer: "shimmer 2s linear infinite",
-        first: "moveVertical 30s ease infinite",
-        second: "moveInCircle 20s reverse infinite",
-        third: "moveInCircle 40s linear infinite",
-        fourth: "moveHorizontal 40s ease infinite",
-        fifth: "moveInCircle 20s ease infinite",
+        typing:
+          "typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite",
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        flicker: "flicker 800ms infinite",
+        flickering: "flickering 3s infinite",
       },
-      
       transitionTimingFunction: {
-        'custom-ease': 'cubic-bezier(0.785, 0.135, 0.15, 0.86)',
-        'custom-ease-2': 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+        "custom-ease": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
+        "custom-ease-2": "cubic-bezier(0.645, 0.045, 0.355, 1)",
       },
-
       lineHeight: {
-        'extra-tight': '1.2',
-      }
+        "extra-tight": "1.2",
+      },
     },
   },
-  plugins: [flowbite.plugin(),],
+  plugins: [flowbite.plugin()],
 };
+
 export default config;

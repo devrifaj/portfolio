@@ -18,3 +18,60 @@ export const navSocialItems = [
   { link: "http://linkedin.com", icon: RiLinkedinFill },
   { link: "https://github.com/", icon: RiGithubFill },
 ];
+
+export const technologies = [
+  {
+    id: 1,
+    name: "NextJS",
+    img: "/hero/icon-1.svg",
+    officialUrl: "https://nextjs.org",
+  },
+  {
+    id: 2,
+    name: "Firebase",
+    img: "/hero/icon-2.svg",
+    officialUrl: "https://firebase.google.com",
+  },
+  {
+    id: 3,
+    name: "MongoDB",
+    img: "/hero/icon-3.svg",
+    officialUrl: "https://www.mongodb.com",
+  },
+  {
+    id: 4,
+    name: "NodeJS",
+    img: "/hero/icon-4.svg",
+    officialUrl: "https://nodejs.org/en",
+  },
+  {
+    id: 5,
+    name: "Tailwind",
+    img: "/hero/icon-5.svg",
+    officialUrl: "https://tailwindcss.com",
+  },
+  {
+    id: 6,
+    name: "React",
+    img: "/hero/icon-6.svg",
+    officialUrl: "https://react.dev",
+  },
+  {
+    id: 7,
+    name: "VueJS",
+    img: "/hero/icon-7.svg",
+    officialUrl: "https://vuejs.org",
+  },
+  {
+    id: 8,
+    name: "Angular",
+    img: "/hero/icon-8.svg",
+    officialUrl: "https://angular.dev",
+  },
+  {
+    id: 9,
+    name: "Laravel",
+    img: "/hero/icon-9.svg",
+    officialUrl: "https://laravel.com",
+  },
+];
