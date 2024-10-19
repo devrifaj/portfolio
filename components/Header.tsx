@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header className="pb-32">
       <div
-        className="h-full w-full absolute left-0 top-0 bg-no-repeat bg-cover bg-center"
+        className="h-full w-full absolute left-0 top-0 right-0 bottom-0 bg-no-repeat bg-contain"
         style={{ backgroundImage: "var(--hero-bg-img)" }}
       >
         <div className="container">
