@@ -2,6 +2,10 @@ import { RiFacebookCircleFill } from "react-icons/ri";
 import { RiTwitterXFill } from "react-icons/ri";
 import { RiLinkedinFill } from "react-icons/ri";
 import { RiGithubFill } from "react-icons/ri";
+import { RiShapeLine } from "react-icons/ri";
+import { RiComputerLine } from "react-icons/ri";
+import { RiServiceLine } from "react-icons/ri";
+import { RiAwardLine } from "react-icons/ri";
 
 export const navItems = [
   { name: "About me", link: "#about" },
@@ -74,4 +78,31 @@ export const technologies = [
     img: "/hero/icon-9.svg",
     officialUrl: "https://laravel.com",
   },
+];
+
+export const statistics = [
+  {
+    id: 1,
+    count: 12,
+    countTag: "Year Experience",
+    icon: RiShapeLine,
+  },
+  {
+    id: 2,
+    count: 250,
+    countTag: "Projects Completed",
+    icon: RiComputerLine,
+  },
+  {
+    id: 3,
+    count: 680,
+    countTag: "Satisfied Clients",
+    icon: RiServiceLine,
+  },
+  {
+    id: 4,
+    count: 18,
+    countTag: "Awards Winner",
+    icon: RiAwardLine,
+  }
 ];
