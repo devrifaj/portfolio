@@ -4,13 +4,13 @@ import React from "react";
 const Statistics = () => {
   return (
     <section className="bg-bg-3 py-[60px] border border-border-1 rounded-lg relative overflow-hidden">
-        <div className="flex items-center lg:justify-around justify-center">
+        <div className="grid grid-cols-1 gap-4 md:gap-0 md:grid-cols-2 lg:grid-cols-4">
           {/* statistics items start */}
           {statistics.map(({ id, count, countTag, icon: Icon }) => (
-            <div key={id} className="lg:text-start text-center">
-              <div className="mx-auto">
+            <div key={id} className="flex-center">
+              <div className="flex-center flex-col lg:flex-none">
                 <Icon size={24} className="text-primary-2" />
-                <h2 className="text-neutral-300 font-medium text-[50px] my-0 tracking-wider flex-between">
+                <h2 className="text-neutral-300 font-medium text-[50px] my-0 tracking-wider">
                   <span className="text-neutral-0 ">{count}</span>
                   <span className="">+</span>
                 </h2>
