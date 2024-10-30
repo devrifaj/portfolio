@@ -8,7 +8,7 @@ const Statistics = () => {
           {/* statistics items start */}
           {statistics.map(({ id, count, countTag, icon: Icon }) => (
             <div key={id} className="flex-center">
-              <div className="flex-center flex-col lg:flex-none">
+              <div className="flex flex-col items-center lg:items-start">
                 <Icon size={24} className="text-primary-2" />
                 <h2 className="text-neutral-300 font-medium text-[50px] my-0 tracking-wider">
                   <span className="text-neutral-0 ">{count}</span>
