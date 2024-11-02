@@ -1,20 +1,27 @@
 'use client';
-
 import React, { useEffect, useState } from 'react';
-import { useThemeMode } from 'flowbite-react';
 import { RiSunFill, RiContrast2Line } from "react-icons/ri";
 
 const ThemeToggle = () => {
-  const { mode, toggleMode } = useThemeMode();
+  const [mode, setMode] = useState('dark');
   const [mounted, setMounted] = useState(false);
 
-  // Ensure the component only renders after the client has mounted
   useEffect(() => {
+    // Check the user's saved theme or system preference on mount
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setMode(savedTheme);
+    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
     setMounted(true);
   }, []);
 
+  const toggleMode = () => {
+    const newMode = mode === 'dark' ? 'light' : 'dark';
+    setMode(newMode);
+    localStorage.setItem('theme', newMode);
+    document.documentElement.classList.toggle('dark', newMode === 'dark');
+  };
+
   if (!mounted) {
-    // Prevent rendering during SSR
     return null;
   }
 
@@ -33,33 +40,3 @@ const ThemeToggle = () => {
 };
 
 export default ThemeToggle;
-
-
-//secondary code:
- 
-/* 'use client'
-import React from 'react';
-import { useThemeMode } from 'flowbite-react';
-import { RiSunFill, RiContrast2Line } from "react-icons/ri";
-
-const ThemeToggle = () => {
-  const { mode, toggleMode } = useThemeMode();
-
-  return (
-    <button
-      onClick={toggleMode}
-      className="bg-[#FFFFFF0D] p-6 h-20 w-[76px] flex-center hover:bg-[#FFFFFF0D] rounded-none dark:hover:bg-[#FFFFFF0D] focus:outline-none"
-    >
-      {mode === 'dark' ? (
-        // Dark mode active - show light mode icon with dark mode color
-        <RiSunFill size={24} color="#ffc107" />
-      ) : (
-        // Light mode active - show dark mode icon with light mode color
-        <RiContrast2Line size={24} color="#ffd45d" />
-      )}
-    </button>
-  );
-};
-
-export default ThemeToggle;
- */

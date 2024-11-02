@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
-import { ThemeModeScript } from "flowbite-react";
-import { Flowbite } from "flowbite-react";
 
 export const metadata: Metadata = {
   title: "Rifajul's Portfolio",
@@ -18,16 +16,26 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" sizes="any" />
-        <ThemeModeScript />
+        {/* Preload saved theme to avoid flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                if (savedTheme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <body>
-        <Flowbite>
-          {/* header */}
-          <Header />
+        {/* header */}
+        <Header />
 
-          {/* main */}
-          <main className="z-10 relative container">{children}</main>
-        </Flowbite>
+        {/* main */}
+        <main className="z-10 relative container">{children}</main>
       </body>
     </html>
   );
