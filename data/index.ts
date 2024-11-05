@@ -6,6 +6,9 @@ import { RiShapeLine } from "react-icons/ri";
 import { RiComputerLine } from "react-icons/ri";
 import { RiServiceLine } from "react-icons/ri";
 import { RiAwardLine } from "react-icons/ri";
+import { RiSkypeFill } from "react-icons/ri";
+import { RiPhoneFill } from "react-icons/ri";
+import { RiMailFill } from "react-icons/ri";
 
 export const navItems = [
   { name: "About me", link: "#about" },
@@ -105,4 +108,107 @@ export const statistics = [
     countTag: "Awards Winner",
     icon: RiAwardLine,
   }
+];
+
+export const cooperationContacts = [
+  {
+    id: 1,
+    mediaName: "skype",
+    name: "rifaj.dev",
+    link: "#",
+    icon: RiSkypeFill,
+  },
+  {
+    id: 2,
+    mediaName: "phone",
+    name: "+8801601016160",
+    link: "#",
+    icon: RiPhoneFill,
+  },
+  {
+    id: 3,
+    mediaName: "email",
+    name: "mdrifajulislamrifaj.contact@gmail.com",
+    link: "#",
+    icon: RiMailFill,
+  },
+];
+
+export const cooperationBrands = [
+  {
+    id: 1,
+    name: "stripe",
+    brandLogo: "/cooperation/brands/stripe.svg",
+    left: true,
+  },
+  {
+    id: 2,
+    name: "google",
+    brandLogo: "/cooperation/brands/google.svg",
+    left: true,
+  },
+  {
+    id: 3,
+    name: "samsung",
+    brandLogo: "/cooperation/brands/samsung.svg",
+    left: true,
+  },
+  {
+    id: 4,
+    name: "monzo",
+    brandLogo: "/cooperation/brands/monzo.svg",
+    left: true,
+  },
+  {
+    id: 5,
+    name: "gocardless",
+    brandLogo: "/cooperation/brands/gocardless.svg",
+    right: true,
+  },
+  {
+    id: 6,
+    name: "bravodo",
+    brandLogo: "/cooperation/brands/bravodo.svg",
+    right: true,
+  },
+  {
+    id: 7,
+    name: "spotify",
+    brandLogo: "/cooperation/brands/spotify.svg",
+    right: true,
+  },
+  {
+    id: 8,
+    name: "intercom",
+    brandLogo: "/cooperation/brands/intercom.svg",
+    right: true,
+  },
+];
+
+export const cooperationGits = [
+  {
+    id: 1,
+    date: "15 Jul",
+    title: "Muzzilla-streaming-API-services-for-Python",
+  },
+  {
+    id: 2,
+    date: "30 Jun",
+    title: "ChatHub-Chat-application-VueJs-Mongodb",
+  },
+  {
+    id: 3,
+    date: "26 May",
+    title: "DineEasy-coffee-tea-reservation-system",
+  },
+  {
+    id: 4,
+    date: "17 Apr",
+    title: "FinanceBuddy-Personal-finance-tracker",
+  },
+  {
+    id: 5,
+    date: "05 Mar",
+    title: "TuneStream-Music-streaming-service-API",
+  },
 ];

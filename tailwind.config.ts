@@ -88,14 +88,17 @@ const config: Config = {
         scroll: {
           to: { transform: "translate(calc(-50% - 0.5rem))" },
         },
+        rotateme: {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
       },
       animation: {
-        typing:
-          "typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite",
-        scroll:
-          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        typing: "typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite",
+        scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
         flicker: "flicker 800ms infinite",
         flickering: "flickering 3s infinite",
+        rotateme: "rotateme 10s linear infinite",
       },
       transitionTimingFunction: {
         "custom-ease": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",

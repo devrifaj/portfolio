@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Cooperation from "@/components/Cooperation";
 import Statistics from "@/components/Statistics";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <div>
       <About />
       <Statistics/>
+      <Cooperation/>
     </div>
   );
 }

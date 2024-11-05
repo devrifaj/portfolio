@@ -17,7 +17,7 @@ const Statistics = () => {
   }, []);
 
   return (
-    <section className="bg-bg-3 py-[60px] border border-border-1 rounded-lg relative overflow-hidden">
+    <section className="bg-bg-3 py-[60px] border border-border-1 rounded-lg relative overflow-hidden mb-8">
       <div className="grid grid-cols-1 gap-4 md:gap-0 md:grid-cols-2 lg:grid-cols-4">
         {/* Statistics items start */}
         {statistics.map(({ id, countTag, icon: Icon }, index) => (

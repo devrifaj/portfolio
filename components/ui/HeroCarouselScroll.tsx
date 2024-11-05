@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import Marquee from "react-fast-marquee";
 
-const CarouselScroll = () => {
+const HeroCarouselScroll = () => {
   return (
     <div>
       <ul className="flex my-[10px] p-0 overflow-hidden">
@@ -32,4 +32,4 @@ const CarouselScroll = () => {
   );
 };
 
-export default CarouselScroll;
+export default HeroCarouselScroll;

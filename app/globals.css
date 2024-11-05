@@ -166,6 +166,11 @@
     ::-webkit-scrollbar-track {
       background-color: #272730; /* Track color for the scrollbar */
     }
+
+    /* custom classes */
+    .bg-overlay {
+      background: linear-gradient(180deg, rgba(39, 39, 48, 0) 0%, #272730 100%);
+    }
   }
 }
 
@@ -278,6 +283,21 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .bg-overlay {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    height: 80%;
+    width: 100%;
+  }
+
+  .git-item-dot::before {
+    content: "•";
+    color: #a0a0a0; /* Customize the dot color */
+    font-size: 1.25rem; /* Adjust the size of the dot */
+    position: absolute;
+    left: -17px; /* Position the dot to the left of the list item */
+    top: 0.1rem; /* Adjust vertically to center with text */
   }
 
   /* Box linear animation */

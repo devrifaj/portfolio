@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Carousel from "./ui/CarouselScroll";
+import HeroCarouselScroll from "./ui/HeroCarouselScroll";
 import Link from "next/link";
 import { RiDownloadLine } from "react-icons/ri";
 import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
@@ -79,7 +79,7 @@ const About = () => {
               {/* carousel start */}
               <div className="flex gap-x-6">
                 <div className="flex-none w-7/12 mt-16 lg:mt-0">
-                  <Carousel />
+                  <HeroCarouselScroll />
                 </div>
 
                 <div className="flex-none w-5/12 flex items-end">
