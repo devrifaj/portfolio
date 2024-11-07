@@ -29,7 +29,7 @@ const NavContainer = () => {
 
   return (
     <div className="flex-between h-full py-4 px-6">
-      {/* Logo */}
+      {/* Logo Start */}
       <div>
         <Link
           href="/"
@@ -50,8 +50,9 @@ const NavContainer = () => {
           </span>
         </Link>
       </div>
+      {/* Logo End */}
 
-      {/* Nav Links */}
+      {/* Nav Links Start */}
       <ul className="hidden xl:flex">
         {navItems.map(({ name, link }) => {
           const isActive = activeHash === link; // Compare the active hash with the link
@@ -70,8 +71,9 @@ const NavContainer = () => {
           );
         })}
       </ul>
+      {/* Nav Links End */}
 
-      {/* Social Links */}
+      {/* Nav Social Links Start */}
       <ul className="hidden md:flex gap-4 text-white">
         {navSocialItems.map(({ link, icon: Icon }) => (
           <li key={link}>
@@ -84,6 +86,7 @@ const NavContainer = () => {
           </li>
         ))}
       </ul>
+      {/* Nav Social Links End */}
     </div>
   );
 };

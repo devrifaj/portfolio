@@ -13,12 +13,12 @@ const Navbar: React.FC<NavbarProps> = ({ setIsOffCanvasOpen, setIsMobileNavOpen 
   return (
     <nav className="rounded-lg border relative top-[22px] border-border-1 z-50 bg-[#333a32] dark:bg-bg-3">
       <div className="flex">
-        {/* nav menu start */}
+        {/* nav menu */}
         <div className="hidden md:block">
           <NavMenu setIsOpen={setIsOffCanvasOpen} />
         </div>
 
-        {/* navlinks start */}
+        {/* nav container */}
         <div className="flex-1">
           <NavContainer />
         </div>

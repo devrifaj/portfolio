@@ -8,47 +8,42 @@ import CooperationContacts from "./ui/CooperationContacts";
 
 const Cooperation = () => {
   return (
-    <section>
+    <section className="mb-8">
       <div className="flex lg:flex-row flex-col gap-6">
-        {/* Cooperation start */}
+        {/* Cooperation Left Start */}
         <div className="w-full lg:w-2/3 overflow-hidden">
           <SectionAnimatedBorder>
             <div className="lg:p-16 md:p-10 p-4 ">
-              {/* Cooperation heading start */}
-              <CooperationHeading text="Cooperation" />
+              {/* Cooperation Heading Start */}
+              <CooperationHeading
+                sectionName="Cooperation"
+                headings={[
+                  { title: "More than +168", span: "companies" },
+                  { title: "trusted", span: "worldwide_" },
+                ]}
+              />
+              {/* Cooperation Heading End */}
 
-              <h3 className="font-medium text-[23px] md:text-[35px] leading-tight">
-                More than +168{" "}
-                <span className="text-neutral-300">
-                  companies <br />
-                </span>
-                trusted <span className="text-neutral-300">worldwide_</span>
-              </h3>
-              {/* Cooperation heading end */}
-
-              {/* brand slide start */}
+              {/* Brand Slide */}
               <div className="my-8 border border-border-1 rounded-md p-3">
                 <CooperationSlide />
               </div>
-              {/* brand slide end */}
 
-              {/* Cooperation contact start */}
+              {/* Cooperation Contact */}
               <CooperationContacts />
-              {/* Cooperation contact end */}
             </div>
 
-            {/* rotate animation start */}
+            {/* Rotate Animation */}
             <CooperationRotate />
-            {/* rotate animation end */}
           </SectionAnimatedBorder>
         </div>
-        {/* Cooperation end */}
+        {/* Cooperation Left End */}
 
-        {/* Git Journaling start*/}
+        {/* Git Journaling Start*/}
         <div className="w-full lg:w-1/3">
           <CooperationGitJournaling />
         </div>
-        {/* Git Journaling end*/}
+        {/* Git Journaling End */}
       </div>
     </section>
   );

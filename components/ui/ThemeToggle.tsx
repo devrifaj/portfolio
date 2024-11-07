@@ -7,13 +7,14 @@ const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check the user's saved theme or system preference on mount
+    // Check the user's saved theme on mount
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setMode(savedTheme);
     document.documentElement.classList.toggle('dark', savedTheme === 'dark');
     setMounted(true);
   }, []);
 
+  // Theme toggle function
   const toggleMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';
     setMode(newMode);

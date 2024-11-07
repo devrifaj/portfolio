@@ -19,7 +19,7 @@ const Statistics = () => {
   return (
     <section className="bg-bg-3 py-[60px] border border-border-1 rounded-lg relative overflow-hidden mb-8">
       <div className="grid grid-cols-1 gap-4 md:gap-0 md:grid-cols-2 lg:grid-cols-4">
-        {/* Statistics items start */}
+        {/* Statistics Items Start */}
         {statistics.map(({ id, countTag, icon: Icon }, index) => (
           <div key={id} className="flex-center">
             <div className="flex flex-col items-center lg:items-start">
@@ -39,10 +39,10 @@ const Statistics = () => {
             </div>
           </div>
         ))}
-        {/* Statistics items end */}
+        {/* Statistics Items End */}
       </div>
 
-      {/* Background image */}
+      {/* Background Image */}
       <div
         className="absolute top-0 left-0 w-full h-full dark:invert"
         style={{ backgroundImage: 'url("/static/bg.png")' }}

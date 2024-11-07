@@ -3,13 +3,13 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 
 const CooperationSlide = () => {
-  // Separate brands by direction
+  // Separate Brands by Direction
   const leftBrands = cooperationBrands.filter((brand) => brand.left);
   const rightBrands = cooperationBrands.filter((brand) => brand.right);
 
   return (
     <div>
-      {/* Marquee for left-direction brands */}
+      {/* Marquee For Left-direction Brands */}
       <ul className="flex my-[10px] p-0 overflow-hidden">
         <Marquee pauseOnHover={true} speed={35} direction="left">
           {leftBrands.map(({ id, name, brandLogo }) => (
@@ -20,7 +20,7 @@ const CooperationSlide = () => {
         </Marquee>
       </ul>
 
-      {/* Marquee for right-direction brands */}
+      {/* Marquee For Right-direction Brands */}
       <ul className="flex my-[10px] p-0 overflow-hidden">
         <Marquee pauseOnHover={true} speed={35} direction="right">
           {rightBrands.map(({ id, name, brandLogo }) => (

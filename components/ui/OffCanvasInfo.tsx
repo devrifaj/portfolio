@@ -10,14 +10,13 @@ interface OffCanvasInfoProps {
 const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
   return (
     <>
-      {/* offcanvas menu */}
       <div
         className={`bg-neutral-1000 h-full p-[30px] fixed left-0 top-0 transition-transform !duration-300 ease-custom-ease overflow-y-scroll w-[340px] z-50 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         style={{ scrollbarWidth: "none" }}
       >
-        {/* offcanvas icon start */}
+        {/* Offcanvas Close Icon Start */}
         <div className="-mt-4 text-right">
           <button
             className="text-primary-2 bg-transparent border-none cursor-pointer text-xl p-0"
@@ -26,14 +25,15 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
             <RiCloseLine size={25} />
           </button>
         </div>
+        {/* Offcanvas Close Icon End */}
 
-        {/* offcanvas content */}
+        {/* Offcanvas Content */}
         <div className="mb-8">
           <h3 className="h3 mb-0">Get in touch</h3>
         </div>
 
         <div className="border-t border-primary-2 mb-[30px] pt-[25px]">
-          {/* Contact details */}
+          {/* Contact Details Start */}
           <div className="mb-[30px]">
             <p className="font-medium mb-8 text-neutral-200 text-base !leading-[26px]">
               I&apos;m always excited to take on new projects and collaborate with innovative minds.
@@ -55,8 +55,9 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
               <p className="mb-0">Satkhira, Khulna-9000, Bangladesh</p>
             </div>
           </div>
+          {/* Contact Details End */}
 
-          {/* Social contact list */}
+          {/* Social Contacts List Start */}
           <div className="contact-list">
             <p className="text-neutral-400 text-[19px] mb-2">Social</p>
             <div className="md:flex items-center hidden gap-4 text-neutral-0">
@@ -86,16 +87,18 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
               </a>
             </div>
           </div>
+          {/* Social Contacts List End */}
         </div>
       </div>
 
-      {/* offcanvas overlay */}
+      {/* Offcanvas Overlay Start */}
       {isOpen && (
         <div
           className="fixed bg-black top-0 left-0 h-full w-full z-40 transition-all !duration-300 opacity-70"
           onClick={() => setIsOpen(false)}
         ></div>
       )}
+      {/* Offcanvas Overlay End */}
     </>
   );
 };

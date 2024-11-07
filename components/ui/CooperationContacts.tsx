@@ -6,6 +6,7 @@ import React from "react";
 const CooperationContacts = () => {
   return (
     <div className="flex flex-col md:flex-row items-center gap-4">
+      {/* Circle Profile Start */}
       <div>
         <div className="w-[124px] h-[124px] rounded-full border border-border-1 relative z-0">
           <div className="w-[82px] h-[82px] rounded-full border border-border-1 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
@@ -31,7 +32,9 @@ const CooperationContacts = () => {
           </div>
         </div>
       </div>
+      {/* Circle Profile End */}
 
+      {/* Contacts List Start */}
       <div className="flex flex-col gap-2">
         {cooperationContacts.map(
           ({ id, mediaName, name, link, icon: Icon }) => (
@@ -51,6 +54,7 @@ const CooperationContacts = () => {
           )
         )}
       </div>
+      {/* Contacts List End */}
     </div>
   );
 };

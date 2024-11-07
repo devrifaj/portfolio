@@ -36,15 +36,18 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
       style={{ boxShadow: "0 0 15px 0 rgba(0, 0, 0, 0.09)" }}
     >
       <div className="h-full overflow-x-hidden overflow-y-auto p-0 pb-[30px]">
+        {/* Nav Heading Start */}
         <div className="border-b border-neutral-200 relative flex-between mb-[25px] py-5 px-6">
+          {/* Mobile Nav Logo Start */}
           <Link href="/" className="items-center inline-flex">
             <Image src="/favicon.svg" width={36} height={36} alt="logo" />
             <span className="fs-4 ml-2 text-neutral-0 text-[23px]">
               Rifajul.dev
             </span>
           </Link>
+          {/* Mobile Nav Logo End */}
 
-          {/* close icon */}
+          {/* Nav Close Icon Start */}
           <button
             className="inline-block relative h-10 w-10 bg-neutral-900 border border-[#495057] rounded-lg"
             onClick={() => setIsMobileNavOpen(false)}
@@ -53,37 +56,41 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
             <span className="block absolute left-[10px] w-[20px] h-[1px] rotate-45 top-[18px] bg-neutral-0"></span>
             <span className="block absolute left-[10px] w-[20px] h-[1px] -rotate-45 bottom-[19px] bg-neutral-0"></span>
           </button>
+          {/* Nav Close Icon End */}
         </div>
+        {/* Nav Heading End */}
 
+        {/* Nav Body Start */}
         <div className="px-[30px]">
-          <div>
-            <div className="border-b border-[#FFFFFF26]">
-              <nav>
-                <ul className="pl-0">
-                  {navItems.map(({ name, link }) => {
-                    const isActive = activeHash === link;
+          <div className="border-b border-[#FFFFFF26]">
+            {/* Mobile Nav Links Start */}
+            <nav>
+              <ul className="pl-0">
+                {navItems.map(({ name, link }) => {
+                  const isActive = activeHash === link;
 
-                    return (
-                      <li className="block relative p-0 mb-5" key={link}>
-                        <Link
-                          href={link}
-                          className={`text-base leading-[26px] font-normal inline-block py-2 px-4 rounded transition-all !duration-300 ${
-                            isActive
-                              ? "text-primary-2"
-                              : "text-neutral-0 hover:text-primary-2"
-                          }`}
-                          onClick={() => setIsMobileNavOpen(false)}
-                        >
-                          {name}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
-            </div>
+                  return (
+                    <li className="block relative p-0 mb-5" key={link}>
+                      <Link
+                        href={link}
+                        className={`text-base leading-[26px] font-normal inline-block py-2 px-4 rounded transition-all !duration-300 ${
+                          isActive
+                            ? "text-primary-2"
+                            : "text-neutral-0 hover:text-primary-2"
+                        }`}
+                        onClick={() => setIsMobileNavOpen(false)}
+                      >
+                        {name}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+            {/* Mobile Nav Links End */}
           </div>
         </div>
+        {/* Nav Body End */}
       </div>
     </div>
   );

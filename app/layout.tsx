@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 
+/* portfolio's title */
 export const metadata: Metadata = {
   title: "Rifajul's Portfolio",
   description: "Modern and minimalistic portfolio",
@@ -31,10 +32,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* header */}
+        {/* header start from here */}
         <Header />
 
-        {/* main */}
+        {/* main start from here */}
         <main className="z-10 relative container">{children}</main>
       </body>
     </html>
