@@ -8,7 +8,7 @@ const Services = () => {
   return (
     <section className="mb-8">
       <SectionAnimatedBorder className="lg:p-8 p-4 md:p-6">
-        <div>
+        <div className="relative z-50">
           {/* Cooperation Heading start */}
           <SectionHeading
             sectionName="Cooperation"
@@ -74,6 +74,8 @@ const Services = () => {
           </div>
           {/* Services Content End */}
         </div>
+
+        <img className="absolute top-0 left-0 z-0" src="/services/bg.png" alt="zelio"/>
       </SectionAnimatedBorder>
     </section>
   );
