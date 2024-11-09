@@ -1,5 +1,5 @@
 import React from "react";
-import CooperationHeading from "./ui/CooperationHeading";
+import SectionHeading from "./ui/SectionHeading";
 import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
 import { servicesData } from "@/data";
 import Link from "next/link";
@@ -10,7 +10,7 @@ const Services = () => {
       <SectionAnimatedBorder className="lg:p-8 p-4 md:p-6">
         <div>
           {/* Cooperation Heading start */}
-          <CooperationHeading
+          <SectionHeading
             sectionName="Cooperation"
             headings={[
               { title: "Designing solutions", span: "customized" },

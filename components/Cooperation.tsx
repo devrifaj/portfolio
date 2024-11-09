@@ -3,7 +3,7 @@ import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
 import CooperationSlide from "./ui/CooperationSlide";
 import CooperationGitJournaling from "./ui/CooperationGitJournaling";
 import CooperationRotate from "./ui/CooperationRotate";
-import CooperationHeading from "./ui/CooperationHeading";
+import SectionHeading from "./ui/SectionHeading";
 import CooperationContacts from "./ui/CooperationContacts";
 
 const Cooperation = () => {
@@ -15,7 +15,7 @@ const Cooperation = () => {
           <SectionAnimatedBorder>
             <div className="lg:p-16 md:p-10 p-4 ">
               {/* Cooperation Heading Start */}
-              <CooperationHeading
+              <SectionHeading
                 sectionName="Cooperation"
                 headings={[
                   { title: "More than +168", span: "companies" },

@@ -1,12 +1,12 @@
 import { cooperationGits } from "@/data";
 import React from "react";
-import CooperationHeading from "./CooperationHeading";
+import SectionHeading from "./SectionHeading";
 
 const CooperationGitJournaling = () => {
   return (
     <div className="bg-bg-3 rounded-lg border border-border-1 md:p-10 p-4 relative h-full overflow-hidden">
       {/* Cooperation Heading Start */}
-      <CooperationHeading sectionName="Git Journaling" />
+      <SectionHeading sectionName="Git Journaling" />
       {/* Cooperation Heading End */}
 
       {/* Git Lists Start */}
