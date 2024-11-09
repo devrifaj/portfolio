@@ -9,6 +9,12 @@ import { RiAwardLine } from "react-icons/ri";
 import { RiSkypeFill } from "react-icons/ri";
 import { RiPhoneFill } from "react-icons/ri";
 import { RiMailFill } from "react-icons/ri";
+import { RiWindowLine } from "react-icons/ri";
+import { RiShoppingCart2Line } from "react-icons/ri";
+import { RiCloudLine } from "react-icons/ri";
+import { RiArchiveDrawerLine } from "react-icons/ri";
+import { RiSpeedLine } from "react-icons/ri";
+import { RiSpeakLine } from "react-icons/ri";
 
 export const navItems = [
   { name: "About me", link: "#about" },
@@ -107,7 +113,7 @@ export const statistics = [
     count: 18,
     countTag: "Awards Winner",
     icon: RiAwardLine,
-  }
+  },
 ];
 
 export const cooperationContacts = [
@@ -210,5 +216,56 @@ export const cooperationGits = [
     id: 5,
     date: "05 Mar",
     title: "TuneStream-Music-streaming-service-API",
+  },
+];
+
+export const servicesData = [
+  {
+    id: 1,
+    title: "Web & App Development",
+    icon: RiWindowLine,
+    description:
+      "Crafting visually appealing and user-friendly interfaces using HTML, CSS, JavaScript, and modern frameworks like React and Angular.",
+    highlightText: ["HTML", "CSS", "JavaScript", "React", "Angular"],
+  },
+  {
+    id: 2,
+    title: "Database Management",
+    icon: RiArchiveDrawerLine,
+    description:
+      "Designing and managing databases with SQL and NoSQL technologies such as MySQL, PostgreSQL, and MongoDB.",
+    highlightText: ["MySQL", "PostgreSQL", "MongoDB"],
+  },
+  {
+    id: 3,
+    title: "API Development",
+    icon: RiCloudLine,
+    description:
+      "Creating and integrating RESTful APIs to enable smooth communication between front-end and back-end systems.",
+    highlightText: ["RESTful APIs"],
+  },
+  {
+    id: 4,
+    title: "Performance Optimization",
+    icon: RiSpeedLine,
+    description:
+      "Improving the speed and performance of web applications to provide a better user experience. Work with Nodejs, Express",
+    highlightText: ["Nodejs", "Express"],
+  },
+  {
+    id: 5,
+    title: "E-commerce Solutions",
+    icon: RiShoppingCart2Line,
+    description:
+      "Developing scalable and secure payment solutions for e-commerce platforms tailored to your business needs.",
+    highlightText: ["e-commerce platforms"],
+  },
+  {
+    id: 6,
+    title: "Integrating AI",
+    icon: RiSpeakLine,
+    description:
+      "Boost your applications with AI for improved efficiency, automation, and enhanced user experience",
+    highlightText: [""],
   },
 ];
