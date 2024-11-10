@@ -9,7 +9,7 @@ const Services = () => {
     <section className="mb-8">
       <SectionAnimatedBorder className="lg:p-8 p-4 md:p-6">
         <div className="relative z-50">
-          {/* Cooperation Heading start */}
+          {/* Section Heading Start */}
           <SectionHeading
             sectionName="Cooperation"
             headings={[
@@ -18,7 +18,7 @@ const Services = () => {
             ]}
             center={true}
           />
-          {/* Cooperation heading end */}
+          {/* Section Heading End */}
 
           {/* Services Content Start */}
           <div className="mt-7">

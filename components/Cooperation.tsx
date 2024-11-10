@@ -14,7 +14,7 @@ const Cooperation = () => {
         <div className="w-full lg:w-2/3 overflow-hidden">
           <SectionAnimatedBorder>
             <div className="lg:p-16 md:p-10 p-4 ">
-              {/* Cooperation Heading Start */}
+              {/* Section Heading Start */}
               <SectionHeading
                 sectionName="Cooperation"
                 headings={[
@@ -22,7 +22,7 @@ const Cooperation = () => {
                   { title: "trusted", span: "worldwide_" },
                 ]}
               />
-              {/* Cooperation Heading End */}
+              {/* Section Heading End */}
 
               {/* Brand Slide */}
               <div className="my-8 border border-border-1 rounded-md p-3">

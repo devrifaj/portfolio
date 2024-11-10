@@ -212,22 +212,22 @@
     margin-bottom: 16px;
   }
 
-  .h1 {
+  h1 {
     @apply text-[49px] font-medium;
   }
-  .h2 {
+  h2 {
     @apply text-[42px] font-medium;
   }
-  .h3 {
+  h3 {
     @apply text-[35px] font-medium leading-extra-tight;
   }
-  .h4 {
+  h4 {
     @apply text-[29px] font-medium;
   }
-  .h5 {
+  h5 {
     @apply text-[24px] font-medium;
   }
-  .h6 {
+  h6 {
     @apply text-[20px] font-medium;
   }
 
@@ -293,11 +293,20 @@
 
   .git-item-dot::before {
     content: "•";
-    color: #a0a0a0; /* Customize the dot color */
-    font-size: 1.25rem; /* Adjust the size of the dot */
+    color: #a0a0a0;
+    font-size: 1.25rem;
     position: absolute;
-    left: -17px; /* Position the dot to the left of the list item */
-    top: 0.1rem; /* Adjust vertically to center with text */
+    left: -17px;
+    top: 0.1rem;
+  }
+
+  .experience-item-dot::before {
+    content: "•";
+    color: "var(--neutral-0)"; 
+    font-size: 1.25rem;
+    position: absolute;
+    left: -17px;
+    top: -3px;
   }
 
   /* Box linear animation */
