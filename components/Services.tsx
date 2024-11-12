@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Services = () => {
   return (
-    <section className="mb-8">
+    <section id="services" className="mb-8">
       <SectionAnimatedBorder className="lg:p-8 p-4 md:p-6">
         <div className="relative z-50">
           {/* Section Heading Start */}
