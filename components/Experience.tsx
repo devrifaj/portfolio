@@ -57,7 +57,7 @@ const Experience = () => {
                   ({ id, desc, highlightText }) => (
                     <li
                       key={id}
-                      className="text-neutral-0 mb-4 experience-item-dot relative"
+                      className="text-neutral-0 mb-4 before-item-dot experience-item-dot relative"
                       dangerouslySetInnerHTML={{
                         __html: (Array.isArray(highlightText)
                           ? highlightText

@@ -10,9 +10,9 @@ const SectionAnimatedBorder: React.FC<SectionAnimatedBorderProps> = ({
   className
 }) => {
   return (
-    <div className="border border-border-1 rounded-lg">
+    <div className="border border-border-1 rounded-lg relative h-full overflow-hidden">
       <div
-        className={`box-linear-animation relative z-40 ${className || ""}`}
+        className={`box-linear-animation ${className || ""}`}
       >
         {children}
       </div>

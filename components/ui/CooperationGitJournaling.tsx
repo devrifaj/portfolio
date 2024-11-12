@@ -13,7 +13,7 @@ const CooperationGitJournaling = () => {
       <div className="h-full relative">
         <ul className="pl-4 flex flex-col gap-6 lg:gap-0 justify-around h-full relative">
           {cooperationGits.map(({ id, date, title }) => (
-            <li key={id} className="relative z-1 git-item-dot z-10">
+            <li key={id} className="relative z-1 before-item-dot z-10">
               <div className="flex items-center gap-2">
                 <p className="text-neutral-300 whitespace-nowrap lg:-mt-5">
                   {date}:

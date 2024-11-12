@@ -334,3 +334,51 @@ export const experienceTechnologies = [
     name: "GCP",
   },
 ]
+
+export const educationData = [
+  {
+    id: 1,
+    date: "2020-2024",
+    institute: "MIT",
+    desc: "Bachelor’s Degree in Computer Science",
+  },
+  {
+    id: 2,
+    date: "2018-2019",
+    institute: "Harvard University",
+    desc: "Certification in React and Redux, Node.js Developer Course",
+  },
+  {
+    id: 3,
+    date: "2015-2016",
+    institute: "Stanford University",
+    desc: "Certification in Full Stack Web Development",
+  },
+  {
+    id: 4,
+    date: "2013-2015",
+    institute: "University of Washington",
+    desc: "Certification in React and Redux, Node.js Developer Course",
+  },
+];
+
+export const researchData = [
+  {
+    id: 1,
+    date: "2023-2024",
+    title: "Advanced Data Analytics with Big Data Tools",
+    desc: " Utilized big data tools for advanced analytics and insights.",
+  },
+  {
+    id: 2,
+    date: "2021-2023",
+    title: "Cloud-Native Application Architectures",
+    desc: "Studied best practices for designing cloud-native applications.",
+  },
+  {
+    id: 3,
+    date: "2019-2020",
+    title: "AI-Driven User Experience Personalization",
+    desc: "Leveraged AI to personalize user experiences based on behavior.",
+  },
+];

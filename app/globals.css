@@ -210,6 +210,7 @@
     @apply text-neutral-0;
     margin-top: 0px;
     margin-bottom: 16px;
+    line-height: 1.2;
   }
 
   h1 {
@@ -231,42 +232,7 @@
     @apply text-[20px] font-medium;
   }
 
-  /* Typography */
-  .base-semibold {
-    @apply text-[16px] font-semibold;
-  }
-  .base-medium {
-    @apply text-[16px] font-medium;
-  }
-  .base-regular {
-    @apply text-[16px] font-normal leading-[140%];
-  }
-  .body-bold {
-    @apply text-[18px] font-bold leading-[140%];
-  }
-  .body-medium {
-    @apply text-[18px] font-medium leading-[140%];
-  }
-  .small-semibold {
-    @apply text-[14px] font-semibold leading-[140%] tracking-tighter;
-  }
-  .small-medium {
-    @apply text-[14px] font-medium leading-[140%];
-  }
-  .small-regular {
-    @apply text-[14px] font-normal leading-[140%];
-  }
-  .subtle-semibold {
-    @apply text-[12px] font-semibold leading-[140%];
-  }
-  .tiny-medium {
-    @apply text-[10px] font-medium leading-[140%];
-  }
-
   /* Utilities */
-  .invert-white {
-    @apply invert brightness-0 transition;
-  }
   .flex-center {
     @apply flex justify-center items-center;
   }
@@ -291,7 +257,7 @@
     width: 100%;
   }
 
-  .git-item-dot::before {
+  .before-item-dot::before {
     content: "•";
     color: #a0a0a0;
     font-size: 1.25rem;
@@ -300,12 +266,12 @@
     top: 0.1rem;
   }
 
+  .education-before-item-dot::before {
+    top: -2px;
+  }
+
   .experience-item-dot::before {
-    content: "•";
-    color: "var(--neutral-0)"; 
-    font-size: 1.25rem;
-    position: absolute;
-    left: -17px;
+    color: var(--neutral-0);
     top: -3px;
   }
 
