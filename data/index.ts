@@ -276,23 +276,23 @@ export const experienceCompanies = [
     name: "Google",
     logo: "/experience/google.svg",
     from: "2018",
-    to: "present"
+    to: "present",
   },
   {
     id: 2,
     name: "Twitter (X)",
     logo: "/experience/twitter.svg",
     from: "2015",
-    to: "2018"
+    to: "2018",
   },
   {
     id: 3,
     name: "Amazon",
     logo: "/experience/amazon.svg",
     from: "2012",
-    to: "2015"
+    to: "2015",
   },
-]
+];
 
 export const experienceCurrentJobDescList = [
   {
@@ -308,9 +308,9 @@ export const experienceCurrentJobDescList = [
   {
     id: 3,
     desc: "Collaborated with cross-functional teams to integrate new features seamlessly.",
-    highlightText: ""
+    highlightText: "",
   },
-]
+];
 
 export const experienceTechnologies = [
   {
@@ -333,7 +333,7 @@ export const experienceTechnologies = [
     id: 5,
     name: "GCP",
   },
-]
+];
 
 export const educationData = [
   {
@@ -381,4 +381,33 @@ export const researchData = [
     title: "AI-Driven User Experience Personalization",
     desc: "Leveraged AI to personalize user experiences based on behavior.",
   },
+];
+
+export const projectSliderData = [
+  {
+    id: 1,
+    title: "Integrate AI into the ecommerce system",
+    desc: "Developed an online learning platform with course management, quizzes, and progress tracking.",
+    client: "Conceptual JSC",
+    completion_time: "6 months",
+    technologies: [
+      "Node.js", "React", "MongoDB", "Stripe",
+    ],
+    slider_img: "/projects/img-1.png",
+    github_ink: "#",
+    live_link: "#",
+  },
+  /* {
+    id: 2,
+    title: "Integrate AI into the ecommerce system",
+    desc: "Developed an online learning platform with course management, quizzes, and progress tracking.",
+    client: "Conceptual JSC",
+    completion_time: "6 months",
+    technologies: [
+      "Node.js", "React", "MongoDB", "Stripe",
+    ],
+    slider_img: "/projects/img-1.png",
+    github_ink: "#",
+    live_link: "#",
+  }, */
 ];

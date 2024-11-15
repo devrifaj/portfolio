@@ -1,6 +1,6 @@
 interface CooperationHeadingProps {
   sectionName?: string;
-  headings?: Array<{ title?: string; span: string }>;
+  headings?: Array<{ title?: string; span?: string }>;
   center?: boolean;
 }
 
