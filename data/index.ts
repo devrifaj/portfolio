@@ -15,6 +15,7 @@ import { RiCloudLine } from "react-icons/ri";
 import { RiArchiveDrawerLine } from "react-icons/ri";
 import { RiSpeedLine } from "react-icons/ri";
 import { RiSpeakLine } from "react-icons/ri";
+import { RiMap2Fill } from "react-icons/ri";
 
 export const navItems = [
   { name: "About me", link: "#about" },
@@ -25,11 +26,11 @@ export const navItems = [
   { name: "Contact", link: "#contact" },
 ];
 
-export const navSocialItems = [
-  { link: "https://facebook.com", icon: RiFacebookCircleFill },
-  { link: "https://twitter.com", icon: RiTwitterXFill },
-  { link: "http://linkedin.com", icon: RiLinkedinFill },
-  { link: "https://github.com/", icon: RiGithubFill },
+export const socialLinks = [
+  { id:1, link: "https://facebook.com", icon: RiFacebookCircleFill },
+  { id:2, link: "https://twitter.com", icon: RiTwitterXFill },
+  { id:3, link: "http://linkedin.com", icon: RiLinkedinFill },
+  { id:4, link: "https://github.com/", icon: RiGithubFill },
 ];
 
 export const heroTechnologies = [
@@ -116,27 +117,34 @@ export const statistics = [
   },
 ];
 
-export const cooperationContacts = [
+export const contactListData = [
   {
     id: 1,
-    mediaName: "skype",
-    name: "rifaj.dev",
-    link: "#",
-    icon: RiSkypeFill,
-  },
-  {
-    id: 2,
-    mediaName: "phone",
-    name: "+8801601016160",
-    link: "#",
+    mediaName: "phone number",
+    mediaData: "+8801601016160",
+    link: "tel:+8801601016160",
     icon: RiPhoneFill,
   },
   {
-    id: 3,
+    id: 2,
     mediaName: "email",
-    name: "mdrifajulislamrifaj.contact@gmail.com",
-    link: "#",
+    mediaData: "mdrifajulislamrifaj.contact@gmail.com",
+    link: "mailto:mdrifajulislamrifaj.contact@gmail.com",
     icon: RiMailFill,
+  },
+  {
+    id: 3,
+    mediaName: "skype",
+    mediaData: "rifaj.dev",
+    link: "skype:SKYPENAME?add",
+    icon: RiSkypeFill,
+  },
+  {
+    id: 4,
+    mediaName: "address",
+    mediaData: "0811 Erdman Prairie, Joaville CA",
+    link: "https://maps.app.goo.gl/rxe9RaCbPbN2HYnN8",
+    icon: RiMap2Fill,
   },
 ];
 

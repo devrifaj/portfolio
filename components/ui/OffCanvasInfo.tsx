@@ -1,6 +1,6 @@
+import { contactListData, socialLinks } from "@/data";
 import React from "react";
 import { RiCloseLine } from "react-icons/ri";
-import { RiFacebookCircleFill, RiTwitterXFill, RiLinkedinFill, RiGithubFill } from "react-icons/ri";
 
 interface OffCanvasInfoProps {
   isOpen: boolean;
@@ -36,24 +36,18 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
           {/* Contact Details Start */}
           <div className="mb-[30px]">
             <p className="font-medium mb-8 text-neutral-200 text-base !leading-[26px]">
-              I&apos;m always excited to take on new projects and collaborate with innovative minds.
+              I&apos;m always excited to take on new projects and collaborate
+              with innovative minds.
             </p>
-            <div className="mb-4">
-              <span className="text-neutral-400 text-[19px]">Phone Number</span>
-              <p className="mb-0">+8801601016160</p>
-            </div>
-            <div className="mb-4 overflow-x-scroll" style={{ scrollbarWidth: "none" }}>
-              <span className="text-neutral-400 text-[19px]">Email</span>
-              <p className="mb-0">mdrifajulislamrifaj.contact@gmail.com</p>
-            </div>
-            <div className="mb-4">
-              <span className="text-neutral-400 text-[19px]">Skype</span>
-              <p className="mb-0">RifajulDeveloper</p>
-            </div>
-            <div className="mb-4">
-              <span className="text-neutral-400 text-[19px]">Address</span>
-              <p className="mb-0">Satkhira, Khulna-9000, Bangladesh</p>
-            </div>
+
+            {contactListData.map(({ id, mediaName, mediaData }) => (
+              <div key={id} className="mb-4">
+                <span className="text-neutral-400 text-[19px] capitalize">
+                  {mediaName}
+                </span>
+                <p className="mb-0 overflow-x-scroll" style={{ scrollbarWidth: "none" }}>{mediaData}</p>
+              </div>
+            ))}
           </div>
           {/* Contact Details End */}
 
@@ -61,30 +55,15 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
           <div className="contact-list">
             <p className="text-neutral-400 text-[19px] mb-2">Social</p>
             <div className="md:flex items-center hidden gap-4 text-neutral-0">
-              <a
+              {socialLinks.map(({id, link, icon: Icon}) => (
+                <a
+                key={id}
                 className="transition-all duration-300 hover:text-primary-2"
-                href="http://facebook.com"
+                href={link}
               >
-                <RiFacebookCircleFill className="w-[18px] h-[25px]" />
+                <Icon size={18} className="text-xl"/>
               </a>
-              <a
-                className="transition-all duration-300 hover:text-primary-2"
-                href="http://twitter.com"
-              >
-                <RiTwitterXFill className="w-[18px] h-[25px]" />
-              </a>
-              <a
-                className="transition-all duration-300 hover:text-primary-2"
-                href="http://linkedin.com"
-              >
-                <RiLinkedinFill className="w-[18px] h-[25px]" />
-              </a>
-              <a
-                className="transition-all duration-300 hover:text-primary-2"
-                href="http://github.com"
-              >
-                <RiGithubFill className="w-[18px] h-[25px]" />
-              </a>
+              ))}
             </div>
           </div>
           {/* Social Contacts List End */}

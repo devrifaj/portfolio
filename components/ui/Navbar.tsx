@@ -6,7 +6,7 @@ import MobileMenu from "./MobileMenu";
 
 interface NavbarProps {
   setIsOffCanvasOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>>; // Add mobile nav toggle prop
+  setIsMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>>; // mobile nav toggle prop
 }
 
 const Navbar: React.FC<NavbarProps> = ({ setIsOffCanvasOpen, setIsMobileNavOpen }) => {

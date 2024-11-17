@@ -44,21 +44,15 @@ const BlogCard: React.FC<{ blog: Blog }> = ({ blog }) => {
         </div>
 
         {/* Card Content */}
-        <div className="relative text-center mt-6">
+        <Link href={blogLink} className="relative text-center mt-6">
           <span className="text-[14px]">
             {date} • {readTime} read
           </span>
-          <Link href={blogLink}>
             <h6 className="transition-all duration-200 ease-in-out hover:text-primary-2 mt-2">
               {title}
             </h6>
-          </Link>
           <p className="text-[14px]">{desc}</p>
-          <a
-            href="#"
-            className="link-overlay position-absolute top-0 start-0 w-100 h-100"
-          ></a>
-        </div>
+        </Link>
       </div>
     </div>
   );

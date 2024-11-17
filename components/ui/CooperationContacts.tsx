@@ -1,4 +1,4 @@
-import { cooperationContacts } from "@/data";
+import { contactListData } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -36,8 +36,9 @@ const CooperationContacts = () => {
 
       {/* Contacts List Start */}
       <div className="flex flex-col gap-2">
-        {cooperationContacts.map(
-          ({ id, mediaName, name, link, icon: Icon }) => (
+        {contactListData
+          .filter((contact) => contact.mediaName !== "address") // Exclude Address
+          .map(({ id, mediaName, mediaData, link, icon: Icon }) => (
             <Link
               key={id}
               href={link}
@@ -48,12 +49,13 @@ const CooperationContacts = () => {
                 className="text-neutral-0 group-hover:text-primary-2"
               />
               <span className="text-neutral-300">
-                [{mediaName}] <span className="text-secondary-2">{name}</span>
+                [{mediaName === "phone number" ? "phone" : mediaName}]
+                  <span className="text-secondary-2"> {mediaData}</span>
               </span>
             </Link>
-          )
-        )}
+          ))}
       </div>
+
       {/* Contacts List End */}
     </div>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { navItems, navSocialItems } from "@/data";
+import { navItems, socialLinks } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -75,13 +75,13 @@ const NavContainer = () => {
 
       {/* Nav Social Links Start */}
       <ul className="hidden md:flex gap-4 text-white">
-        {navSocialItems.map(({ link, icon: Icon }) => (
-          <li key={link}>
+        {socialLinks.map(({ id, link, icon: Icon }) => (
+          <li key={id}>
             <Link
               href={link}
               className="flex items-center gap-2 hover:text-primary-2 transition"
             >
-              {Icon && <Icon size={18} className="text-xl" />}
+              <Icon size={18} className="text-xl" />
             </Link>
           </li>
         ))}
