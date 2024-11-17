@@ -1,4 +1,5 @@
 import { contactListData, socialLinks } from "@/data";
+import Link from "next/link";
 import React from "react";
 import { RiCloseLine } from "react-icons/ri";
 
@@ -52,17 +53,18 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
           {/* Contact Details End */}
 
           {/* Social Contacts List Start */}
-          <div className="contact-list">
+          <div>
             <p className="text-neutral-400 text-[19px] mb-2">Social</p>
-            <div className="md:flex items-center hidden gap-4 text-neutral-0">
+            <div className="flex items-center gap-4 text-neutral-0">
               {socialLinks.map(({id, link, icon: Icon}) => (
-                <a
+                <Link
                 key={id}
                 className="transition-all duration-300 hover:text-primary-2"
                 href={link}
+                target="_blank"
               >
                 <Icon size={18} className="text-xl"/>
-              </a>
+              </Link>
               ))}
             </div>
           </div>

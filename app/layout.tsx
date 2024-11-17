@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/ui/Footer";
 
 /* portfolio's title */
 export const metadata: Metadata = {
@@ -32,11 +33,14 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* header start from here */}
+        {/* Header start from here */}
         <Header />
 
-        {/* main start from here */}
+        {/* Main start from here */}
         <main className="z-10 relative container">{children}</main>
+
+        {/* Footer start from here */}
+        <Footer />
       </body>
     </html>
   );
