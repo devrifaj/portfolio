@@ -280,6 +280,12 @@
     top: -2px;
   }
 
+  .blog-card {
+    padding: 14px 14px 44px 14px;
+    border: 2px solid transparent;
+    background: linear-gradient(var(--bg-3), var(--bg-3)) padding-box, var(--linear-3) border-box;
+}
+
   /* Box linear animation */
   .box-linear-animation {
     border-radius: 8px;

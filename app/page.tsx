@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Blog from "@/components/Blog";
 import Cooperation from "@/components/Cooperation";
 import Education from "@/components/Education";
 import Experience from "@/components/Experience";
@@ -18,6 +19,7 @@ export default function Home() {
       <Education/>
       <Projects/>
       <MySkills/>
+      <Blog/>
     </div>
   );
 }

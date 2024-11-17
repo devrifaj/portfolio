@@ -485,3 +485,36 @@ export const mySkills = {
   toolsAndPlatforms: ["Git", "Docker", "AWS", "Heroku"],
   others: ["RESTful APIs", "GraphQL", "Agile Methodologies"],
 };
+
+export const blogData = [
+  {
+    id: 1,
+    tag: "CEO",
+    img: "/blog/img-1.png",
+    date: "March 28, 2023",
+    readTime: "3 min",
+    title: "Optimize Your Web Application for Speed",
+    desc: "Stay ahead of the curve with these emerging trends in UI/UX design.",
+    blogLink: "#",
+  },
+  {
+    id: 2,
+    tag: "Development",
+    img: "/blog/img-2.png",
+    date: "March 28, 2023",
+    readTime: "3 min",
+    title: "Best Practices for Secure Web Development",
+    desc: "Stay ahead of the curve with these emerging trends in UI/UX design.",
+    blogLink: "#",
+  },
+  {
+    id: 3,
+    tag: "Trending",
+    img: "/blog/img-3.png",
+    date: "March 28, 2023",
+    readTime: "3 min",
+    title: "10 JavaScript Frameworks for Web Development in 2024",
+    desc: "Stay ahead of the curve with these emerging trends in UI/UX design.",
+    blogLink: "#",
+  },
+];
