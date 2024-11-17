@@ -2,7 +2,7 @@ import React from "react";
 import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
 import CooperationSlide from "./ui/CooperationSlide";
 import CooperationGitJournaling from "./ui/CooperationGitJournaling";
-import CooperationRotate from "./ui/CooperationRotate";
+import RotateAnimation from "./ui/RotateAnimation";
 import SectionHeading from "./ui/SectionHeading";
 import CooperationContacts from "./ui/CooperationContacts";
 
@@ -34,7 +34,7 @@ const Cooperation = () => {
             </div>
 
             {/* Rotate Animation */}
-            <CooperationRotate />
+            <RotateAnimation />
           </SectionAnimatedBorder>
         </div>
         {/* Cooperation Left End */}

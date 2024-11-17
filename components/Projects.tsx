@@ -5,7 +5,7 @@ import ProjectsSlider from "./ui/ProjectsSlider";
 
 const Projects = () => {
   return (
-    <section>
+    <section className="mb-8">
       <SectionAnimatedBorder>
         <div className="lg:p-16 md:p-10 p-4 relative z-10">
           {/* Section Heading Start */}

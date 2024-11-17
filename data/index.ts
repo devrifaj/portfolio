@@ -32,7 +32,7 @@ export const navSocialItems = [
   { link: "https://github.com/", icon: RiGithubFill },
 ];
 
-export const technologies = [
+export const heroTechnologies = [
   {
     id: 1,
     name: "NextJS",
@@ -411,3 +411,77 @@ export const projectSliderData = [
     live_link: "#",
   }, */
 ];
+
+export const mySkillsTechnologies = [
+  {
+    id: 1,
+    name: "NextJS",
+    img: "/hero/icon-1.svg",
+    officialUrl: "https://nextjs.org",
+    up: true,
+  },
+  {
+    id: 2,
+    name: "Firebase",
+    img: "/hero/icon-2.svg",
+    officialUrl: "https://firebase.google.com",
+    up: true,
+  },
+  {
+    id: 3,
+    name: "MongoDB",
+    img: "/hero/icon-3.svg",
+    officialUrl: "https://www.mongodb.com",
+    up: true,
+  },
+  {
+    id: 4,
+    name: "NodeJS",
+    img: "/hero/icon-4.svg",
+    officialUrl: "https://nodejs.org/en",
+    up: true,
+  },
+  {
+    id: 5,
+    name: "Tailwind",
+    img: "/hero/icon-5.svg",
+    officialUrl: "https://tailwindcss.com",
+    down: true,
+  },
+  {
+    id: 6,
+    name: "React",
+    img: "/hero/icon-6.svg",
+    officialUrl: "https://react.dev",
+    up: true,
+  },
+  {
+    id: 7,
+    name: "VueJS",
+    img: "/hero/icon-7.svg",
+    officialUrl: "https://vuejs.org",
+    down: true,
+  },
+  {
+    id: 8,
+    name: "Angular",
+    img: "/hero/icon-8.svg",
+    officialUrl: "https://angular.dev",
+    down: true,
+  },
+  {
+    id: 9,
+    name: "Laravel",
+    img: "/hero/icon-9.svg",
+    officialUrl: "https://laravel.com",
+    down: true,
+  },
+];
+
+export const mySkills = {
+  frontEnd: ["HTML", "CSS", "JavaScript", "React", "Angular"],
+  backEnd: ["Node.js", "Express", "Python", "Django"],
+  databases: ["MySQL", "PostgreSQL", "MongoDB",],
+  toolsAndPlatforms: ["Git", "Docker", "AWS", "Heroku"],
+  others: ["RESTful APIs", "GraphQL", "Agile Methodologies"],
+};

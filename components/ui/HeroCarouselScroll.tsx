@@ -1,4 +1,4 @@
-import { technologies } from "@/data";
+import { heroTechnologies } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -9,7 +9,7 @@ const HeroCarouselScroll = () => {
     <div>
       <ul className="flex my-[10px] p-0 overflow-hidden">
         <Marquee pauseOnHover={true} speed={35}>
-          {technologies.map(({ id, name, img, officialUrl }) => (
+          {heroTechnologies.map(({ id, name, img, officialUrl }) => (
             <li key={id} className="mx-[10px] text-center">
               <Link
                 href={officialUrl}

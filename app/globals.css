@@ -275,6 +275,11 @@
     top: -3px;
   }
 
+  .my-skills-item-dot::before {
+    color: var(--neutral-200);
+    top: -2px;
+  }
+
   /* Box linear animation */
   .box-linear-animation {
     border-radius: 8px;

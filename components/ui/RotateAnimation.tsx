@@ -1,8 +1,16 @@
 import React from "react";
 
-const CooperationRotate = () => {
+interface RotateAnimationProps {
+  position?: "top" | "bottom";
+}
+
+const RotateAnimation: React.FC<RotateAnimationProps> = ({ position }) => {
   return (
-    <div className="absolute hidden md:block -bottom-[35px] -right-[35px] z-10">
+    <div
+      className={`absolute hidden md:block z-10 ${
+        position === "top" ? "-top-[35px]" : "-bottom-[35px]"
+      } -right-[35px]`}
+    >
       <div className="rotateme animate-rotateme">
         {/* Big Circle */}
         <div className="w-[210px] h-[210px] border-[0.4px] border-border-1 rounded-full"></div>
@@ -39,4 +47,4 @@ const CooperationRotate = () => {
   );
 };
 
-export default CooperationRotate;
+export default RotateAnimation;

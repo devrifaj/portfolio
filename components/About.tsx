@@ -78,7 +78,7 @@ const About = () => {
 
               {/* Carousel Start */}
               <div className="flex gap-x-6">
-                <div className="flex-none w-7/12 mt-16 lg:mt-0">
+                <div className="flex-none w-7/12 mt-10 lg:mt-0">
                   <HeroCarouselScroll />
                 </div>
 
