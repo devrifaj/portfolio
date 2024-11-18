@@ -45,7 +45,9 @@ const BlogCard: React.FC<{ blog: Blog }> = ({ blog }) => {
 
         {/* Card Content */}
         <Link href={blogLink} className="relative text-center">
-          <span className="text-[14px] flex justify-center">
+          <span className="text-[14px] flex justify-center
+          
+          ">
             {date} • {readTime} read
           </span>
             <h6 className="transition-all duration-200 ease-in-out hover:text-primary-2 mt-2">
