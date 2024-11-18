@@ -71,10 +71,19 @@ const Contact = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="flex items-center gap-2 text-neutral-1000 bg-primary-2 mt-4 transition-all duration-300 ease-in-out text-[14px] font-bold leading-[14px] font-secondary px-6 py-4 text-center rounded-lg"
+                  className="group flex items-center gap-2 text-neutral-1000 bg-primary-2 mt-4 transition-all duration-300 ease-in-out text-[14px] font-bold leading-[14px] font-secondary px-6 py-4 text-center rounded-lg overflow-hidden"
                 >
                   Send Message
-                  <RiArrowRightUpLine size={24} />
+                  <span className="relative inline-block">
+                    <RiArrowRightUpLine
+                      size={24}
+                      className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-exit absolute"
+                    />
+                    <RiArrowRightUpLine
+                      size={24}
+                      className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-enter"
+                    />
+                  </span>
                 </button>
               </form>
               {/* Form End */}

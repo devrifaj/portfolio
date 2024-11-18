@@ -38,21 +38,32 @@ const BlogCard: React.FC<{ blog: Blog }> = ({ blog }) => {
               href={blogLink}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary-2 rounded-full inline-flex items-center justify-center text-center align-middle w-10 h-10 leading-10 opacity-0 group-hover:opacity-100"
             >
-              <RiArrowRightUpLine size={24} className="text-black" />
+              <span className="relative inline-block">
+                <RiArrowRightUpLine
+                  size={24}
+                  className="transition-transform duration-500 ease-in-out group-hover:animate-hover-icon-exit absolute text-black"
+                />
+                <RiArrowRightUpLine
+                  size={24}
+                  className="transition-transform duration-500 ease-in-out group-hover:animate-hover-icon-enter text-black"
+                />
+              </span>
             </Link>
           </div>
         </div>
 
         {/* Card Content */}
         <Link href={blogLink} className="relative text-center">
-          <span className="text-[14px] flex justify-center
+          <span
+            className="text-[14px] flex justify-center
           
-          ">
+          "
+          >
             {date} • {readTime} read
           </span>
-            <h6 className="transition-all duration-200 ease-in-out hover:text-primary-2 mt-2">
-              {title}
-            </h6>
+          <h6 className="transition-all duration-200 ease-in-out hover:text-primary-2 mt-2">
+            {title}
+          </h6>
           <p className="text-[14px]">{desc}</p>
         </Link>
       </div>

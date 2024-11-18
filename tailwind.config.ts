@@ -92,6 +92,14 @@ const config: Config = {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
         },
+        "move-right-up": {
+          "0%": { transform: "translate(0, 0)", opacity: "1" },
+          "100%": { transform: "translate(10px, -10px)", opacity: "0" },
+        },
+        "move-left-down": {
+          "0%": { transform: "translate(-10px, 10px)", opacity: "0" },
+          "100%": { transform: "translate(0, 0)", opacity: "1" },
+        },
       },
       animation: {
         typing: "typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite",
@@ -99,6 +107,8 @@ const config: Config = {
         flicker: "flicker 800ms infinite",
         flickering: "flickering 3s infinite",
         rotateme: "rotateme 10s linear infinite",
+        "hover-icon-exit": "move-right-up 0.3s forwards",
+        "hover-icon-enter": "move-left-down 0.3s forwards",
       },
       transitionTimingFunction: {
         "custom-ease": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
