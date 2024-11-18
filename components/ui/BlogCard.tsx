@@ -20,7 +20,7 @@ const BlogCard: React.FC<{ blog: Blog }> = ({ blog }) => {
     <div className="lg:w-1/3">
       <div className="blog-card rounded-t-md lg:mb-4 md:mb-8 mb-4 group">
         {/* Card Image */}
-        <div className="relative">
+        <div className="relative mb-6">
           <div className="transform translate-z-0 rounded-md overflow-hidden relative">
             <img
               className="w-full h-full transform transition-transform duration-300 hover:scale-105"
@@ -44,8 +44,8 @@ const BlogCard: React.FC<{ blog: Blog }> = ({ blog }) => {
         </div>
 
         {/* Card Content */}
-        <Link href={blogLink} className="relative text-center mt-6">
-          <span className="text-[14px]">
+        <Link href={blogLink} className="relative text-center">
+          <span className="text-[14px] flex justify-center">
             {date} • {readTime} read
           </span>
             <h6 className="transition-all duration-200 ease-in-out hover:text-primary-2 mt-2">
