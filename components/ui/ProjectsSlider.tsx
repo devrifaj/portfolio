@@ -1,12 +1,34 @@
+"use client";
 import { projectSliderData } from "@/data";
 import Link from "next/link";
 import React from "react";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { RiGithubFill } from "react-icons/ri";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+// modules
+import { Keyboard, Navigation, Autoplay } from "swiper/modules";
+// Import Swiper styles
+import "swiper/css";
+import ProjectsSliderNavButton from "./ProjectsSliderNavButton";
+
 const ProjectsSlider = () => {
   return (
-    <div>
+    <Swiper
+      slidesPerView={1}
+      navigation={true}
+      pagination={{ clickable: true }}
+      keyboard={{
+        enabled: true,
+      }}
+      /* autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }} */
+      loop={true}
+      modules={[Keyboard, Navigation, Autoplay]}
+      className="relative"
+    >
       {projectSliderData.map(
         ({
           id,
@@ -17,18 +39,18 @@ const ProjectsSlider = () => {
           technologies,
           slider_img,
           live_link,
-          github_ink
+          github_ink,
         }) => (
-          <div key={id} className="relative">
+          <SwiperSlide key={id} className="relative">
             <div className="lg:p-8 md:p-6 p-4 border border-border-1 mt-8 bg-bg-3">
-              <div className="flex">
+              <div className="xl:flex items-center gap-11">
                 {/* Left side */}
-                <div className="lg:w-1/2 pr-11">
+                <div className="xl:w-1/2 lg:w-3/4 mx-auto">
                   <img className="w-full" src={slider_img} alt="project" />
                 </div>
 
                 {/* Right Side */}
-                <div className="lg:w-7/12 ps-lg-5 mt-5 mt-lg-0">
+                <div className="xl:w-7/12 lg:w-3/4 mx-auto mt-8 xl:mt-0">
                   <h4 className="text-linear-4">{title}</h4>
                   <p>{desc}</p>
 
@@ -72,7 +94,7 @@ const ProjectsSlider = () => {
                     </ul>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-4 mt-7">
+                  <div className="flex flex-wrap items-end gap-4 mt-10">
                     <Link
                       href={live_link}
                       target="_blank"
@@ -94,10 +116,11 @@ const ProjectsSlider = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </SwiperSlide>
         )
       )}
-    </div>
+      <ProjectsSliderNavButton />
+    </Swiper>
   );
 };
 

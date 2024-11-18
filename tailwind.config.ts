@@ -107,6 +107,9 @@ const config: Config = {
       lineHeight: {
         "extra-tight": "1.2",
       },
+      boxShadow: {
+        'custom-shadow': '0 0.5rem 1rem rgba(0, 0, 0, 0.15)',
+      },
     },
   },
   plugins: [],

@@ -405,7 +405,7 @@ export const projectSliderData = [
     github_ink: "#",
     live_link: "#",
   },
-  /* {
+  {
     id: 2,
     title: "Integrate AI into the ecommerce system",
     desc: "Developed an online learning platform with course management, quizzes, and progress tracking.",
@@ -417,7 +417,20 @@ export const projectSliderData = [
     slider_img: "/projects/img-1.png",
     github_ink: "#",
     live_link: "#",
-  }, */
+  },
+  {
+    id: 3,
+    title: "Integrate AI into the ecommerce system",
+    desc: "Developed an online learning platform with course management, quizzes, and progress tracking.",
+    client: "Conceptual JSC",
+    completion_time: "6 months",
+    technologies: [
+      "Node.js", "React", "MongoDB", "Stripe",
+    ],
+    slider_img: "/projects/img-1.png",
+    github_ink: "#",
+    live_link: "#",
+  },
 ];
 
 export const mySkillsTechnologies = [
