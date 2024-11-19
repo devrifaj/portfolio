@@ -41,10 +41,7 @@ const MySkillsSlide = () => {
         <ul className="flex p-0 overflow-hidden">
           <Marquee pauseOnHover={true} speed={35} direction="left">
             {rightBrands.map(({ id, name, img, officialUrl }) => (
-              <li
-                key={id}
-                className="mx-[15px] text-center float-left"
-              >
+              <li key={id} className="mx-[15px] text-center float-left">
                 <Link
                   href={officialUrl}
                   target="_blank"
