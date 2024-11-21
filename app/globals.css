@@ -68,7 +68,6 @@
       rgba(31, 31, 36, 0.45) 0%,
       rgb(31, 31, 36) 100%
     );
-
     /* shadow */
     --shadow-1: 0 13px 35px -12px rgba(35, 35, 35, 0.1);
     --shadow-2: 0px 0px 25px 0px rgba(0, 0, 0, 0.08);

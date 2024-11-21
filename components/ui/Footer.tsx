@@ -18,8 +18,7 @@ const Footer = () => {
             <span
               className="text-[23px] font-medium leading-normal"
               style={{
-                background:
-                  "linear-gradient(-90deg, rgba(31, 31, 36, 0.45) 0%, rgb(31, 31, 36) 100%)",
+                background:"var(--linear-5)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
