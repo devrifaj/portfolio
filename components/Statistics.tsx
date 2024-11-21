@@ -13,18 +13,18 @@ const Statistics = () => {
     // Delayed update to trigger Odometer animation
     setTimeout(() => {
       setDisplayCounts(statistics.map(({ count }) => count));
-    }, 100); // Adjust delay as needed
+    }, 300); // Adjust delay as needed
   }, []);
 
   return (
     <section className="bg-bg-3 py-[60px] border border-border-1 rounded-lg relative overflow-hidden mb-8">
-      <div className="grid grid-cols-1 gap-4 md:gap-0 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 md:gap-0 md:grid-cols-2 lg:grid-cols-4">
         {/* Statistics Items Start */}
         {statistics.map(({ id, countTag, icon: Icon }, index) => (
-          <div key={id} className="flex-center">
+          <div key={id} className="flex-center mb-0 md:mb-7 lg:mb-0">
             <div className="flex flex-col items-center lg:items-start">
               <Icon size={24} className="text-primary-2" />
-              <h2 className="text-neutral-300 font-medium text-[50px] my-0 tracking-wider flex gap-6">
+              <h2 className="text-neutral-300 font-medium text-[40px] md:text-[50px] my-0 tracking-wider flex gap-2 md:gap-4">
                 <span className="text-neutral-0">
                     <Odometer
                       value={displayCounts[index] || 0}

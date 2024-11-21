@@ -14,7 +14,7 @@ const Blog = () => {
       />
       {/* Section Heading End */}
 
-      <div className="lg:flex gap-6 mt-16">
+      <div className="lg:flex gap-6 mt-10 md:mt-16">
         {blogData.map((blog) => (
           <BlogCard key={blog.id} blog={blog} />
         ))}

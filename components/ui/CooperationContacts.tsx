@@ -35,14 +35,14 @@ const CooperationContacts = () => {
       {/* Circle Profile End */}
 
       {/* Contacts List Start */}
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-wrap flex-col gap-4 sm:gap-2">
         {contactListData
           .filter((contact) => contact.mediaName !== "address") // Exclude Address
           .map(({ id, mediaName, mediaData, link, icon: Icon }) => (
             <Link
               key={id}
               href={link}
-              className="flex gap-3 text-neutral-0 group"
+              className="flex flex-col sm:flex-row items-center text-center sm:text-left justify-center gap-3 text-neutral-0 group"
             >
               <Icon
                 size={24}

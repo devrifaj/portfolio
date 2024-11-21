@@ -24,7 +24,7 @@ const EducationDetails: React.FC<EducationDetailsProps> = ({
       {/* Heading */}
       <div className="flex items-center">
         {icon}
-        <h2 className="ml-2 mb-0">{sectionTitle}</h2>
+        <h2 className="ml-2 mb-0 text-[33px] md:text-[42px]">{sectionTitle}</h2>
       </div>
 
       {/* Content */}

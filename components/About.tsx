@@ -21,7 +21,7 @@ const About = () => {
                 alt="rifajul"
               />
 
-              <div className="absolute right-0 top-[100%] -translate-y-1/2 mr-[210px] pb-[30px]">
+              <div className="absolute -bottom-[3.75rem] pb-[30px]">
                 <Image
                   src="/hero/icon.svg"
                   width={81}

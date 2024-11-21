@@ -20,7 +20,7 @@ const MySkillsSlide = () => {
                 <Link
                   href={officialUrl}
                   target="_blank"
-                  className="bg-[#f8f8f8] dark:bg-neutral-800 border border-border-1 w-[80px] h-[80px] leading-[80px] inline-flex items-center justify-center text-center align-middle rounded-lg hover:bg-[#242424] dark:hover:bg-[#242424] hover:border-none dark:hover:!border-0 hover:text-primary-2 hover:transition-all hover:duration-300 hover:ease-in-out"
+                  className="bg-[#f8f8f8] dark:bg-neutral-800 border border-border-1 w-[70px] sm:w-[80px] h-[70px] sm:h-[80px] leading-[70px] sm:leading-[80px] inline-flex items-center justify-center text-center align-middle rounded-lg hover:bg-[#242424] dark:hover:bg-[#242424] hover:border-none dark:hover:!border-0 hover:text-primary-2 hover:transition-all hover:duration-300 hover:ease-in-out"
                 >
                   <Image
                     src={img}
@@ -45,7 +45,7 @@ const MySkillsSlide = () => {
                 <Link
                   href={officialUrl}
                   target="_blank"
-                  className="bg-[#f8f8f8] dark:bg-neutral-800 border border-border-1 w-[80px] h-[80px] leading-[80px] inline-flex items-center justify-center text-center align-middle rounded-lg hover:bg-[#242424] dark:hover:bg-[#242424] hover:border-none dark:hover:!border-0 hover:text-primary-2 hover:transition-all hover:duration-300 hover:ease-in-out"
+                  className="bg-[#f8f8f8] dark:bg-neutral-800 border border-border-1 w-[70px] sm:w-[80px] h-[70px] sm:h-[80px] leading-[70px] sm:leading-[80px] inline-flex items-center justify-center text-center align-middle rounded-lg hover:bg-[#242424] dark:hover:bg-[#242424] hover:border-none dark:hover:!border-0 hover:text-primary-2 hover:transition-all hover:duration-300 hover:ease-in-out"
                 >
                   <Image
                     src={img}

@@ -19,7 +19,7 @@ const Footer = () => {
               className="text-[23px] font-medium leading-normal"
               style={{
                 background:
-                  "linear-gradient(270deg, rgba(255, 255, 255, 0.32) 0%, #fff 100%)",
+                  "linear-gradient(-90deg, rgba(31, 31, 36, 0.45) 0%, rgb(31, 31, 36) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -52,7 +52,7 @@ const Footer = () => {
               <li key={link}>
                 <Link
                   href={link}
-                  className="text-base font-normal py-2 rounded hover:text-white transition-all !duration-300 text-[#FFFFFF80]"
+                  className="text-base font-normal py-2 rounded hover:text-white transition-all !duration-300 text-neutral-0"
                 >
                   {name}
                 </Link>

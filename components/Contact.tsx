@@ -71,17 +71,17 @@ const Contact = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="group flex items-center gap-2 text-neutral-1000 bg-primary-2 mt-4 transition-all duration-300 ease-in-out text-[14px] font-bold leading-[14px] font-secondary px-6 py-4 text-center rounded-lg overflow-hidden"
+                  className="group flex items-center gap-2 text-neutral-1000 bg-primary-2 mt-4 transition-all duration-300 ease-in-out text-[14px] font-bold leading-[14px] font-secondary px-3 md:px-6 py-3 md:py-4 text-center rounded-lg overflow-hidden"
                 >
                   Send Message
                   <span className="relative inline-block">
                     <RiArrowRightUpLine
                       size={24}
-                      className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-exit absolute"
+                      className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-exit absolute w-[20px] md:w-[24px]"
                     />
                     <RiArrowRightUpLine
                       size={24}
-                      className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-enter"
+                      className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-enter w-[20px] md:w-[24px]"
                     />
                   </span>
                 </button>
@@ -99,15 +99,15 @@ const Contact = () => {
               <Link key={id} href={link} target="_blank">
                 <div className="items-center mb-4 relative inline-flex">
                   <div className="inline-block">
-                    <div className="icon-flip flex-nowrap inline-flex items-center justify-center text-center align-middle w-16 h-16 leading-[4rem] border border-border-1 rounded-lg bg-bg-3">
-                      <Icon size={26} className="text-primary-2" />
+                    <div className="icon-flip flex-nowrap inline-flex items-center justify-center text-center align-middle w-12 sm:w-16 h-12 sm:h-16 leading-[4rem] border border-border-1 rounded-lg bg-bg-3">
+                      <Icon size={26} className="text-primary-2 w-[20px] sm:w-[26px]" />
                     </div>
                   </div>
                   <div className="pl-4 h-full">
                     <span className="text-neutral-400 text-[16px] capitalize">
                       {mediaName}
                     </span>
-                    <h6 className="mb-0">{mediaData}</h6>
+                    <h6 className="mb-0 text-[18px] sm:text-[20px]">{mediaData}</h6>
                   </div>
                 </div>
               </Link>

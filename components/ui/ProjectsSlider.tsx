@@ -21,10 +21,10 @@ const ProjectsSlider = () => {
       keyboard={{
         enabled: true,
       }}
-      /* autoplay={{
+      autoplay={{
         delay: 2500,
         disableOnInteraction: false,
-      }} */
+      }}
       loop={true}
       modules={[Keyboard, Navigation, Autoplay]}
       className="relative"

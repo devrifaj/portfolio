@@ -36,7 +36,7 @@ const Experience = () => {
                     <div className="flex items-center gap-2">
                       <img src={logo} alt={name} />
                       <div className="flex flex-col ml-2">
-                        <h5 className="mb-1">{name}</h5>
+                        <h5 className="mb-1 text-[18px] md:text-[24px]">{name}</h5>
                         <span className="text-neutral-300">
                           {from} - {to}
                         </span>
@@ -50,9 +50,9 @@ const Experience = () => {
 
             {/* Experience Description Start */}
             <div className="lg:w-2/3 lg:pl-10 mt-8 lg:mt-0">
-              <h6 className="text-linear-4">Senior Software Engineer</h6>
+              <h6 className="text-linear-4 text-[18px] sm:text-[20px]">Senior Software Engineer</h6>
 
-              <ul className="mt-6 pl-4">
+              <ul className="mt-6 pl-4 ">
                 {experienceCurrentJobDescList.map(
                   ({ id, desc, highlightText }) => (
                     <li
