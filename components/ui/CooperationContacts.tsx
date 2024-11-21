@@ -42,7 +42,7 @@ const CooperationContacts = () => {
             <Link
               key={id}
               href={link}
-              className="flex flex-col sm:flex-row items-center text-center sm:text-left justify-center gap-3 text-neutral-0 group"
+              className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left sm:justify-start justify-center gap-3 text-neutral-0 group"
             >
               <Icon
                 size={24}
