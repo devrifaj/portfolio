@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import ScrollProgressButton from "@/components/ScrollProgressButton";
 import Footer from "@/components/ui/Footer";
 
 export default function RootLayout({
@@ -11,6 +12,8 @@ export default function RootLayout({
       <Header />
       <main className="z-10 relative container">{children}</main>
       <Footer />
+
+      <ScrollProgressButton/>
     </div>
   );
 }
