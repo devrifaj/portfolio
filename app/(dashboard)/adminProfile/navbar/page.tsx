@@ -1,9 +1,12 @@
-import React from 'react'
+import DashboardPageLayout from "@/components/shared/DashboardPageLayout";
+import React from "react";
 
 const page = () => {
   return (
-    <div>navbar page</div>
-  )
-}
+    <DashboardPageLayout title="Navbar Dashboard">
+      <p>This is the dashboard to update the navbar page</p>
+    </DashboardPageLayout>
+  );
+};
 
-export default page
+export default page;
