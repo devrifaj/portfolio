@@ -1,6 +1,6 @@
-import Header from "@/components/Header";
-import ScrollProgressButton from "@/components/ScrollProgressButton";
-import Footer from "@/components/ui/Footer";
+import Header from "@/components/shared/Header";
+import ScrollProgressButton from "@/components/shared/ScrollProgressButton";
+import Footer from "@/components/shared/Footer";
 
 export default function RootLayout({
   children,

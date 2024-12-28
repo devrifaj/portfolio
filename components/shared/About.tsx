@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import HeroCarouselScroll from "./ui/HeroCarouselScroll";
+import HeroCarouselScroll from "../ui/HeroCarouselScroll";
 import Link from "next/link";
 import { RiDownloadLine } from "react-icons/ri";
-import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
+import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
 
 const About = () => {
   return (

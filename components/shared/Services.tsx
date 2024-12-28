@@ -1,6 +1,6 @@
 import React from "react";
-import SectionHeading from "./ui/SectionHeading";
-import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
+import SectionHeading from "../ui/SectionHeading";
+import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
 import { servicesData } from "@/data";
 import Link from "next/link";
 

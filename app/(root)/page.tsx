@@ -1,13 +1,13 @@
-import About from "@/components/About";
-import Blog from "@/components/Blog";
-import Contact from "@/components/Contact";
-import Cooperation from "@/components/Cooperation";
-import Education from "@/components/Education";
-import Experience from "@/components/Experience";
-import MySkills from "@/components/MySkills";
-import Projects from "@/components/Projects";
-import Services from "@/components/Services";
-import Statistics from "@/components/Statistics";
+import About from "@/components/shared/About";
+import Blog from "@/components/shared/Blog";
+import Contact from "@/components/shared/Contact";
+import Cooperation from "@/components/shared/Cooperation";
+import Education from "@/components/shared/Education";
+import Experience from "@/components/shared/Experience";
+import MySkills from "@/components/shared/MySkills";
+import Projects from "@/components/shared/Projects";
+import Services from "@/components/shared/Services";
+import Statistics from "@/components/shared/Statistics";
 
 export default function Home() {
   return (

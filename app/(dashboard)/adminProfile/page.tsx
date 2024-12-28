@@ -3,7 +3,7 @@ import { RiArrowRightLine } from "react-icons/ri";
 
 const AdminProfile = () => {
   return (
-    <div className="container py-5">
+    <div>
       <h3 className="text-center">Admin Dashboard</h3>
 
       <p className="mb-4 text-secondary-2">All Sections (in sequence):</p>

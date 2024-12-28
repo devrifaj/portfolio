@@ -1,8 +1,8 @@
 import React from "react";
-import SectionHeading from "./ui/SectionHeading";
-import RotateAnimation from "./ui/RotateAnimation";
+import SectionHeading from "../ui/SectionHeading";
+import RotateAnimation from "../ui/RotateAnimation";
 import { mySkills } from "@/data";
-import MySkillsSlide from "./ui/MySkillsSlide";
+import MySkillsSlide from "../ui/MySkillsSlide";
 
 const MySkills = () => {
   const skillDisplayNames: { [key: string]: string } = {

@@ -1,6 +1,6 @@
 import React from "react";
-import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
-import EducationDetails from "./ui/EducationDetails";
+import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
+import EducationDetails from "../ui/EducationDetails";
 import { RiBookMarkedLine } from "react-icons/ri";
 import { RiQrScan2Line } from "react-icons/ri";
 import { educationData, researchData } from "@/data";

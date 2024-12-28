@@ -1,7 +1,7 @@
 import React from "react";
-import SectionHeading from "./ui/SectionHeading";
+import SectionHeading from "../ui/SectionHeading";
 import { blogData } from "@/data";
-import BlogCard from "./ui/BlogCard";
+import BlogCard from "../ui/BlogCard";
 
 const Blog = () => {
   return (

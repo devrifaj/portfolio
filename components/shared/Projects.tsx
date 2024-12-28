@@ -1,7 +1,7 @@
 import React from "react";
-import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
-import SectionHeading from "./ui/SectionHeading";
-import ProjectsSlider from "./ui/ProjectsSlider";
+import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
+import SectionHeading from "../ui/SectionHeading";
+import ProjectsSlider from "../ui/ProjectsSlider";
 
 const Projects = () => {
   return (

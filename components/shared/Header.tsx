@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import Navbar from "./ui/Navbar";
-import OffCanvasInfo from "./ui/OffCanvasInfo";
-import MobileNav from "./ui/MobileNav";
+import Navbar from "../ui/Navbar";
+import OffCanvasInfo from "../ui/OffCanvasInfo";
+import MobileNav from "../ui/MobileNav";
 
 const Header = () => {
   const [isOffCanvasOpen, setIsOffCanvasOpen] = useState(false); // for navbar menu

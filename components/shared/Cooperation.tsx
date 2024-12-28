@@ -1,10 +1,10 @@
 import React from "react";
-import SectionAnimatedBorder from "./ui/SectionAnimatedBorder";
-import CooperationSlide from "./ui/CooperationSlide";
-import CooperationGitJournaling from "./ui/CooperationGitJournaling";
-import RotateAnimation from "./ui/RotateAnimation";
-import SectionHeading from "./ui/SectionHeading";
-import CooperationContacts from "./ui/CooperationContacts";
+import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
+import CooperationSlide from "../ui/CooperationSlide";
+import CooperationGitJournaling from "../ui/CooperationGitJournaling";
+import RotateAnimation from "../ui/RotateAnimation";
+import SectionHeading from "../ui/SectionHeading";
+import CooperationContacts from "../ui/CooperationContacts";
 
 const Cooperation = () => {
   return (
