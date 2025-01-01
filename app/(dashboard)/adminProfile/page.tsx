@@ -11,7 +11,7 @@ const AdminProfile = () => {
       <ul className="flex flex-col gap-6 ">
         <li>
           <Link className="admin-link group" href="/adminProfile/navbar">
-            Navbar (including Get in touch){" "}
+            Navbar
             <RiArrowRightLine className="admin-link-icon" />
           </Link>
         </li>
@@ -87,12 +87,6 @@ const AdminProfile = () => {
         <li>
           <Link className="admin-link group" href="/adminProfile/contacts">
             Contacts
-            <RiArrowRightLine className="admin-link-icon" />
-          </Link>
-        </li>
-        <li>
-          <Link className="admin-link group" href="/adminProfile/footer">
-            Footer
             <RiArrowRightLine className="admin-link-icon" />
           </Link>
         </li>

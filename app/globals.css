@@ -242,7 +242,7 @@
     @apply flex justify-start items-center;
   }
   .admin-link {
-    @apply border border-border-1 rounded-lg px-4 py-4 md:text-xl flex items-center justify-center gap-6 hover:text-primary-2 duration-200
+    @apply border border-border-1 rounded-lg px-4 py-4 md:text-xl flex-center gap-6 hover:text-primary-2 duration-200
   }
   .admin-link-icon {
     @apply group-hover:translate-x-1 md:group-hover:translate-x-2 duration-100
