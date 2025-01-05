@@ -1,9 +1,10 @@
 "use client";
-import { navItems, socialLinks } from "@/data";
+import { navItems } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { socialLinks } from "@/data";
 
 const NavContainer = () => {
   const [activeHash, setActiveHash] = useState("");
@@ -14,7 +15,7 @@ const NavContainer = () => {
       if (pathname === "/") {
         setActiveHash("#about");
       } else {
-        setActiveHash(window.location.hash); 
+        setActiveHash(window.location.hash);
       }
     };
 
@@ -54,18 +55,18 @@ const NavContainer = () => {
 
       {/* Nav Links Start */}
       <ul className="hidden xl:flex">
-        {navItems.map(({ name, link }) => {
-          const isActive = activeHash === link; // Compare the active hash with the link
+        {navItems.map(({ label, route }) => {
+          const isActive = activeHash === route; // Compare the active hash with the link
 
           return (
-            <li key={link}>
+            <li key={route}>
               <Link
-                href={link}
+                href={route}
                 className={`text-base font-normal py-2 px-4 rounded hover:text-white transition-all !duration-300 ${
                   isActive ? "text-white" : "text-[#FFFFFF80]"
                 }`}
               >
-                {name}
+                {label}
               </Link>
             </li>
           );

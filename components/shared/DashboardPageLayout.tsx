@@ -8,8 +8,8 @@ const DashboardPageLayout = ({
   title: string;
 }) => {
   return (
-    <div className="container py-5">
-      <h3 className="text-center">{title}</h3>
+    <div>
+      <h3 className="text-center">{title} Dashboard</h3>
       {children}
     </div>
   );

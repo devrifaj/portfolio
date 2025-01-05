@@ -3,18 +3,12 @@ import { RiArrowRightLine } from "react-icons/ri";
 
 const AdminProfile = () => {
   return (
-    <div className="container py-5">
+    <div>
       <h3 className="text-center">Admin Dashboard</h3>
 
       <p className="mb-4 text-secondary-2">All Sections (in sequence):</p>
 
       <ul className="flex flex-col gap-6 ">
-        <li>
-          <Link className="admin-link group" href="/adminProfile/navbar">
-            Navbar
-            <RiArrowRightLine className="admin-link-icon" />
-          </Link>
-        </li>
         <li>
           <Link className="admin-link group" href="/adminProfile/hero">
             Hero <RiArrowRightLine className="admin-link-icon" />

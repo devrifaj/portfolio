@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { navItems } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { navItems } from "@/constants";
 
 interface MobileNavProps {
   setIsMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -66,13 +66,13 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
             {/* Mobile Nav Links Start */}
             <nav>
               <ul className="pl-0">
-                {navItems.map(({ name, link }) => {
-                  const isActive = activeHash === link;
+                {navItems.map(({ label, route }) => {
+                  const isActive = activeHash === route;
 
                   return (
-                    <li className="block relative p-0 mb-5" key={link}>
+                    <li className="block relative p-0 mb-5" key={route}>
                       <Link
-                        href={link}
+                        href={route}
                         className={`text-base leading-[26px] font-normal inline-block py-2 px-4 rounded transition-all !duration-300 ${
                           isActive
                             ? "text-primary-2"
@@ -80,7 +80,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
                         }`}
                         onClick={() => setIsMobileNavOpen(false)}
                       >
-                        {name}
+                        {label}
                       </Link>
                     </li>
                   );

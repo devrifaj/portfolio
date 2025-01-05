@@ -17,15 +17,6 @@ import { RiSpeedLine } from "react-icons/ri";
 import { RiSpeakLine } from "react-icons/ri";
 import { RiMap2Fill } from "react-icons/ri";
 
-export const navItems = [
-  { name: "About me", link: "#about" },
-  { name: "Resume", link: "#resume" },
-  { name: "Services", link: "#services" },
-  { name: "Portfolio", link: "#portfolio" },
-  { name: "Blog", link: "#blog" },
-  { name: "Contact", link: "#contact" },
-];
-
 export const socialLinks = [
   { id:1, link: "https://facebook.com", icon: RiFacebookCircleFill },
   { id:2, link: "https://twitter.com", icon: RiTwitterXFill },

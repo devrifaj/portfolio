@@ -1,4 +1,5 @@
-import { navItems, socialLinks } from "@/data";
+import { navItems } from "@/constants";
+import { socialLinks } from "@/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -18,7 +19,7 @@ const Footer = () => {
             <span
               className="text-[23px] font-medium leading-normal"
               style={{
-                background:"var(--linear-5)",
+                background: "var(--linear-5)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -47,13 +48,13 @@ const Footer = () => {
 
           {/* Footer Nav Links Start */}
           <ul className="flex flex-wrap items-center gap-6 justify-center py-6">
-            {navItems.map(({ name, link }) => (
-              <li key={link}>
+            {navItems.map(({ label, route }) => (
+              <li key={route}>
                 <Link
-                  href={link}
+                  href={route}
                   className="text-base font-normal py-2 rounded hover:text-white transition-all !duration-300 text-neutral-0"
                 >
-                  {name}
+                  {label}
                 </Link>
               </li>
             ))}
