@@ -24,6 +24,7 @@ const ProjectsSlider = () => {
       autoplay={{
         delay: 2500,
         disableOnInteraction: false,
+        pauseOnMouseEnter: true,
       }}
       loop={true}
       modules={[Keyboard, Navigation, Autoplay]}
