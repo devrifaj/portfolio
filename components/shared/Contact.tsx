@@ -88,7 +88,6 @@ const Contact = () => {
               </form>
               {/* Form End */}
             </div>
-            <div className="z-0 bg-primary-dark rectangle-bg z-1 rounded-3"></div>
           </div>
         </div>
 

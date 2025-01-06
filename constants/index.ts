@@ -14,5 +14,5 @@ export const projectDefaultValues = {
   technologies: [],
   slider_img: '',
   live_link: '',
-  github_ink: '',
+  github_link: '',
 };

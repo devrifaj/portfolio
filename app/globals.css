@@ -241,6 +241,7 @@
   .flex-start {
     @apply flex justify-start items-center;
   }
+  /* Admin Dashboard utility classes */
   .admin-link {
     @apply border border-border-1 rounded-lg px-4 py-4 md:text-xl flex-center gap-6 hover:text-primary-2 duration-200
   }
@@ -310,6 +311,10 @@
     border-color: var(--neutral-800) !important;
     box-shadow: none;
     outline: 0
+  }
+
+  .form-validation-error {
+    @apply text-red-500 text-sm mt-2;
   }
 
   /* Box linear animation */

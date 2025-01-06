@@ -8,5 +8,5 @@ export const projectFormSchema = z.object({
   technologies: z.string().array().min(5, "Technologies must contain 5 or more items"),
   slider_img: z.string(),
   live_link: z.string().url(),
-  github_ink: z.string().url(),
+  github_link: z.string().url(),
 });

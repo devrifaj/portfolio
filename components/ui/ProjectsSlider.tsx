@@ -39,7 +39,7 @@ const ProjectsSlider = () => {
           technologies,
           slider_img,
           live_link,
-          github_ink,
+          github_link,
         }) => (
           <SwiperSlide key={id} className="relative">
             <div className="lg:p-8 md:p-6 p-4 border border-border-1 mt-8 bg-bg-3">
@@ -105,7 +105,7 @@ const ProjectsSlider = () => {
                     </Link>
 
                     <Link
-                      href={github_ink}
+                      href={github_link}
                       target="_blank"
                       className="text-neutral-300 border-b border-border-1 px-2 pb-2 flex items-center gap-2 hover:text-primary-2 hover:border-primary-2 transition-all duration-300"
                     >

@@ -393,8 +393,8 @@ export const projectSliderData = [
       "Node.js", "React", "MongoDB", "Stripe",
     ],
     slider_img: "/projects/img-1.png",
-    github_ink: "#",
-    live_link: "#",
+    github_link: "https://github.com/",
+    live_link: "https://vercel.com/",
   },
   {
     id: 2,
@@ -406,8 +406,8 @@ export const projectSliderData = [
       "Node.js", "React", "MongoDB", "Stripe",
     ],
     slider_img: "/projects/img-1.png",
-    github_ink: "#",
-    live_link: "#",
+    github_link: "https://github.com/",
+    live_link: "https://vercel.com/",
   },
   {
     id: 3,
@@ -419,8 +419,8 @@ export const projectSliderData = [
       "Node.js", "React", "MongoDB", "Stripe",
     ],
     slider_img: "/projects/img-1.png",
-    github_ink: "#",
-    live_link: "#",
+    github_link: "https://github.com/",
+    live_link: "https://vercel.com/",
   },
 ];
 
