@@ -9,18 +9,12 @@ type ModalProps = {
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null;
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-      onClick={handleOverlayClick}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 bg-blur-lg"
+
     >
-      <div className="relative w-full max-w-xl p-6 bg-bg-3 rounded-lg shadow-lg">
+      <div className="relative w-full max-w-xl p-6 rounded-lg shadow-2xl bg-bg-5">
         <button
           className="absolute top-4 right-5 text-neutral-0"
           onClick={onClose}

@@ -530,3 +530,15 @@ export const blogData = [
     blogLink: "#",
   },
 ];
+
+export const technologies = [
+  { id: 1, name: "NextJS"},
+  { id: 2, name: "Firebase"},
+  { id: 3, name: "MongoDB"},
+  { id: 4, name: "NodeJS"},
+  { id: 5, name: "Tailwind"},
+  { id: 6, name: "React"},
+  { id: 7, name: "VueJS"},
+  { id: 8, name: "Angular"},
+  { id: 9, name: "Laravel"},
+  ]

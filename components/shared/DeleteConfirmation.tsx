@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "../ui/Modal";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 const DeleteConfirmation = () => {

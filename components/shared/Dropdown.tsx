@@ -1,9 +1,114 @@
-import React from 'react'
+"use client";
+
+import { technologies } from "@/data";
+import { useState } from "react";
+import { FaAngleDown } from "react-icons/fa6";
+import { RiCloseFill } from "react-icons/ri";
+import Modal from "../ui/Modal";
 
 const Dropdown = () => {
-  return (
-    <div>Dropdown</div>
-  )
-}
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
-export default Dropdown
+  // Modal state
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
+  // Handle option select
+  const handleOptionSelect = (option: string) => {
+    if (!selectedOptions.includes(option)) {
+      setSelectedOptions((prev) => [...prev, option]);
+    }
+    setDropdownOpen(false);
+  };
+
+  const handleRemoveOption = (option: string) => {
+    setSelectedOptions((prev) => prev.filter((item) => item !== option));
+  };
+
+  return (
+    <div className="relative">
+      {/* Dropdown button */}
+      <button
+        type="button"
+        className={`bg-bg-3 h-[58px] border rounded-lg px-4 flex-between w-full ${
+          dropdownOpen ? "border-neutral-800" : "border-border-1"
+        }`}
+        onClick={() => setDropdownOpen(!dropdownOpen)}
+      >
+        Technologies
+        <FaAngleDown />
+      </button>
+
+      {/* Dropdown options */}
+      {dropdownOpen && (
+        <div>
+          <ul className="absolute bg-[#333a32] bg-neutral-1000 dark:bg-bg-3 border border-border-1 rounded-lg mt-2 shadow-lg z-20 w-full">
+            {technologies.map((technology) => (
+              <li
+                key={technology.id}
+                className="px-4 py-2 rounded-md cursor-pointer hover:text-primary-2 hover:bg-border-1"
+                onClick={() => handleOptionSelect(technology.name)}
+              >
+                {technology.name}
+              </li>
+            ))}
+            <li
+              onClick={handleOpenModal}
+              className="px-4 py-2 rounded-md cursor-pointer hover:bg-border-1 text-secondary-2"
+            >
+              Add new technology
+            </li>
+          </ul>
+        </div>
+      )}
+
+      {/* Modal is here */}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <h5>New Technology</h5>
+
+        <form>
+          <input className="form-control" type="text" placeholder="Technology Name"/>
+
+          <div className="flex justify-end gap-6 mt-6 text-base">
+            <button type="button" onClick={handleCloseModal}>
+              Cancel
+            </button>
+            
+            <button
+              type="button"
+              className="px-4 py-2 rounded-lg bg-primary-2 text-neutral-1000"
+            >
+             Add
+            </button>
+          </div>
+        </form>
+      </Modal>
+
+      {/* Selected options */}
+      {selectedOptions.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2 mt-2">
+          {selectedOptions.map((option) => (
+            <div
+              key={option}
+              className="gap-2 px-3 py-1 border rounded-full shadow-sm flex-center bg-bg-3 border-border-1 text-neutral-0"
+            >
+              <span>{option}</span>
+              <button
+                type="button"
+                className="text-gray-500 hover:text-red-500"
+                onClick={() => handleRemoveOption(option)}
+              >
+                <RiCloseFill />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Dropdown;
