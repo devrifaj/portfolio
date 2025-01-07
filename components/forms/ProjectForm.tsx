@@ -5,8 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { projectFormSchema } from "@/lib/validator";
 import { projectDefaultValues } from "@/constants";
-import Dropdown from "./Dropdown";
-import FileUploader from "./FileUploader";
+import Dropdown from "../shared/Dropdown";
+import FileUploader from "../shared/FileUploader";
 
 const ProjectForm = () => {
   const initialValues = projectDefaultValues;
