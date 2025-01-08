@@ -38,7 +38,7 @@ const ProjectsSlider = () => {
           client,
           completion_time,
           technologies,
-          slider_img,
+          project_img_url,
           live_link,
           github_link,
         }) => (
@@ -47,7 +47,7 @@ const ProjectsSlider = () => {
               <div className="xl:flex items-center gap-11">
                 {/* Left side */}
                 <div className="xl:w-1/2 lg:w-3/4 mx-auto">
-                  <img className="w-full" src={slider_img} alt="project" />
+                  <img className="w-full" src={project_img_url} alt="project" />
                 </div>
 
                 {/* Right Side */}

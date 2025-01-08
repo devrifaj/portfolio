@@ -392,7 +392,7 @@ export const projectSliderData = [
     technologies: [
       "Node.js", "React", "MongoDB", "Stripe",
     ],
-    slider_img: "/projects/img-1.png",
+    project_img_url: "/projects/img-1.png",
     github_link: "https://github.com/",
     live_link: "https://vercel.com/",
   },
@@ -405,7 +405,7 @@ export const projectSliderData = [
     technologies: [
       "Node.js", "React", "MongoDB", "Stripe",
     ],
-    slider_img: "/projects/img-1.png",
+    project_img_url: "/projects/img-1.png",
     github_link: "https://github.com/",
     live_link: "https://vercel.com/",
   },
@@ -418,7 +418,7 @@ export const projectSliderData = [
     technologies: [
       "Node.js", "React", "MongoDB", "Stripe",
     ],
-    slider_img: "/projects/img-1.png",
+    project_img_url: "/projects/img-1.png",
     github_link: "https://github.com/",
     live_link: "https://vercel.com/",
   },

@@ -12,7 +12,7 @@ export const projectDefaultValues = {
   desc: '',
   completion_time: '',
   technologies: [],
-  slider_img: '',
+  project_img_url: '',
   live_link: '',
   github_link: '',
 };

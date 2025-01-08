@@ -6,7 +6,7 @@ export const projectFormSchema = z.object({
   client: z.string(),
   completion_time: z.string(),
   technologies: z.string().array().min(5, "Technologies must contain 5 or more items"),
-  slider_img: z.string(),
+  project_img_url: z.string(),
   live_link: z.string().url(),
   github_link: z.string().url(),
 });

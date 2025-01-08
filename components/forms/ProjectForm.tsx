@@ -7,8 +7,10 @@ import { projectFormSchema } from "@/lib/validator";
 import { projectDefaultValues } from "@/constants";
 import Dropdown from "../shared/Dropdown";
 import FileUploader from "../shared/FileUploader";
+import { useState } from "react";
 
 const ProjectForm = () => {
+  const [files, setFiles] = useState<File[]>([]);
   const initialValues = projectDefaultValues;
 
   const {
@@ -46,14 +48,15 @@ const ProjectForm = () => {
             id="desc"
             {...register("desc")}
             placeholder="Description"
-            className="form-control !min-h-[205px]"
+            className="form-control h-72"
           />
           {errors.desc && (
             <p className="form-validation-error">{errors.desc.message}</p>
           )}
         </div>
 
-        <FileUploader />
+        <FileUploader
+        />
 
         <div>
           <input
@@ -101,7 +104,9 @@ const ProjectForm = () => {
             className="form-control"
           />
           {errors.github_link && (
-            <p className="form-validation-error">{errors.github_link.message}</p>
+            <p className="form-validation-error">
+              {errors.github_link.message}
+            </p>
           )}
         </div>
       </div>
