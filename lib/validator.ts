@@ -1,12 +1,12 @@
 import { z } from "zod";
 
 export const projectFormSchema = z.object({
-  title: z.string().min(8, "Title must be 8 characters"),
-  desc: z.string().min(10, "Description must be 10 characters").max(200, "Description must be less than 200 characters"),
-  client: z.string(),
-  completion_time: z.string(),
-  technologies: z.string().array().min(5, "Technologies must contain 5 or more items"),
-  project_img_url: z.string(),
-  live_link: z.string().url(),
-  github_link: z.string().url(),
+  title: z.string().min(1, "Title is required"),
+  desc: z.string().min(1, "Description is required"),
+  client: z.string().min(1, "Client is required"),
+  completion_time: z.string().min(1, "Completion time is required"),
+  technologies: z.array(z.string()).min(1, "At least one technology is required"),
+  project_img_url: z.string().url("Invalid image URL"),
+  live_link: z.string().url("Invalid live link URL"),
+  github_link: z.string().url("Invalid GitHub link URL"),
 });

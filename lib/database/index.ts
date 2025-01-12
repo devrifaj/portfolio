@@ -1,23 +1,23 @@
-import mongoose from "mongoose";
+import { MongoClient, Db } from "mongodb";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-let cached = (global as any).mongoose || { conn: null, promise: null };
+if (!MONGODB_URI) {
+  throw new Error("⚠️ MONGODB_URI is missing in environment variables.");
+}
+
+let cachedClient: MongoClient | null = null;
+let cachedDb: Db | null = null;
 
 export const connectToDatabase = async () => {
+  if (cachedClient && cachedDb) return { client: cachedClient, db: cachedDb };
 
-  if (cached.conn) return cached.conn;
+  const client = new MongoClient(MONGODB_URI);
+  await client.connect();
 
-  if (!MONGODB_URI) throw new Error("MONGODB_URI is missing");
+  const db = client.db("portfolio");
+  cachedClient = client;
+  cachedDb = db;
 
-  cached.promise =
-    cached.promise ||
-    mongoose.connect(MONGODB_URI, {
-      dbName: "portfolio",
-      bufferCommands: false,
-    });
-
-  cached.conn = await cached.promise;
-
-  return cached.conn;
+  return { client, db };
 };

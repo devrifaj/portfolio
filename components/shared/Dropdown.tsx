@@ -6,31 +6,32 @@ import { FaAngleDown } from "react-icons/fa6";
 import { RiCloseFill } from "react-icons/ri";
 import Modal from "../ui/Modal";
 
-const Dropdown = () => {
+const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
-  // Modal state
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
 
-  // Handle option select
   const handleOptionSelect = (option: string) => {
     if (!selectedOptions.includes(option)) {
-      setSelectedOptions((prev) => [...prev, option]);
+      const updatedOptions = [...selectedOptions, option];
+      setSelectedOptions(updatedOptions);
+      setValue("technologies", updatedOptions, { shouldValidate: true });
     }
     setDropdownOpen(false);
   };
 
   const handleRemoveOption = (option: string) => {
-    setSelectedOptions((prev) => prev.filter((item) => item !== option));
+    const updatedOptions = selectedOptions.filter((item) => item !== option);
+    setSelectedOptions(updatedOptions);
+    setValue("technologies", updatedOptions, { shouldValidate: true });
   };
 
   return (
     <div className="relative">
-      {/* Dropdown button */}
+      <input type="hidden" {...register("technologies")} />
       <button
         type="button"
         className={`bg-bg-3 h-[58px] border rounded-lg px-4 flex-between w-full ${
@@ -42,7 +43,6 @@ const Dropdown = () => {
         <FaAngleDown />
       </button>
 
-      {/* Dropdown options */}
       {dropdownOpen && (
         <div>
           <ul className="absolute bg-[#333a32] bg-neutral-1000 dark:bg-bg-3 border border-border-1 rounded-lg mt-2 shadow-lg z-20 w-full">
@@ -65,29 +65,21 @@ const Dropdown = () => {
         </div>
       )}
 
-      {/* Modal is here */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <h5>New Technology</h5>
-
         <form>
           <input className="form-control" type="text" placeholder="Technology Name"/>
-
           <div className="flex justify-end gap-6 mt-6 text-base">
-            <button type="button" onClick={handleCloseModal}>
-              Cancel
-            </button>
-            
-            <button
-              type="button"
-              className="px-4 py-2 rounded-lg bg-primary-2 text-neutral-1000"
-            >
-             Add
-            </button>
+            <button type="button" onClick={handleCloseModal}>Cancel</button>
+            <button type="button" className="px-4 py-2 rounded-lg bg-primary-2 text-neutral-1000">Add</button>
           </div>
         </form>
       </Modal>
 
-      {/* Selected options */}
+      {errors && (
+        <p className="form-validation-error">{errors.message}</p>
+      )}
+
       {selectedOptions.length > 0 && (
         <div className="flex flex-wrap items-center gap-2 mt-2">
           {selectedOptions.map((option) => (

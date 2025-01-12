@@ -1,34 +1,92 @@
-"use client";
-
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { projectFormSchema } from "@/lib/validator";
 import { projectDefaultValues } from "@/constants";
 import Dropdown from "../shared/Dropdown";
-import FileUploader from "../shared/FileUploader";
-import { useState } from "react";
+import { FileUploader } from "../shared/FileUploader";
+import { useUploadThing } from "@/lib/uploadthing";
 
-const ProjectForm = () => {
-  const [files, setFiles] = useState<File[]>([]);
+type ProjectFormProps = {
+  type: "Create" | "Update";
+  files: File[];
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+};
+
+const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
   const initialValues = projectDefaultValues;
+
+  const { startUpload } = useUploadThing("imageUploader");
+
+  const form = useForm<z.infer<typeof projectFormSchema>>({
+    resolver: zodResolver(projectFormSchema),
+    defaultValues: initialValues,
+  });
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<z.infer<typeof projectFormSchema>>({
-    resolver: zodResolver(projectFormSchema),
-    defaultValues: initialValues,
-  });
+    setValue,
+    watch,
+    reset,
+  } = form;
+
+  const project_img_url = watch("project_img_url");
 
   async function onSubmit(values: z.infer<typeof projectFormSchema>) {
-    console.log(values);
-  }
+    console.log("Form is being submitted", values);
+  
+    let uploadedImageUrl = values.project_img_url;
+  
+    if (files.length > 0) {
+      const uploadedImages = await startUpload(files);
+  
+      if (!uploadedImages || uploadedImages.length === 0) {
+        console.error("Image upload failed");
+        return;
+      }
+  
+      uploadedImageUrl = uploadedImages[0].url;
+    }
+  
+    if (type === "Create") {
+      try {
+        // Prepare the form data to send to the API
+        const projectData = {
+          ...values,
+          project_img_url: uploadedImageUrl,
+          technologies: values.technologies, // Ensure correct array handling
+        };
+  
+        // Make the request to the API
+        const response = await fetch("/api/adminProfile/projects", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(projectData),
+        });
+  
+        if (response.ok) {
+          const result = await response.json();
+          reset();
+          setFiles([]); // Clear uploaded files after successful submission
+          console.log("Project created successfully", result);
+        } else {
+          const errorResult = await response.text(); // Get the error message from the response
+          console.error("Project creation failed:", errorResult);
+        }
+      } catch (error) {
+        console.error("Error while creating project:", error);
+      }
+    }
+  }  
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
       <div className="grid grid-cols-2 gap-4">
+        {/* Project Title */}
         <div>
           <input
             id="title"
@@ -41,8 +99,14 @@ const ProjectForm = () => {
           )}
         </div>
 
-        <Dropdown />
+        {/* Technologies Dropdown */}
+        <Dropdown
+          register={register}
+          setValue={setValue}
+          errors={errors.technologies}
+        />
 
+        {/* Description */}
         <div>
           <textarea
             id="desc"
@@ -55,9 +119,14 @@ const ProjectForm = () => {
           )}
         </div>
 
+        {/* File Uploader */}
         <FileUploader
+          onFieldChange={(value) => setValue("project_img_url", value)}
+          project_img_url={project_img_url}
+          setFiles={setFiles}
         />
 
+        {/* Client */}
         <div>
           <input
             id="client"
@@ -70,6 +139,7 @@ const ProjectForm = () => {
           )}
         </div>
 
+        {/* Completion Time */}
         <div>
           <input
             id="completion_time"
@@ -84,6 +154,7 @@ const ProjectForm = () => {
           )}
         </div>
 
+        {/* Live Link */}
         <div>
           <input
             id="live_link"
@@ -96,11 +167,12 @@ const ProjectForm = () => {
           )}
         </div>
 
+        {/* GitHub Link */}
         <div>
           <input
             id="github_link"
             {...register("github_link")}
-            placeholder="Github Link"
+            placeholder="GitHub Link"
             className="form-control"
           />
           {errors.github_link && (
@@ -111,12 +183,13 @@ const ProjectForm = () => {
         </div>
       </div>
 
+      {/* Submit Button */}
       <button
         type="submit"
         disabled={isSubmitting}
         className="text-neutral-1000 bg-primary-2 text-[14px] font-bold leading-[14px] font-secondary px-3 md:px-6 py-3 md:py-4 text-center rounded-lg"
       >
-        {isSubmitting ? "Submitting" : "Create Project"}
+        {isSubmitting ? "Submitting..." : `${type} Project`}
       </button>
     </form>
   );
