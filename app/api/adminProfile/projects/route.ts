@@ -1,19 +1,30 @@
-import { createProject } from "@/lib/actions/project.action";
-import { IProject } from "@/types"; // Import the IProject type from your types file
+import { CreateProjectParams } from "@/types";
+import { connectToDatabase } from "@/lib/database";
+import { handleError } from "@/lib/utils";
 
 export async function POST(req: Request) {
     try {
-        const body = await req.json(); // Get the body from the request
-        // Use the correct IProject type here
-        const project: IProject = await createProject({ project: body });
+        const body = await req.json();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { _id, ...projectData } = body as CreateProjectParams;
 
-        // Return a JSON response using the Response object
+        const { db } = await connectToDatabase();
+        const projectsCollection = db.collection("projects");
+        
+        const result = await projectsCollection.insertOne(projectData);
+
+        const project: CreateProjectParams = {
+            ...projectData,
+            _id: result.insertedId.toString(),
+        };
+
         return new Response(JSON.stringify({ project }), {
             status: 200,
             headers: { "Content-Type": "application/json" },
         });
+
     } catch (error) {
-        console.error(error);
+        handleError(error);
         return new Response(JSON.stringify({ message: "Failed to create project" }), {
             status: 500,
             headers: { "Content-Type": "application/json" },

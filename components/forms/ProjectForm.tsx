@@ -52,14 +52,12 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
   
     if (type === "Create") {
       try {
-        // Prepare the form data to send to the API
         const projectData = {
           ...values,
           project_img_url: uploadedImageUrl,
-          technologies: values.technologies, // Ensure correct array handling
+          technologies: values.technologies,
         };
   
-        // Make the request to the API
         const response = await fetch("/api/adminProfile/projects", {
           method: "POST",
           headers: {

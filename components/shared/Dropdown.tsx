@@ -10,9 +10,13 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [newTechnology, setNewTechnology] = useState("");
 
   const handleOpenModal = () => setModalOpen(true);
-  const handleCloseModal = () => setModalOpen(false);
+  const handleCloseModal = () => {
+    setNewTechnology("");
+    setModalOpen(false);
+  };
 
   const handleOptionSelect = (option: string) => {
     if (!selectedOptions.includes(option)) {
@@ -27,6 +31,10 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
     const updatedOptions = selectedOptions.filter((item) => item !== option);
     setSelectedOptions(updatedOptions);
     setValue("technologies", updatedOptions, { shouldValidate: true });
+  };
+
+  const handleAddNewTechnology = () => {
+    console.log(newTechnology);
   };
 
   return (
@@ -67,18 +75,31 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <h5>New Technology</h5>
-        <form>
-          <input className="form-control" type="text" placeholder="Technology Name"/>
+
+        <div>
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Technology Name"
+            value={newTechnology}
+            onChange={(e) => setNewTechnology(e.target.value)}
+          />
           <div className="flex justify-end gap-6 mt-6 text-base">
-            <button type="button" onClick={handleCloseModal}>Cancel</button>
-            <button type="button" className="px-4 py-2 rounded-lg bg-primary-2 text-neutral-1000">Add</button>
+            <button type="button" onClick={handleCloseModal}>
+              Cancel
+            </button>
+            <button
+              type="button"
+              className="px-4 py-2 rounded-lg bg-primary-2 text-neutral-1000"
+              onSubmit={handleAddNewTechnology}
+            >
+              Add
+            </button>
           </div>
-        </form>
+        </div>
       </Modal>
 
-      {errors && (
-        <p className="form-validation-error">{errors.message}</p>
-      )}
+      {errors && <p className="form-validation-error">{errors.message}</p>}
 
       {selectedOptions.length > 0 && (
         <div className="flex flex-wrap items-center gap-2 mt-2">

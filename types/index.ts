@@ -1,4 +1,4 @@
-export interface IProject {
+export interface CreateProjectParams {
   _id?: string;
   title: string;
   desc: string;
@@ -9,7 +9,3 @@ export interface IProject {
   live_link: string;
   github_link: string;
 }
-
-export type CreateProjectParams = {
-  project: IProject;
-};
