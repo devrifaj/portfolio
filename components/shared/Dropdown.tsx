@@ -2,9 +2,11 @@
 
 import { technologies } from "@/data";
 import { useState } from "react";
+import { FieldError } from "react-hook-form";
 import { FaAngleDown } from "react-icons/fa6";
 import { RiCloseFill } from "react-icons/ri";
 import Modal from "../ui/Modal";
+import { DropdownProps } from "@/types";
 
 const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -99,7 +101,9 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
         </div>
       </Modal>
 
-      {errors && <p className="form-validation-error">{errors.message}</p>}
+      {errors && "message" in errors && (
+        <p className="form-validation-error">{(errors as FieldError).message}</p>
+      )}
 
       {selectedOptions.length > 0 && (
         <div className="flex flex-wrap items-center gap-2 mt-2">
