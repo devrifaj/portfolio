@@ -1,3 +1,5 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -6,23 +8,13 @@ import { projectDefaultValues } from "@/constants";
 import Dropdown from "../shared/Dropdown";
 import { FileUploader } from "../shared/FileUploader";
 import { useUploadThing } from "@/lib/uploadthing";
-
-type ProjectFormProps = {
-  type: "Create" | "Update";
-  files: File[];
-  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
-};
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
+import { ProjectFormProps } from "@/types";
 
 const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
-  const initialValues = projectDefaultValues;
-
-  const { startUpload } = useUploadThing("imageUploader");
-
-  const form = useForm<z.infer<typeof projectFormSchema>>({
-    resolver: zodResolver(projectFormSchema),
-    defaultValues: initialValues,
-  });
-
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]); // (state for dropdown)
+  const initialValues = projectDefaultValues; // (for updating)
   const {
     register,
     handleSubmit,
@@ -30,26 +22,40 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
     setValue,
     watch,
     reset,
-  } = form;
+    trigger,
+  } = useForm<z.infer<typeof projectFormSchema>>({
+    resolver: zodResolver(projectFormSchema),
+    defaultValues: initialValues,
+  });
+  const { startUpload } = useUploadThing("imageUploader");
 
   const project_img_url = watch("project_img_url");
 
+  // refreshing the validation after if a image is selected
+  useEffect(() => {
+    const checkProjectImgUrl = async () => {
+      if (files.length > 0) {
+        const isOk = await trigger("project_img_url");
+        if (isOk) watch("project_img_url");
+      }
+    };
+    checkProjectImgUrl();
+  }, [files, trigger, watch]);
+
+  // Handling the on Submit function
   async function onSubmit(values: z.infer<typeof projectFormSchema>) {
-    console.log("Form is being submitted", values);
-  
     let uploadedImageUrl = values.project_img_url;
-  
+
     if (files.length > 0) {
       const uploadedImages = await startUpload(files);
-  
       if (!uploadedImages || uploadedImages.length === 0) {
-        console.error("Image upload failed");
+        toast.error("Image upload failed");
         return;
       }
-  
       uploadedImageUrl = uploadedImages[0].url;
     }
-  
+
+    // Creating Project
     if (type === "Create") {
       try {
         const projectData = {
@@ -57,7 +63,7 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           project_img_url: uploadedImageUrl,
           technologies: values.technologies,
         };
-  
+
         const response = await fetch("/api/adminProfile/projects", {
           method: "POST",
           headers: {
@@ -65,21 +71,21 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           },
           body: JSON.stringify(projectData),
         });
-  
+
         if (response.ok) {
-          const result = await response.json();
           reset();
-          setFiles([]); // Clear uploaded files after successful submission
-          console.log("Project created successfully", result);
-        } else {
-          const errorResult = await response.text(); // Get the error message from the response
-          console.error("Project creation failed:", errorResult);
+          setFiles([]);
+          toast.success("Project created successfully");
+          setSelectedOptions([]);
         }
       } catch (error) {
-        console.error("Error while creating project:", error);
+        toast.error("Error while creating project:");
+        console.error(error);
       }
     }
-  }  
+
+    // Updating Project
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
@@ -102,6 +108,8 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           register={register}
           setValue={setValue}
           errors={errors.technologies}
+          setSelectedOptions={setSelectedOptions}
+          selectedOptions={selectedOptions}
         />
 
         {/* Description */}
@@ -122,6 +130,7 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           onFieldChange={(value) => setValue("project_img_url", value)}
           project_img_url={project_img_url}
           setFiles={setFiles}
+          errors={errors.project_img_url}
         />
 
         {/* Client */}

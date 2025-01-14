@@ -1,25 +1,54 @@
 "use client";
 
-import { technologies } from "@/data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldError } from "react-hook-form";
 import { FaAngleDown } from "react-icons/fa6";
 import { RiCloseFill } from "react-icons/ri";
 import Modal from "../ui/Modal";
 import { DropdownProps } from "@/types";
+import toast from "react-hot-toast";
 
-const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
+const Dropdown = ({
+  register,
+  setValue,
+  errors,
+  setSelectedOptions,
+  selectedOptions,
+}: DropdownProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [technologies, setTechnologies] = useState<
+    { _id: string; name: string }[]
+  >([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [newTechnology, setNewTechnology] = useState("");
+  const [loading, setLoading] = useState(false); // State for new technology adding loading
 
-  const handleOpenModal = () => setModalOpen(true);
+  // Fetching technologies
+  useEffect(() => {
+    const fetchTechnologies = async () => {
+      try {
+        const response = await fetch(
+          "/api/adminProfile/projects/formTechnologies"
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setTechnologies(data.technologies);
+        }
+      } catch (error) {
+        console.log("Error while fetching technologies", error);
+      }
+    };
+
+    fetchTechnologies();
+  }, []);
+
   const handleCloseModal = () => {
     setNewTechnology("");
     setModalOpen(false);
   };
 
+  // Handling the selection of technology
   const handleOptionSelect = (option: string) => {
     if (!selectedOptions.includes(option)) {
       const updatedOptions = [...selectedOptions, option];
@@ -35,13 +64,56 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
     setValue("technologies", updatedOptions, { shouldValidate: true });
   };
 
-  const handleAddNewTechnology = () => {
-    console.log(newTechnology);
+  const handleAddNewTechnology = async () => {
+    if (!newTechnology.trim()) {
+      toast.error("Technology name cannot be empty.");
+      return;
+    }
+
+    if (
+      technologies.some(
+        (tech) => tech.name.toLowerCase() === newTechnology.trim().toLowerCase()
+      )
+    ) {
+      toast.error("Technology already exists.");
+      return;
+    }
+
+    setLoading(true);
+    // Adding new technology
+    try {
+      const response = await fetch(
+        "/api/adminProfile/projects/formTechnologies",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name: newTechnology }),
+        }
+      );
+
+      if (response.ok) {
+        const result = await response.json();
+
+        setTechnologies((prev) => [...prev, result.formTechnology]);
+
+        toast.success("New technology added successfully.");
+        setNewTechnology("");
+        setModalOpen(false);
+        setLoading(false);
+      }
+    } catch (error) {
+      toast.error("Error while adding new technology");
+      console.log(error);
+      setLoading(false);
+    }
   };
 
   return (
     <div className="relative">
       <input type="hidden" {...register("technologies")} />
+      {/* Dropdown trigger button */}
       <button
         type="button"
         className={`bg-bg-3 h-[58px] border rounded-lg px-4 flex-between w-full ${
@@ -53,12 +125,13 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
         <FaAngleDown />
       </button>
 
+      {/* The dropdown */}
       {dropdownOpen && (
         <div>
           <ul className="absolute bg-[#333a32] bg-neutral-1000 dark:bg-bg-3 border border-border-1 rounded-lg mt-2 shadow-lg z-20 w-full">
             {technologies.map((technology) => (
               <li
-                key={technology.id}
+                key={technology._id}
                 className="px-4 py-2 rounded-md cursor-pointer hover:text-primary-2 hover:bg-border-1"
                 onClick={() => handleOptionSelect(technology.name)}
               >
@@ -66,7 +139,7 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
               </li>
             ))}
             <li
-              onClick={handleOpenModal}
+              onClick={() => setModalOpen(true)}
               className="px-4 py-2 rounded-md cursor-pointer hover:bg-border-1 text-secondary-2"
             >
               Add new technology
@@ -75,6 +148,7 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
         </div>
       )}
 
+      {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <h5>New Technology</h5>
 
@@ -93,18 +167,22 @@ const Dropdown = ({ register, setValue, errors }: DropdownProps) => {
             <button
               type="button"
               className="px-4 py-2 rounded-lg bg-primary-2 text-neutral-1000"
-              onSubmit={handleAddNewTechnology}
+              onClick={handleAddNewTechnology}
+              disabled={loading}
             >
-              Add
+              {loading ? "Adding..." : "Add"}
             </button>
           </div>
         </div>
       </Modal>
 
       {errors && "message" in errors && (
-        <p className="form-validation-error">{(errors as FieldError).message}</p>
+        <p className="form-validation-error">
+          {(errors as FieldError).message}
+        </p>
       )}
 
+      {/* Selected technologies */}
       {selectedOptions.length > 0 && (
         <div className="flex flex-wrap items-center gap-2 mt-2">
           {selectedOptions.map((option) => (

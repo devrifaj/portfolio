@@ -9,4 +9,19 @@ export interface DropdownProps {
   register: UseFormRegister<ProjectFormData>;
   setValue: UseFormSetValue<ProjectFormData>;
   errors?: FieldErrors<ProjectFormData>
+  setSelectedOptions: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedOptions: string[];
+}
+
+export interface FileUploaderProps {
+  onFieldChange: (url: string) => void;
+  project_img_url: string;
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+  errors?: FieldErrors<ProjectFormData>
+}
+
+export interface ProjectFormProps {
+  type: "Create" | "Update";
+  files: File[];
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
 }
