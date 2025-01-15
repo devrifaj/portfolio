@@ -61,33 +61,6 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
   }, [selectedOptions, setValue]);
 
   async function onSubmit(values: z.infer<typeof projectFormSchema>) {
-    const currentData = {
-      title: values.title,
-      desc: values.desc,
-      client: values.client,
-      completion_time: values.completion_time,
-      live_link: values.live_link,
-      github_link: values.github_link,
-      project_img_url: values.project_img_url,
-      technologies: selectedOptions,
-    };
-
-    const removeId = (obj: {
-      _id?: string;
-      [key: string]: any;
-    }): Omit<typeof obj, "_id"> => {
-      const { _id, ...rest } = obj;
-      return rest;
-    };
-
-    const initialValuesWithoutId = removeId(initialValues);
-    const isEqual = JSON.stringify(initialValuesWithoutId.technologies.sort()) === JSON.stringify(selectedOptions.sort());
-
-    if (isEqual) {
-      toast.error("No changes have been made");
-      return;
-    }
-
     let uploadedImageUrl = values.project_img_url;
 
     if (files.length > 0) {
@@ -116,6 +89,10 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           body: JSON.stringify(projectData),
         }
       );
+
+      if (!response.ok) {
+        toast.error("No changes made to the project");
+      }
 
       if (response.ok) {
         toast.success(
