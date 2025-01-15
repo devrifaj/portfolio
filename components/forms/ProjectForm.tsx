@@ -11,10 +11,15 @@ import { useUploadThing } from "@/lib/uploadthing";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { ProjectFormProps } from "@/types";
+import { useRouter } from "next/navigation";
 
-const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]); // (state for dropdown)
-  const initialValues = projectDefaultValues; // (for updating)
+const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
+  const [files, setFiles] = useState<File[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const initialValues =
+    project && type === "Update" ? { ...project } : projectDefaultValues;
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -27,11 +32,20 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
     resolver: zodResolver(projectFormSchema),
     defaultValues: initialValues,
   });
+
   const { startUpload } = useUploadThing("imageUploader");
 
   const project_img_url = watch("project_img_url");
+  const technologies = watch("technologies");
 
-  // refreshing the validation after if a image is selected
+  useEffect(() => {
+    if (type === "Update" && project) {
+      reset({ ...project });
+      setSelectedOptions(project.technologies || []);
+      setValue("technologies", project.technologies || []);
+    }
+  }, [type, project, reset, setValue]);
+
   useEffect(() => {
     const checkProjectImgUrl = async () => {
       if (files.length > 0) {
@@ -42,8 +56,38 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
     checkProjectImgUrl();
   }, [files, trigger, watch]);
 
-  // Handling the on Submit function
+  useEffect(() => {
+    setValue("technologies", selectedOptions);
+  }, [selectedOptions, setValue]);
+
   async function onSubmit(values: z.infer<typeof projectFormSchema>) {
+    const currentData = {
+      title: values.title,
+      desc: values.desc,
+      client: values.client,
+      completion_time: values.completion_time,
+      live_link: values.live_link,
+      github_link: values.github_link,
+      project_img_url: values.project_img_url,
+      technologies: selectedOptions,
+    };
+
+    const removeId = (obj: {
+      _id?: string;
+      [key: string]: any;
+    }): Omit<typeof obj, "_id"> => {
+      const { _id, ...rest } = obj;
+      return rest;
+    };
+
+    const initialValuesWithoutId = removeId(initialValues);
+    const isEqual = JSON.stringify(initialValuesWithoutId.technologies.sort()) === JSON.stringify(selectedOptions.sort());
+
+    if (isEqual) {
+      toast.error("No changes have been made");
+      return;
+    }
+
     let uploadedImageUrl = values.project_img_url;
 
     if (files.length > 0) {
@@ -55,42 +99,48 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
       uploadedImageUrl = uploadedImages[0].url;
     }
 
-    // Creating Project
-    if (type === "Create") {
-      try {
-        const projectData = {
-          ...values,
-          project_img_url: uploadedImageUrl,
-          technologies: values.technologies,
-        };
+    try {
+      const projectData = {
+        ...values,
+        project_img_url: uploadedImageUrl,
+        technologies: selectedOptions,
+      };
 
-        const response = await fetch("/api/adminProfile/projects", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+      const response = await fetch(
+        type === "Create"
+          ? "/api/adminProfile/projects"
+          : `/api/adminProfile/projects/${projectId}`,
+        {
+          method: type === "Create" ? "POST" : "PUT",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(projectData),
-        });
-
-        if (response.ok) {
-          reset();
-          setFiles([]);
-          toast.success("Project created successfully");
-          setSelectedOptions([]);
         }
-      } catch (error) {
-        toast.error("Error while creating project:");
-        console.error(error);
-      }
-    }
+      );
 
-    // Updating Project
+      if (response.ok) {
+        toast.success(
+          type === "Create"
+            ? "Project created successfully"
+            : "Project updated successfully"
+        );
+        reset();
+        setFiles([]);
+        setSelectedOptions([]);
+        router.push("/adminProfile/projects");
+      }
+    } catch (error) {
+      toast.error(
+        type === "Create"
+          ? "Error while creating project"
+          : "Error while updating project"
+      );
+      console.error(error);
+    }
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
       <div className="grid grid-cols-2 gap-4">
-        {/* Project Title */}
         <div>
           <input
             id="title"
@@ -103,7 +153,6 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           )}
         </div>
 
-        {/* Technologies Dropdown */}
         <Dropdown
           register={register}
           setValue={setValue}
@@ -112,7 +161,6 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           selectedOptions={selectedOptions}
         />
 
-        {/* Description */}
         <div>
           <textarea
             id="desc"
@@ -125,7 +173,6 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           )}
         </div>
 
-        {/* File Uploader */}
         <FileUploader
           onFieldChange={(value) => setValue("project_img_url", value)}
           project_img_url={project_img_url}
@@ -133,7 +180,6 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           errors={errors.project_img_url}
         />
 
-        {/* Client */}
         <div>
           <input
             id="client"
@@ -146,7 +192,6 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           )}
         </div>
 
-        {/* Completion Time */}
         <div>
           <input
             id="completion_time"
@@ -161,7 +206,6 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           )}
         </div>
 
-        {/* Live Link */}
         <div>
           <input
             id="live_link"
@@ -174,7 +218,6 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
           )}
         </div>
 
-        {/* GitHub Link */}
         <div>
           <input
             id="github_link"
@@ -190,7 +233,6 @@ const ProjectForm = ({ type, files, setFiles }: ProjectFormProps) => {
         </div>
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
         disabled={isSubmitting}

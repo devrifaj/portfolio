@@ -1,26 +1,41 @@
 import { useState } from "react";
 import Modal from "../ui/Modal";
-import { RiDeleteBin5Line } from "react-icons/ri";
+import { MdDelete } from "react-icons/md";
 
-const DeleteConfirmation = () => {
+interface DeleteConfirmationProps {
+  onConfirm: () => void;
+  title?: string;
+}
+
+const DeleteConfirmation = ({ onConfirm, title = "Are you sure you want to delete?" }: DeleteConfirmationProps) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
+
+  const handleConfirm = () => {
+    onConfirm();
+    handleCloseModal();
+  };
+
   return (
     <>
-      <button onClick={handleOpenModal}>
-        <RiDeleteBin5Line />
+      <button
+        className="text-neutral-0 hover:text-red-700"
+        onClick={handleOpenModal}
+      >
+        <MdDelete size={24} />
       </button>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <h5>Are you sure you want to delete?</h5>
+        <h4>{title}</h4>
 
         <div className="flex gap-6 text-base justify-end mt-6">
-          <button onClick={handleCloseModal}>Cancel</button>
-          <button
-            className="px-2 py-2 text-white bg-red-600 rounded hover:bg-red-700"
-          >
+          <button onClick={handleCloseModal} className="text-neutral-0">
+            Cancel
+          </button>
+
+          <button onClick={handleConfirm} className="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700">
             Delete
           </button>
         </div>

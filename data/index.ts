@@ -384,43 +384,17 @@ export const researchData = [
 
 export const projectSliderData = [
   {
-    id: 1,
-    title: "Integrate AI into the ecommerce system",
-    desc: "Developed an online learning platform with course management, quizzes, and progress tracking.",
-    client: "Conceptual JSC",
-    completion_time: "6 months",
-    technologies: [
-      "Node.js", "React", "MongoDB", "Stripe",
-    ],
-    project_img_url: "/projects/img-1.png",
-    github_link: "https://github.com/",
-    live_link: "https://vercel.com/",
-  },
-  {
-    id: 2,
-    title: "Integrate AI into the ecommerce system",
-    desc: "Developed an online learning platform with course management, quizzes, and progress tracking.",
-    client: "Conceptual JSC",
-    completion_time: "6 months",
-    technologies: [
-      "Node.js", "React", "MongoDB", "Stripe",
-    ],
-    project_img_url: "/projects/img-1.png",
-    github_link: "https://github.com/",
-    live_link: "https://vercel.com/",
-  },
-  {
     id: 3,
-    title: "Integrate AI into the ecommerce system",
-    desc: "Developed an online learning platform with course management, quizzes, and progress tracking.",
-    client: "Conceptual JSC",
-    completion_time: "6 months",
+    title: "",
+    desc: "",
+    client: "",
+    completion_time: "",
     technologies: [
       "Node.js", "React", "MongoDB", "Stripe",
     ],
     project_img_url: "/projects/img-1.png",
-    github_link: "https://github.com/",
-    live_link: "https://vercel.com/",
+    github_link: "",
+    live_link: "",
   },
 ];
 

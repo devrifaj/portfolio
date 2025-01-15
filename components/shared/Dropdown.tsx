@@ -161,7 +161,7 @@ const Dropdown = ({
             onChange={(e) => setNewTechnology(e.target.value)}
           />
           <div className="flex justify-end gap-6 mt-6 text-base">
-            <button type="button" onClick={handleCloseModal}>
+            <button type="button" className="text-neutral-0" onClick={handleCloseModal}>
               Cancel
             </button>
             <button

@@ -1,15 +1,23 @@
-"use client"
-
 import DashboardPageLayout from "@/components/shared/DashboardPageLayout";
 import ProjectForm from "@/components/forms/ProjectForm";
-import { useState } from "react";
+import DashboardAllProjects from "@/components/shared/DashboardAllProjects";
 
 const AdminProjects = () => {
-  const [files, setFiles] = useState<File[]>([]);
-
   return (
     <DashboardPageLayout title="Projects">
-      <ProjectForm type="Create" files={files} setFiles={setFiles}/>
+      <div className="mb-12">
+        <h1 className="text-xl font-medium mb-4 text-secondary-2">
+          Create New Project
+        </h1>
+        <ProjectForm type="Create"/>
+      </div>
+
+      <div>
+        <h1 className="text-xl font-medium text-secondary-2">
+          All Projects
+        </h1>
+        <DashboardAllProjects/>
+      </div>
     </DashboardPageLayout>
   );
 };

@@ -9,7 +9,7 @@ const DashboardPageLayout = ({
 }) => {
   return (
     <div>
-      <h3 className="text-center">{title} Dashboard</h3>
+      <h3 className="text-center mb-6">{title} Dashboard</h3>
       {children}
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
-import { projectSliderData } from "@/data";
+
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { RiGithubFill } from "react-icons/ri";
 
@@ -11,8 +11,29 @@ import { Keyboard, Navigation, Autoplay } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import ProjectsSliderNavButton from "./ProjectsSliderNavButton";
+import { ProjectDocument } from "@/types";
 
 const ProjectsSlider = () => {
+    const [projects, setProjects] = useState<ProjectDocument[]>([]);
+
+    // Fetching Projects
+    useEffect(() => {
+      const fetchProjects = async () => {
+        try {
+          const response = await fetch("/api/adminProfile/projects");
+
+          if (response.ok) {
+            const data = await response.json();
+            setProjects(data.projects);
+          }
+        } catch (error) {
+          console.log("Error while fetching all projects", error);
+        }
+      };
+
+      fetchProjects();
+    }, []);
+
   return (
     <Swiper
       slidesPerView={1}
@@ -30,9 +51,9 @@ const ProjectsSlider = () => {
       modules={[Keyboard, Navigation, Autoplay]}
       className="relative"
     >
-      {projectSliderData.map(
+      {projects.map(
         ({
-          id,
+          _id,
           title,
           desc,
           client,
@@ -42,7 +63,7 @@ const ProjectsSlider = () => {
           live_link,
           github_link,
         }) => (
-          <SwiperSlide key={id} className="relative">
+          <SwiperSlide key={_id} className="relative">
             <div className="lg:p-8 md:p-6 p-4 border border-border-1 mt-8 bg-bg-3">
               <div className="xl:flex items-center gap-11">
                 {/* Left side */}

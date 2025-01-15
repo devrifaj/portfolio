@@ -2,8 +2,12 @@ import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { projectFormSchema } from "@/lib/validator";
 import { z } from "zod";
 
-// Infer the TypeScript type from the projectFormSchema
-type ProjectFormData = z.infer<typeof projectFormSchema>;
+export type ProjectFormData = z.infer<typeof projectFormSchema>;
+
+export const projectDocumentSchema = projectFormSchema.extend({
+  _id: z.string().optional(),
+});
+export type ProjectDocument = z.infer<typeof projectDocumentSchema>;
 
 export interface DropdownProps {
   register: UseFormRegister<ProjectFormData>;
@@ -22,6 +26,6 @@ export interface FileUploaderProps {
 
 export interface ProjectFormProps {
   type: "Create" | "Update";
-  files: File[];
-  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+  project?: ProjectFormData;
+  projectId?: string;
 }

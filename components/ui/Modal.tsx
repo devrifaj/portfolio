@@ -7,22 +7,28 @@ type ModalProps = {
 };
 
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
-  if (!isOpen) return null;
-
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 bg-blur-lg"
-
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300 ${
+        isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+      }`}
     >
-      <div className="relative w-full max-w-xl p-6 rounded-lg shadow-2xl bg-bg-5">
+      <div
+        className={`relative w-full max-w-2xl p-10 rounded-lg shadow-xl bg-bg-5 transform transition-all ${
+          isOpen ? "scale-100 opacity-100 animate-fadeIn visible" : "scale-95 opacity-0 invisible"
+        }`}
+      >
+        {/* Close Button */}
         <button
-          className="absolute top-4 right-5 text-neutral-0"
+          className="absolute top-4 right-4 text-neutral-0 transition"
           onClick={onClose}
           aria-label="Close modal"
         >
-          <RiCloseLargeFill size={20} />
+          <RiCloseLargeFill size={24} />
         </button>
-        {children}
+
+        {/* Modal Content */}
+        <div className="mt-2 text-gray-800">{children}</div>
       </div>
     </div>
   );
