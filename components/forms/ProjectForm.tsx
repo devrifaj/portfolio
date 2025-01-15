@@ -103,7 +103,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         reset();
         setFiles([]);
         setSelectedOptions([]);
-        router.push("/adminProfile/projects");
+        router.push("/#projects");
       }
     } catch (error) {
       toast.error(
