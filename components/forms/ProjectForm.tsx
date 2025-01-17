@@ -23,7 +23,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
     setValue,
     watch,
     reset,
@@ -33,11 +33,9 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
     defaultValues: initialValues,
   });
 
-  const { startUpload } = useUploadThing("imageUploader");
+  const { startUpload } = useUploadThing("fileUploader");
 
-  const project_img_url = watch("project_img_url");
-  const technologies = watch("technologies");
-
+  // immediately checking the validation of technologies
   useEffect(() => {
     if (type === "Update" && project) {
       reset({ ...project });
@@ -46,6 +44,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
     }
   }, [type, project, reset, setValue]);
 
+  // immediately checking the validation of image
   useEffect(() => {
     const checkProjectImgUrl = async () => {
       if (files.length > 0) {
@@ -60,7 +59,13 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
     setValue("technologies", selectedOptions);
   }, [selectedOptions, setValue]);
 
+  // Form Submit
   async function onSubmit(values: z.infer<typeof projectFormSchema>) {
+    if (!isDirty) {
+      toast.error("No changes detected.");
+      return;
+    }
+
     let uploadedImageUrl = values.project_img_url;
 
     if (files.length > 0) {
@@ -90,10 +95,6 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         }
       );
 
-      if (!response.ok) {
-        toast.error("No changes made to the project");
-      }
-
       if (response.ok) {
         toast.success(
           type === "Create"
@@ -119,6 +120,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
       <div className="grid grid-cols-2 gap-4">
         <div>
+          <p className="form-label">Project Title</p>
           <input
             id="title"
             {...register("title")}
@@ -130,15 +132,19 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           )}
         </div>
 
-        <Dropdown
-          register={register}
-          setValue={setValue}
-          errors={errors.technologies}
-          setSelectedOptions={setSelectedOptions}
-          selectedOptions={selectedOptions}
-        />
+        <div>
+          <p className="form-label">Project Technologies</p>
+          <Dropdown
+            register={register}
+            setValue={setValue}
+            errors={errors.technologies}
+            setSelectedOptions={setSelectedOptions}
+            selectedOptions={selectedOptions}
+          />
+        </div>
 
         <div>
+          <p className="form-label">Project Description</p>
           <textarea
             id="desc"
             {...register("desc")}
@@ -150,14 +156,18 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           )}
         </div>
 
-        <FileUploader
-          onFieldChange={(value) => setValue("project_img_url", value)}
-          project_img_url={project_img_url}
-          setFiles={setFiles}
-          errors={errors.project_img_url}
-        />
+        <div>
+          <p className="form-label">Project Image</p>
+          <FileUploader
+            onFieldChange={(value) => setValue("project_img_url", value)}
+            fileUrl={watch("project_img_url")}
+            setFiles={setFiles}
+            errors={errors.project_img_url}
+          />
+        </div>
 
         <div>
+        <p className="form-label">Project Client</p>
           <input
             id="client"
             {...register("client")}
@@ -170,6 +180,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
 
         <div>
+        <p className="form-label">Completion Time</p>
           <input
             id="completion_time"
             {...register("completion_time")}
@@ -184,6 +195,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
 
         <div>
+        <p className="form-label">Live link of Project</p>
           <input
             id="live_link"
             {...register("live_link")}
@@ -196,6 +208,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
 
         <div>
+        <p className="form-label">Live link of Github</p>
           <input
             id="github_link"
             {...register("github_link")}

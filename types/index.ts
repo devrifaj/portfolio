@@ -17,9 +17,9 @@ export interface DropdownProps {
   selectedOptions: string[];
 }
 
-export interface FileUploaderProps {
+export interface ImageUploaderProps  {
   onFieldChange: (url: string) => void;
-  project_img_url: string;
+  fileUrl: string;
   setFiles: React.Dispatch<React.SetStateAction<File[]>>;
   errors?: FieldErrors<ProjectFormData>
 }

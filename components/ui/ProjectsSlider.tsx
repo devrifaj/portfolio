@@ -63,7 +63,7 @@ const ProjectsSlider = () => {
           live_link,
           github_link,
         }) => (
-          <SwiperSlide key={_id} className="relative">
+          <SwiperSlide key={_id} className="relative h-full">
             <div className="lg:p-8 md:p-6 p-4 border border-border-1 mt-8 bg-bg-3">
               <div className="xl:flex items-center gap-11">
                 {/* Left side */}

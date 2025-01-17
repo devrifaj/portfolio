@@ -317,6 +317,10 @@
     @apply text-red-500 text-sm mt-2;
   }
 
+  .form-label {
+    @apply text-neutral-0 mb-2
+  }
+
   /* Box linear animation */
   .box-linear-animation {
     border-radius: 8px;

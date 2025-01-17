@@ -23,6 +23,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
           className="absolute top-4 right-4 text-neutral-0 transition"
           onClick={onClose}
           aria-label="Close modal"
+          type="button"
         >
           <RiCloseLargeFill size={24} />
         </button>
