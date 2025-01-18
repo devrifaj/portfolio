@@ -3,6 +3,7 @@ import { handleError } from "@/lib/utils";
 import { projectFormSchema } from "@/lib/validator";
 import { ObjectId } from "mongodb";
 
+// get one project
 export async function GET(req: Request, { params }: { params: { id: string } }) {
   try {
     const { id } = params;
@@ -25,6 +26,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
   }
 }
 
+// update project
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
   try {
     const { id } = params;

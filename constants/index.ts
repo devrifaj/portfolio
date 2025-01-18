@@ -8,11 +8,22 @@ export const navItems = [
 ];
 
 export const projectDefaultValues = {
-  title: '',
-  desc: '',
-  completion_time: '',
+  title: "",
+  desc: "",
+  completion_time: "",
   technologies: [],
-  project_img_url: '',
-  live_link: '',
-  github_link: '',
+  project_img_url: "",
+  live_link: "",
+  github_link: "",
+};
+
+export const heroDefaultValues = {
+  headline: "",
+  first_title: "",
+  middle_title: "",
+  hero_img_url: "",
+  hero_pdf_url: "",
+  last_title: "",
+  desc: "",
+  desc_highlighted_text: "",
 };

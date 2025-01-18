@@ -6,22 +6,47 @@ import { z } from "zod";
 import { heroFormSchema } from "@/lib/validator";
 import { FileUploader } from "../shared/FileUploader";
 import { useEffect, useState } from "react";
+import { useUploadThing } from "@/lib/uploadthing";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const HeroForm = () => {
   const [imgFiles, setImgFiles] = useState<File[]>([]);
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     setValue,
     watch,
+    reset,
     trigger,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty },
   } = useForm<z.infer<typeof heroFormSchema>>({
     resolver: zodResolver(heroFormSchema),
-    // defaultValues: initialValues,
+    defaultValues: {},
   });
+
+  const { startUpload } = useUploadThing("fileUploader");
+
+  // Fetching the hero data
+  useEffect(() => {
+    async function fetchHero() {
+      try {
+        const response = await fetch("/api/adminProfile/hero");
+        if (response.ok) {
+          const data = await response.json();
+          reset(data);
+          console.log(data)
+        }
+      } catch (error) {
+        console.log("Error fetching hero:", error);
+      }
+    }
+
+    fetchHero();
+  }, [reset]);
 
   // immediately checking the validation of image
   useEffect(() => {
@@ -45,8 +70,59 @@ const HeroForm = () => {
     checkHeroPdfUrl();
   }, [pdfFiles, trigger, watch]);
 
+  // handling hero form
   async function onSubmit(values: z.infer<typeof heroFormSchema>) {
-    console.log(values);
+    if (!isDirty) {
+      toast.error("No changes detected.");
+      return;
+    }
+
+    let uploadedImageUrl = values.hero_img_url;
+    let uploadedPdfUrl = values.hero_pdf_url;
+
+    if (imgFiles.length > 0) {
+      const uploadImages = await startUpload(imgFiles);
+      if (!uploadImages || uploadImages.length === 0) {
+        toast.error("Image upload failed");
+        return;
+      }
+      uploadedImageUrl = uploadImages[0].url;
+    }
+
+    if (pdfFiles.length > 0) {
+      const uploadPdf = await startUpload(pdfFiles);
+      if (!uploadPdf || uploadPdf.length === 0) {
+        toast.error("Pdf upload failed");
+        return;
+      }
+      uploadedPdfUrl = uploadPdf[0].url;
+    }
+
+    try {
+      const heroData = {
+        ...values,
+        hero_img_url: uploadedImageUrl,
+        hero_pdf_url: uploadedPdfUrl,
+      };
+
+      const response = await fetch("/api/adminProfile/hero", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(heroData),
+      });
+
+      if (response.ok) {
+        reset();
+        setImgFiles([]);
+        setPdfFiles([]);
+        router.push("/#hero");
+      }
+    } catch (error) {
+      toast.error("Error while updating Hero");
+      console.log(error);
+    }
   }
 
   return (

@@ -14,7 +14,7 @@ export function FileUploader({
   onFieldChange,
   setFiles,
   errors,
-  acceptTypes = ["image/*"],
+  acceptTypes = ["image/*", "application/pdf"],
   maxFileSize = 4 * 1024 * 1024,
 }: ImageUploaderProps & { acceptTypes?: string[]; maxFileSize?: number }) {
   const onDrop = useCallback(
@@ -60,17 +60,18 @@ export function FileUploader({
                 height={250}
                 className="w-full object-cover object-center"
               />
-            ) : acceptTypes.includes("application/pdf") &&
-              (isBlobUrl || fileUrl.startsWith("http")) ? (
-              // PDF Preview
+            ) : acceptTypes.includes("application/pdf") && isBlobUrl ? (
+              // PDF Preview (for uploads only)
               <iframe
                 src={fileUrl}
                 className="w-full h-full border-0"
                 title="PDF Preview"
               />
             ) : (
-              // File Name Fallback
-              <p className="text-center text-neutral-700">{fileUrl}</p>
+              // Text for server-provided PDFs
+              <p className="text-center text-neutral-0">
+                PDF file cannot be previewed
+              </p>
             )}
           </div>
         ) : (
