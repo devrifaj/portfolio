@@ -18,7 +18,7 @@ export function FileUploader({
   maxFileSize = 4 * 1024 * 1024,
 }: ImageUploaderProps & { acceptTypes?: string[]; maxFileSize?: number }) {
   const onDrop = useCallback(
-    (acceptedFiles: FileWithPath[]) => {
+    async (acceptedFiles: FileWithPath[]) => {
       const file = acceptedFiles[0];
 
       if (file.size > maxFileSize) {
@@ -26,8 +26,9 @@ export function FileUploader({
         return;
       }
 
-      setFiles(acceptedFiles);
-      onFieldChange(URL.createObjectURL(file));
+      setFiles(acceptedFiles); // Update local file state
+      const fileUrl = URL.createObjectURL(file);
+      await onFieldChange(fileUrl); // Update the form field and mark it as dirty
     },
     [onFieldChange, setFiles, maxFileSize]
   );
@@ -50,7 +51,6 @@ export function FileUploader({
 
         {fileUrl ? (
           <div className="flex h-full w-full flex-1 justify-center items-center">
-            {/* Image Preview */}
             {acceptTypes.includes("image/*") &&
             (isBlobUrl || fileUrl.startsWith("http")) ? (
               <Image
@@ -61,21 +61,18 @@ export function FileUploader({
                 className="w-full object-cover object-center"
               />
             ) : acceptTypes.includes("application/pdf") && isBlobUrl ? (
-              // PDF Preview (for uploads only)
               <iframe
                 src={fileUrl}
                 className="w-full h-full border-0"
                 title="PDF Preview"
               />
             ) : (
-              // Text for server-provided PDFs
               <p className="text-center text-neutral-0">
                 PDF file cannot be previewed
               </p>
             )}
           </div>
         ) : (
-          // Default UI
           <div className="flex-center flex-col py-5">
             <MdCloudUpload className="text-neutral-0" size={50} />
             <h4 className="mb-2 mt-2">Drag file here</h4>

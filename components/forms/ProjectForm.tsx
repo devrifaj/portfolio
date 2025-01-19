@@ -159,7 +159,10 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         <div>
           <p className="form-label">Project Image</p>
           <FileUploader
-            onFieldChange={(value) => setValue("project_img_url", value)}
+            onFieldChange={(value) => {
+              setValue("project_img_url", value, { shouldDirty: true });
+              trigger("project_img_url");
+            }}
             fileUrl={watch("project_img_url")}
             setFiles={setFiles}
             errors={errors.project_img_url}
@@ -167,7 +170,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
 
         <div>
-        <p className="form-label">Project Client</p>
+          <p className="form-label">Project Client</p>
           <input
             id="client"
             {...register("client")}
@@ -180,7 +183,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
 
         <div>
-        <p className="form-label">Completion Time</p>
+          <p className="form-label">Completion Time</p>
           <input
             id="completion_time"
             {...register("completion_time")}
@@ -195,7 +198,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
 
         <div>
-        <p className="form-label">Live link of Project</p>
+          <p className="form-label">Live link of Project</p>
           <input
             id="live_link"
             {...register("live_link")}
@@ -208,7 +211,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
 
         <div>
-        <p className="form-label">Live link of Github</p>
+          <p className="form-label">Live link of Github</p>
           <input
             id="github_link"
             {...register("github_link")}

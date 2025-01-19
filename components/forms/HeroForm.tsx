@@ -38,7 +38,6 @@ const HeroForm = () => {
         if (response.ok) {
           const data = await response.json();
           reset(data);
-          console.log(data)
         }
       } catch (error) {
         console.log("Error fetching hero:", error);
@@ -190,7 +189,10 @@ const HeroForm = () => {
         <div>
           <p className="form-label">Hero Image</p>
           <FileUploader
-            onFieldChange={(value) => setValue("hero_img_url", value)}
+            onFieldChange={(value) => {
+              setValue("hero_img_url", value, { shouldDirty: true });
+              trigger("hero_img_url");
+            }}
             fileUrl={watch("hero_img_url")}
             setFiles={setImgFiles}
             errors={errors.hero_img_url}
@@ -201,7 +203,10 @@ const HeroForm = () => {
         <div>
           <p className="form-label">Hero Resume PDF</p>
           <FileUploader
-            onFieldChange={(value) => setValue("hero_pdf_url", value)}
+            onFieldChange={(value) => {
+              setValue("hero_pdf_url", value, { shouldDirty: true });
+              trigger("hero_pdf_url");
+            }}
             fileUrl={watch("hero_pdf_url")}
             setFiles={setPdfFiles}
             errors={errors.hero_pdf_url}
