@@ -1,3 +1,4 @@
+'use client'
 import DashboardPageLayout from "@/components/shared/DashboardPageLayout";
 import ProjectForm from "@/components/forms/ProjectForm";
 import DashboardAllProjects from "@/components/shared/DashboardAllProjects";

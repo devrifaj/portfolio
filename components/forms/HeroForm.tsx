@@ -245,7 +245,7 @@ const HeroForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="text-neutral-1000 bg-primary-2 text-[14px] font-bold leading-[14px] font-secondary px-3 md:px-6 py-3 md:py-4 text-center rounded-lg"
+        className="form-button"
       >
         {isSubmitting ? "Submitting..." : "Update Hero"}
       </button>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AppProvider } from "@/lib/context/appContext";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 /* portfolio's title */
 export const metadata: Metadata = {
@@ -32,7 +34,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <SkeletonTheme baseColor="var(--bg-5)" highlightColor="var(--neutral-300)">
+          <AppProvider>{children}</AppProvider>
+        </SkeletonTheme>
+      </body>
     </html>
   );
 }

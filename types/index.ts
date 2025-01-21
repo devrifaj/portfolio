@@ -12,20 +12,53 @@ export type ProjectDocument = z.infer<typeof projectDocumentSchema>;
 export interface DropdownProps {
   register: UseFormRegister<ProjectFormData>;
   setValue: UseFormSetValue<ProjectFormData>;
-  errors?: FieldErrors<ProjectFormData>
+  errors?: FieldErrors<ProjectFormData>;
   setSelectedOptions: React.Dispatch<React.SetStateAction<string[]>>;
   selectedOptions: string[];
 }
 
-export interface ImageUploaderProps  {
+export interface ImageUploaderProps {
   onFieldChange: (url: string) => void;
   fileUrl: string;
   setFiles: React.Dispatch<React.SetStateAction<File[]>>;
-  errors?: FieldErrors<ProjectFormData>
+  errors?: FieldErrors<ProjectFormData>;
 }
 
-export interface ProjectFormProps {
-  type: "Create" | "Update";
-  project?: ProjectFormData;
-  projectId?: string;
-}
+// ====== PROJECT PARAMS ======
+export type CreateProjectParams = {
+  project: {
+    title: string;
+    desc: string;
+    client: string;
+    completion_time: string;
+    technologies: Array<string>;
+    project_img_url: string;
+    live_link: string;
+    github_link: string;
+  }
+};
+
+export type ProjectParams = {
+  project: {
+    _id: string;
+    title: string;
+    desc: string;
+    client: string;
+    completion_time: string;
+    technologies: Array<string>;
+    project_img_url: string;
+    live_link: string;
+    github_link: string;
+  }
+};
+
+export type DeleteProjectParams = {
+  projectId: string;
+};
+
+// ====== FORM TECHNOLOGY PARAMS ======
+export type CreateFormTechnologyParams = {
+  formTechnology: {
+    name: string;
+  }
+};

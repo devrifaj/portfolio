@@ -1,58 +1,23 @@
 "use client";
-
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { ProjectDocument } from "@/types";
+import { useAppContext } from "@/lib/context/appContext";
+import Link from "next/link";
 import { FaRegEdit } from "react-icons/fa";
-import toast from "react-hot-toast";
 import DeleteConfirmation from "./DeleteConfirmation";
+import Image from "next/image";
+import { deleteProject } from "@/lib/actions/project.action";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const DashboardAllProjects = () => {
-  const [projects, setProjects] = useState<ProjectDocument[]>([]);
-
+  const { projects, fetchProjects } = useAppContext();
   const router = useRouter();
 
-  // Fetching Projects
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch("/api/adminProfile/projects");
+  const handleDelete = async (id: string) => {
+    await deleteProject({ projectId: id });
 
-        if (response.ok) {
-          const data = await response.json();
-          setProjects(data.projects);
-        }
-      } catch (error) {
-        console.log("Error while fetching all projects", error);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
-  // Delete Project
-  const handleDelete = async (id: string | undefined) => {
-    try {
-      const response = await fetch("/api/adminProfile/projects", {
-        method: "DELETE",
-        body: JSON.stringify({ id }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) throw new Error("Failed to delete project");
-
-      setProjects((prevProjects) =>
-        prevProjects.filter((project) => project._id !== id)
-      );
-
-      toast.success("Project deleted successfully!");
-    } catch (error) {
-      toast.error("Error while deleting project");
-      console.error(error);
-    }
+    await fetchProjects();
+    toast.success("Project Deleted successfully");
+    router.push("/#projects");
   };
 
   return (
@@ -60,21 +25,24 @@ const DashboardAllProjects = () => {
       {projects.map(
         ({
           _id,
+          project_img_url,
           title,
           desc,
           client,
           completion_time,
           technologies,
-          project_img_url,
         }) => (
           <div key={_id} className="flex flex-col justify-stretch">
             <div className="p-4 border border-border-1 bg-bg-3 rounded-lg flex-grow">
               {/* Top Side */}
               <div className="mb-4 relative">
                 <div className="absolute flex flex-col gap-4 top-2 right-2 rounded-sm shadow-sm transition-all">
-                  <button onClick={() => router.push(`/adminProfile/projects/${_id}`)} className="text-neutral-0 hover:text-primary-2">
+                  <Link
+                    href={`/adminProfile/projects/${_id}`}
+                    className="text-neutral-0 hover:text-primary-2"
+                  >
                     <FaRegEdit size={22} />
-                  </button>
+                  </Link>
 
                   <DeleteConfirmation
                     onConfirm={() => handleDelete(_id)}

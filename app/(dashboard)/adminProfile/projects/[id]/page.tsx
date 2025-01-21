@@ -1,32 +1,19 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import ProjectForm from "@/components/forms/ProjectForm";
 import DashboardPageLayout from "@/components/shared/DashboardPageLayout";
-import { ProjectDocument } from "@/types";
+import { getProjectById } from "@/lib/actions/project.action";
 
-const UpdateProject = ({ params: { id } }: { params: { id: string } }) => {
-  const [project, setProject] = useState<ProjectDocument>();
+type UpdateProjectProps = {
+  params: {
+    id: string;
+  };
+};
 
-  useEffect(() => {
-    async function fetchProject() {
-      try {
-        const response = await fetch(`/api/adminProfile/projects/${id}`);
-        if (response.ok) {
-          const data = await response.json();
-          setProject(data);
-        }
-      } catch (error) {
-        console.error("Error fetching project:", error);
-      }
-    }
-
-    fetchProject();
-  }, [id]);
-
+const UpdateProject = async ({ params: { id } }: UpdateProjectProps) => {
+  const project = await getProjectById(id);
+  
   return (
     <DashboardPageLayout title="Update Project">
-      <ProjectForm type="Update" project={project} projectId={id} />
+      <ProjectForm type="Update" project={project} projectId={project._id} />
     </DashboardPageLayout>
   );
 };

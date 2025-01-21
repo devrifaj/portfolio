@@ -1,5 +1,4 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -10,10 +9,19 @@ import { FileUploader } from "../shared/FileUploader";
 import { useUploadThing } from "@/lib/uploadthing";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import { ProjectFormProps } from "@/types";
 import { useRouter } from "next/navigation";
+import { IProject } from "@/lib/database/models/project.model";
+import { createProject, updateProject } from "@/lib/actions/project.action";
+import { useAppContext } from "@/lib/context/appContext";
 
-const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
+export interface ProjectFormProps {
+  type: "Create" | "Update";
+  project?: IProject;
+  projectId?: string;
+}
+
+const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => { 
+  const { fetchProjects } = useAppContext();
   const [files, setFiles] = useState<File[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const initialValues =
@@ -35,12 +43,13 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
 
   const { startUpload } = useUploadThing("fileUploader");
 
-  // immediately checking the validation of technologies
   useEffect(() => {
     if (type === "Update" && project) {
       reset({ ...project });
       setSelectedOptions(project.technologies || []);
-      setValue("technologies", project.technologies || []);
+      setValue("technologies", project.technologies || [], {
+        shouldValidate: true,
+      });
     }
   }, [type, project, reset, setValue]);
 
@@ -55,19 +64,15 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
     checkProjectImgUrl();
   }, [files, trigger, watch]);
 
-  useEffect(() => {
-    setValue("technologies", selectedOptions);
-  }, [selectedOptions, setValue]);
-
-  // Form Submit
+  // form handle submit
   async function onSubmit(values: z.infer<typeof projectFormSchema>) {
     if (!isDirty) {
       toast.error("No changes detected.");
       return;
     }
-
+  
     let uploadedImageUrl = values.project_img_url;
-
+  
     if (files.length > 0) {
       const uploadedImages = await startUpload(files);
       if (!uploadedImages || uploadedImages.length === 0) {
@@ -76,43 +81,39 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
       }
       uploadedImageUrl = uploadedImages[0].url;
     }
-
+  
     try {
-      const projectData = {
-        ...values,
-        project_img_url: uploadedImageUrl,
-        technologies: selectedOptions,
-      };
-
-      const response = await fetch(
-        type === "Create"
-          ? "/api/adminProfile/projects"
-          : `/api/adminProfile/projects/${projectId}`,
-        {
-          method: type === "Create" ? "POST" : "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(projectData),
-        }
-      );
-
-      if (response.ok) {
-        toast.success(
-          type === "Create"
-            ? "Project created successfully"
-            : "Project updated successfully"
-        );
-        reset();
-        setFiles([]);
-        setSelectedOptions([]);
-        router.push("/#projects");
+      if (type === "Create") {
+        await createProject({
+          project: {
+            ...values,
+            project_img_url: uploadedImageUrl,
+            technologies: selectedOptions,
+          }
+        });
+        toast.success("Project created successfully");
       }
+  
+      if (type === "Update" && projectId) {
+        await updateProject({
+          project: {
+            ...values,
+            project_img_url: uploadedImageUrl,
+            technologies: selectedOptions,
+            _id: projectId,
+          },
+        });
+        toast.success("Project updated successfully");
+      }
+
+      await fetchProjects();
+      reset();
+      setFiles([]);
+      setSelectedOptions([]);
+      router.push("/#projects");
     } catch (error) {
-      toast.error(
-        type === "Create"
-          ? "Error while creating project"
-          : "Error while updating project"
-      );
       console.error(error);
+      toast.error("An error occurred while saving the project.");
     }
   }
 
@@ -226,11 +227,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="text-neutral-1000 bg-primary-2 text-[14px] font-bold leading-[14px] font-secondary px-3 md:px-6 py-3 md:py-4 text-center rounded-lg"
-      >
+      <button type="submit" disabled={isSubmitting} className="form-button">
         {isSubmitting ? "Submitting..." : `${type} Project`}
       </button>
     </form>

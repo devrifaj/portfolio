@@ -1,21 +1,27 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Modal from "../ui/Modal";
 import { MdDelete } from "react-icons/md";
 
 interface DeleteConfirmationProps {
   onConfirm: () => void;
-  title?: string;
+  title: string;
 }
 
-const DeleteConfirmation = ({ onConfirm, title = "Are you sure you want to delete?" }: DeleteConfirmationProps) => {
+const DeleteConfirmation = ({
+  onConfirm,
+  title = "Are you sure want to delete?",
+}: DeleteConfirmationProps) => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
 
-  const handleConfirm = () => {
-    onConfirm();
-    handleCloseModal();
+  const handleConfirm = async () => {
+    startTransition(() => {
+      onConfirm();
+      handleCloseModal();
+    });
   };
 
   return (
@@ -35,8 +41,12 @@ const DeleteConfirmation = ({ onConfirm, title = "Are you sure you want to delet
             Cancel
           </button>
 
-          <button onClick={handleConfirm} className="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700">
-            Delete
+          <button
+            onClick={handleConfirm}
+            className="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700 disabled:opacity-50 disabled:pointer-events-none"
+            disabled={isPending}
+          >
+            {isPending ? "Deleting" : "Delete"}
           </button>
         </div>
       </Modal>

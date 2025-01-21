@@ -4,14 +4,12 @@ import { RiSunFill, RiContrast2Line } from "react-icons/ri";
 
 const ThemeToggle = () => {
   const [mode, setMode] = useState('dark');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Check the user's saved theme on mount
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setMode(savedTheme);
     document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    setMounted(true);
   }, []);
 
   // Theme toggle function
@@ -21,10 +19,6 @@ const ThemeToggle = () => {
     localStorage.setItem('theme', newMode);
     document.documentElement.classList.toggle('dark', newMode === 'dark');
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <button

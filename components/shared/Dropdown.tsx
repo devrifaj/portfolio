@@ -1,12 +1,16 @@
 "use client";
-
-import { useEffect, useState } from "react";
 import { FieldError } from "react-hook-form";
 import { FaAngleDown } from "react-icons/fa6";
 import { RiCloseFill } from "react-icons/ri";
 import Modal from "../ui/Modal";
-import { DropdownProps } from "@/types";
+import { CreateFormTechnologyParams, DropdownProps } from "@/types";
 import toast from "react-hot-toast";
+import { useEffect, useState, useTransition } from "react";
+import {
+  createTechnology,
+  getAllTechnologies,
+} from "@/lib/actions/formTechnology.action";
+import { IFormTechnology } from "@/lib/database/models/formTechnology.model";
 
 const Dropdown = ({
   register,
@@ -16,32 +20,23 @@ const Dropdown = ({
   selectedOptions,
 }: DropdownProps) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [technologies, setTechnologies] = useState<
-    { _id: string; name: string }[]
-  >([]);
   const [isModalOpen, setModalOpen] = useState(false);
   const [newTechnology, setNewTechnology] = useState("");
-  const [loading, setLoading] = useState(false); // State for new technology adding loading
+  const [technologies, setTechnologies] = useState<IFormTechnology[]>([]);
+  const [isPending, startTransition] = useTransition();
 
-  // Fetching technologies
   useEffect(() => {
     const fetchTechnologies = async () => {
       try {
-        const response = await fetch(
-          "/api/adminProfile/projects/formTechnologies"
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-          setTechnologies(data.technologies);
-        }
+        const formTechnologies: IFormTechnology[] = await getAllTechnologies();
+        setTechnologies(formTechnologies);
       } catch (error) {
-        console.log("Error while fetching technologies", error);
+        console.error("Failed to fetch technologies:", error);
       }
     };
 
     fetchTechnologies();
-  }, []);
+  }, [setTechnologies]);
 
   const handleCloseModal = () => {
     setNewTechnology("");
@@ -53,7 +48,7 @@ const Dropdown = ({
     if (!selectedOptions.includes(option)) {
       const updatedOptions = [...selectedOptions, option];
       setSelectedOptions(updatedOptions);
-      setValue("technologies", updatedOptions, { shouldValidate: true });
+      setValue("technologies", updatedOptions, { shouldValidate: true, shouldDirty: true });
     }
     setDropdownOpen(false);
   };
@@ -61,7 +56,7 @@ const Dropdown = ({
   const handleRemoveOption = (option: string) => {
     const updatedOptions = selectedOptions.filter((item) => item !== option);
     setSelectedOptions(updatedOptions);
-    setValue("technologies", updatedOptions, { shouldValidate: true });
+    setValue("technologies", updatedOptions, { shouldValidate: true, shouldDirty: true });
   };
 
   const handleAddNewTechnology = async () => {
@@ -70,43 +65,27 @@ const Dropdown = ({
       return;
     }
 
-    if (
-      technologies.some(
-        (tech) => tech.name.toLowerCase() === newTechnology.trim().toLowerCase()
-      )
-    ) {
+    if (technologies.some((tech) => tech.name === newTechnology)) {
       toast.error("Technology already exists.");
       return;
     }
 
-    setLoading(true);
-    // Adding new technology
     try {
-      const response = await fetch(
-        "/api/adminProfile/projects/formTechnologies",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name: newTechnology }),
-        }
+      const newTechObject: CreateFormTechnologyParams = {
+        formTechnology: { name: newTechnology },
+      };
+
+      const createdTechnology: IFormTechnology = await createTechnology(
+        newTechObject
       );
 
-      if (response.ok) {
-        const result = await response.json();
-
-        setTechnologies((prev) => [...prev, result.formTechnology]);
-
-        toast.success("New technology added successfully.");
-        setNewTechnology("");
-        setModalOpen(false);
-        setLoading(false);
-      }
+      setTechnologies((prev) => [...prev, createdTechnology]);
+      setNewTechnology("");
+      setModalOpen(false);
+      toast.success("New technology added successfully.");
     } catch (error) {
-      toast.error("Error while adding new technology");
-      console.log(error);
-      setLoading(false);
+      console.error("Failed to add new technology:", error);
+      toast.error("An error occurred while adding the technology.");
     }
   };
 
@@ -129,7 +108,7 @@ const Dropdown = ({
       {dropdownOpen && (
         <div>
           <ul className="absolute bg-[#333a32] bg-neutral-1000 dark:bg-bg-3 border border-border-1 rounded-lg mt-2 shadow-lg z-20 w-full">
-            {technologies.map((technology) => (
+            {technologies.map((technology: IFormTechnology) => (
               <li
                 key={technology._id}
                 className="px-4 py-2 rounded-md cursor-pointer hover:text-primary-2 hover:bg-border-1"
@@ -161,16 +140,20 @@ const Dropdown = ({
             onChange={(e) => setNewTechnology(e.target.value)}
           />
           <div className="flex justify-end gap-6 mt-6 text-base">
-            <button type="button" className="text-neutral-0" onClick={handleCloseModal}>
+            <button
+              type="button"
+              className="text-neutral-0"
+              onClick={handleCloseModal}
+            >
               Cancel
             </button>
             <button
               type="button"
-              className="px-4 py-2 rounded-lg bg-primary-2 text-neutral-1000"
-              onClick={handleAddNewTechnology}
-              disabled={loading}
+              className="px-4 py-2 rounded-lg bg-primary-2 text-neutral-1000 disabled:opacity-50 disabled:pointer-events-none"
+              onClick={() => startTransition(handleAddNewTechnology)}
+              disabled={isPending}
             >
-              {loading ? "Adding..." : "Add"}
+              {isPending ? "Adding" : "Add"}
             </button>
           </div>
         </div>
