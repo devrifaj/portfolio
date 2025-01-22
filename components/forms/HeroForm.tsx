@@ -9,11 +9,14 @@ import { useEffect, useState } from "react";
 import { useUploadThing } from "@/lib/uploadthing";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { useAppContext } from "@/lib/context/appContext";
+import { updateHero } from "@/lib/actions/hero.action";
 
 const HeroForm = () => {
   const [imgFiles, setImgFiles] = useState<File[]>([]);
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
   const router = useRouter();
+  const { hero, fetchHero } = useAppContext();
 
   const {
     register,
@@ -28,24 +31,14 @@ const HeroForm = () => {
     defaultValues: {},
   });
 
-  const { startUpload } = useUploadThing("fileUploader");
-
-  // Fetching the hero data
+  // hero data dynamically set in form
   useEffect(() => {
-    async function fetchHero() {
-      try {
-        const response = await fetch("/api/adminProfile/hero");
-        if (response.ok) {
-          const data = await response.json();
-          reset(data);
-        }
-      } catch (error) {
-        console.log("Error fetching hero:", error);
-      }
+    if (hero) {
+      reset(hero); 
     }
+  }, [hero, reset]);
 
-    fetchHero();
-  }, [reset]);
+  const { startUpload } = useUploadThing("fileUploader");
 
   // immediately checking the validation of image
   useEffect(() => {
@@ -104,20 +97,14 @@ const HeroForm = () => {
         hero_pdf_url: uploadedPdfUrl,
       };
 
-      const response = await fetch("/api/adminProfile/hero", {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(heroData),
-      });
+      await updateHero(heroData);
 
-      if (response.ok) {
-        reset();
-        setImgFiles([]);
-        setPdfFiles([]);
-        router.push("/#hero");
-      }
+      await fetchHero();
+      reset();
+      setImgFiles([]);
+      setPdfFiles([]);
+      router.push("/#hero");
+      toast.success("Hero updated successfully");
     } catch (error) {
       toast.error("Error while updating Hero");
       console.log(error);
@@ -242,11 +229,7 @@ const HeroForm = () => {
         </div>
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="form-button"
-      >
+      <button type="submit" disabled={isSubmitting} className="form-button">
         {isSubmitting ? "Submitting..." : "Update Hero"}
       </button>
     </form>

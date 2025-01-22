@@ -14,7 +14,7 @@ export function FileUploader({
   onFieldChange,
   setFiles,
   errors,
-  acceptTypes = ["image/*", "application/pdf"],
+  acceptTypes = ["image/*"],
   maxFileSize = 4 * 1024 * 1024,
 }: ImageUploaderProps & { acceptTypes?: string[]; maxFileSize?: number }) {
   const onDrop = useCallback(

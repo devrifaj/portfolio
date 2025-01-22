@@ -1,5 +1,3 @@
-import { Toaster } from "react-hot-toast";
-
 export default function AdminLayout({
   children,
 }: {
@@ -8,7 +6,6 @@ export default function AdminLayout({
   return (
     <>
       <div className="container py-5">{children}</div>
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 }

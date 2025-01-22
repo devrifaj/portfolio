@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AppProvider } from "@/lib/context/appContext";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { Toaster } from "react-hot-toast";
 
 /* portfolio's title */
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function RootLayout({
         <SkeletonTheme baseColor="var(--bg-5)" highlightColor="var(--neutral-300)">
           <AppProvider>{children}</AppProvider>
         </SkeletonTheme>
+        <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   );

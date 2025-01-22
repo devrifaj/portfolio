@@ -1,5 +1,4 @@
 "use client";
-
 import {
   createContext,
   ReactNode,
@@ -9,31 +8,41 @@ import {
   useEffect,
 } from "react";
 import { IProject } from "../database/models/project.model";
+import { IHero } from "../database/models/hero.model";
 import { getAllProjects } from "@/lib/actions/project.action";
+import { getHero } from "@/lib/actions/hero.action";
 
 interface AppContextProps {
   projects: IProject[];
-  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>;
   fetchProjects: () => Promise<void>;
+  hero: IHero | null;
+  fetchHero: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [projects, setProjects] = useState<IProject[]>([]);
+  const [hero, setHero] = useState<IHero | null>(null);
 
   const fetchProjects = async () => {
     const fetchedProjects = await getAllProjects();
     setProjects(fetchedProjects);
   };
 
+  const fetchHero = async () => {
+    const fetchedHero = await getHero();
+    setHero(fetchedHero);
+  };
+
   useEffect(() => {
     fetchProjects();
+    fetchHero();
   }, []);
 
   return (
     <AppContext.Provider
-      value={{ projects, setProjects, fetchProjects }}
+      value={{ projects, fetchProjects, hero, fetchHero }}
     >
       {children}
     </AppContext.Provider>
