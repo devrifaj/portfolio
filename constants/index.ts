@@ -7,6 +7,14 @@ export const navItems = [
   { label: "Contact", route: "#contact" },
 ];
 
+export const skillDisplayNames: { [key: string]: string } = {
+  frontEnd: "Front-End",
+  backEnd: "Back-End",
+  databases: "Databases",
+  toolsAndPlatforms: "Tools & Platforms",
+  others: "Others",
+};
+
 export const projectDefaultValues = {
   title: "",
   desc: "",
@@ -26,4 +34,22 @@ export const heroDefaultValues = {
   last_title: "",
   desc: "",
   desc_highlighted_text: "",
+};
+
+export const technologyDefaultValues = {
+  tech_name: "",
+  tech_img_url: "",
+  tech_official_url: "",
+  show_in_hero: false,
+  skill_position: "",
+};
+
+export const blogDefaultValues = {
+  tag: "",
+  img_url: "",
+  date: new Date(),
+  read_time: "",
+  title: "",
+  desc: "",
+  link: "",
 };

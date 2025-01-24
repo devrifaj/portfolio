@@ -62,3 +62,59 @@ export type CreateFormTechnologyParams = {
     name: string;
   }
 };
+
+// ====== TECHNOLOGY PARAMS ======
+export type CreateTechnologyParams = {
+  technology: {
+    tech_name: string;
+    tech_img_url: string;
+    tech_official_url: string;
+    show_in_hero: boolean;
+    skill_position: string;
+  }
+}
+
+export type TechnologyParams = {
+  technology: {
+    _id: string;
+    tech_name: string;
+    tech_img_url: string;
+    tech_official_url: string;
+    show_in_hero: boolean;
+    skill_position: string;
+  }
+}
+
+export type DeleteTechnologyParams = {
+  technologyId: string;
+};
+
+// ====== BLOG PARAMS ======
+export type CreateBlogParams = {
+  blog: {
+    tag: string;
+    img_url: string;
+    date: Date;
+    read_time: string;
+    title: string;
+    desc: string;
+    link: string;
+  }
+};
+
+export type BlogParams = {
+  blog: {
+    _id: string;
+    tag: string;
+    img_url: string;
+    date: Date;
+    read_time: string;
+    title: string;
+    desc: string;
+    link: string;
+  }
+};
+
+export type DeleteBlogParams = {
+  blogId: string;
+};

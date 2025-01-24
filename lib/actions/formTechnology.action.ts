@@ -6,7 +6,7 @@ import FormTechnology from "../database/models/formTechnology.model";
 import { handleError } from "../utils";
 
 // Create a new technology
-export const createTechnology = async ({
+export const createFormTechnology = async ({
   formTechnology
 }: CreateFormTechnologyParams) => {
   try {
@@ -21,7 +21,7 @@ export const createTechnology = async ({
 };
 
 // Get all technologies
-export const getAllTechnologies = async () => {
+export const getAllFormTechnologies = async () => {
   try {
     await connectToDatabase();
 

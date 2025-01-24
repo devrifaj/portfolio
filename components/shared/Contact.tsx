@@ -1,7 +1,6 @@
 import { contactListData } from "@/data";
 import Link from "next/link";
-import React from "react";
-import { RiArrowRightUpLine } from "react-icons/ri";
+import ContactForm from "../forms/ContactForm";
 
 const Contact = () => {
   return (
@@ -14,78 +13,7 @@ const Contact = () => {
               <h3 className="text-primary-2 mb-4">Let’s connect</h3>
 
               {/* Form Start */}
-              <form action="#">
-                <div className="grid grid-cols-2 gap-4">
-                  {/* Name */}
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="name"
-                    name="name"
-                    placeholder="Your name"
-                    aria-label="username"
-                  />
-
-                  {/* Phone */}
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="phone"
-                    name="phone"
-                    placeholder="Phone"
-                    aria-label="phone"
-                  />
-
-                  {/* Email */}
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="email"
-                    name="email"
-                    placeholder="Email"
-                    aria-label="email"
-                  />
-
-                  {/* Subject */}
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="subject"
-                    name="subject"
-                    placeholder="Subject"
-                    aria-label="subject"
-                  />
-
-                  {/* Text area */}
-                  <div className="col-span-2">
-                    <textarea
-                      className="form-control !min-h-[205px]"
-                      id="message"
-                      name="message"
-                      placeholder="Message"
-                      aria-label="With textarea"
-                    ></textarea>
-                  </div>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="group flex items-center gap-2 text-neutral-1000 bg-primary-2 mt-4 transition-all duration-300 ease-in-out text-[14px] font-bold leading-[14px] font-secondary px-3 md:px-6 py-3 md:py-4 text-center rounded-lg overflow-hidden"
-                >
-                  Send Message
-                  <span className="relative inline-block">
-                    <RiArrowRightUpLine
-                      size={24}
-                      className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-exit absolute w-[20px] md:w-[24px]"
-                    />
-                    <RiArrowRightUpLine
-                      size={24}
-                      className="transition-transform duration-400 ease-in-out group-hover:animate-hover-icon-enter w-[20px] md:w-[24px]"
-                    />
-                  </span>
-                </button>
-              </form>
+              <ContactForm/>
               {/* Form End */}
             </div>
           </div>

@@ -325,6 +325,10 @@
     @apply text-neutral-1000 bg-primary-2 text-[14px] font-bold leading-[14px] font-secondary px-3 md:px-6 py-3 md:py-4 text-center rounded-lg disabled:opacity-50 disabled:pointer-events-none
   }
 
+  .form-checkbox {
+    @apply h-4 w-4 border-2 border-primary-2 shrink-0 rounded-sm shadow
+  }
+
   /* Box linear animation */
   .box-linear-animation {
     border-radius: 8px;

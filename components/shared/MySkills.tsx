@@ -3,15 +3,9 @@ import SectionHeading from "../ui/SectionHeading";
 import RotateAnimation from "../ui/RotateAnimation";
 import { mySkills } from "@/data";
 import MySkillsSlide from "../ui/MySkillsSlide";
+import { skillDisplayNames } from "@/constants";
 
 const MySkills = () => {
-  const skillDisplayNames: { [key: string]: string } = {
-    frontEnd: "Front-End",
-    backEnd: "Back-End",
-    databases: "Databases",
-    toolsAndPlatforms: "Tools & Platforms",
-    others: "Others",
-  };
 
   return (
     <section id="skills" className="pb-[60px]">

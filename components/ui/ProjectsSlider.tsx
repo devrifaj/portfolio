@@ -127,7 +127,7 @@ const ProjectsSlider = () => {
           <div className="xl:flex items-center gap-11">
             {/* Left side Skeleton */}
             <div className="xl:w-1/2 lg:w-3/4 mx-auto">
-              <Skeleton height={470} containerClassName="w-full" />
+              <Skeleton className="h-[340px] lg:h-[470px]" />
             </div>
 
             {/* Right Side Skeleton */}

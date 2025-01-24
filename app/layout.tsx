@@ -36,7 +36,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <SkeletonTheme baseColor="var(--bg-5)" highlightColor="var(--neutral-300)">
+        <SkeletonTheme baseColor="var(--bg-1)" highlightColor="var(--neutral-600)">
           <AppProvider>{children}</AppProvider>
         </SkeletonTheme>
         <Toaster position="top-center" reverseOrder={false} />

@@ -15,6 +15,11 @@ const AdminProfile = () => {
           </Link>
         </li>
         <li>
+          <Link className="admin-link group" href="/adminProfile/technologies">
+            Technologies <RiArrowRightLine className="admin-link-icon" />
+          </Link>
+        </li>
+        <li>
           <Link className="admin-link group" href="/adminProfile/statistics">
             Statistics <RiArrowRightLine className="admin-link-icon" />
           </Link>

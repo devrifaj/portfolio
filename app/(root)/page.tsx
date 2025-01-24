@@ -1,4 +1,4 @@
-import About from "@/components/shared/About";
+import About from "@/components/shared/Hero";
 import Blog from "@/components/shared/Blog";
 import Contact from "@/components/shared/Contact";
 import Cooperation from "@/components/shared/Cooperation";

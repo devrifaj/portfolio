@@ -6,11 +6,9 @@ import Modal from "../ui/Modal";
 import { CreateFormTechnologyParams, DropdownProps } from "@/types";
 import toast from "react-hot-toast";
 import { useEffect, useState, useTransition } from "react";
-import {
-  createTechnology,
-  getAllTechnologies,
-} from "@/lib/actions/formTechnology.action";
+
 import { IFormTechnology } from "@/lib/database/models/formTechnology.model";
+import { createFormTechnology, getAllFormTechnologies } from "@/lib/actions/formTechnology.action";
 
 const Dropdown = ({
   register,
@@ -28,7 +26,7 @@ const Dropdown = ({
   useEffect(() => {
     const fetchTechnologies = async () => {
       try {
-        const formTechnologies: IFormTechnology[] = await getAllTechnologies();
+        const formTechnologies: IFormTechnology[] = await getAllFormTechnologies();
         setTechnologies(formTechnologies);
       } catch (error) {
         console.error("Failed to fetch technologies:", error);
@@ -75,7 +73,7 @@ const Dropdown = ({
         formTechnology: { name: newTechnology },
       };
 
-      const createdTechnology: IFormTechnology = await createTechnology(
+      const createdTechnology: IFormTechnology = await createFormTechnology(
         newTechObject
       );
 

@@ -20,7 +20,7 @@ export interface ProjectFormProps {
   projectId?: string;
 }
 
-const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => { 
+const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
   const { fetchProjects } = useAppContext();
   const [files, setFiles] = useState<File[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -70,9 +70,9 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
       toast.error("No changes detected.");
       return;
     }
-  
+
     let uploadedImageUrl = values.project_img_url;
-  
+
     if (files.length > 0) {
       const uploadedImages = await startUpload(files);
       if (!uploadedImages || uploadedImages.length === 0) {
@@ -81,25 +81,25 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
       }
       uploadedImageUrl = uploadedImages[0].url;
     }
-  
+
     try {
+      const payload = {
+        ...values,
+        project_img_url: uploadedImageUrl,
+        technologies: selectedOptions,
+      };
+
       if (type === "Create") {
         await createProject({
-          project: {
-            ...values,
-            project_img_url: uploadedImageUrl,
-            technologies: selectedOptions,
-          }
+          project: payload,
         });
         toast.success("Project created successfully");
       }
-  
+
       if (type === "Update" && projectId) {
         await updateProject({
           project: {
-            ...values,
-            project_img_url: uploadedImageUrl,
-            technologies: selectedOptions,
+            ...payload,
             _id: projectId,
           },
         });
@@ -120,6 +120,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
       <div className="grid grid-cols-2 gap-4">
+        {/* Project Title */}
         <div>
           <p className="form-label">Project Title</p>
           <input
@@ -133,6 +134,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           )}
         </div>
 
+        {/* Project Technology */}
         <div>
           <p className="form-label">Project Technologies</p>
           <Dropdown
@@ -144,6 +146,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           />
         </div>
 
+        {/* Project Description */}
         <div>
           <p className="form-label">Project Description</p>
           <textarea
@@ -157,6 +160,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           )}
         </div>
 
+        {/* Project Image Uploader */}
         <div>
           <p className="form-label">Project Image</p>
           <FileUploader
@@ -170,6 +174,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           />
         </div>
 
+        {/* Project Client */}
         <div>
           <p className="form-label">Project Client</p>
           <input
@@ -183,6 +188,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           )}
         </div>
 
+        {/* Project Completion Time */}
         <div>
           <p className="form-label">Completion Time</p>
           <input
@@ -198,6 +204,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           )}
         </div>
 
+        {/* Project Live Link */}
         <div>
           <p className="form-label">Live link of Project</p>
           <input
@@ -211,6 +218,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
           )}
         </div>
 
+        {/* Project Link of Github */}
         <div>
           <p className="form-label">Live link of Github</p>
           <input
@@ -227,6 +235,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
         </div>
       </div>
 
+      {/* Project Submit Button */}
       <button type="submit" disabled={isSubmitting} className="form-button">
         {isSubmitting ? "Submitting..." : `${type} Project`}
       </button>
