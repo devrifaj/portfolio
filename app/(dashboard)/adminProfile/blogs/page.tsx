@@ -34,7 +34,7 @@ const AdminDashboardBlog = () => {
       <div>
         <h1 className="text-xl font-medium text-secondary-2">All Blogs</h1>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {blogs.map(
             ({ _id, tag, img_url, date, read_time, title, desc, link }) => (
               <div key={_id} className="flex flex-col justify-stretch">
@@ -110,7 +110,7 @@ const AdminDashboardBlog = () => {
                         <li className="text-neutral-0 mb-4 border-b border-border-1 pb-4">
                           <div className="flex flex-wrap justify-between">
                             <p className="mb-0 text-end">Link:</p>
-                            <p className="text-neutral-300 mb-0 text-end">
+                            <p className="text-neutral-300 mb-0 text-end flex flex-wrap break-all">
                               {link}
                             </p>
                           </div>

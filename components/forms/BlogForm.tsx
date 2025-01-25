@@ -99,7 +99,7 @@ const BlogForm = ({ type, blog, blogId }: BlogFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Blog Title */}
         <div>
           <p className="form-label">Blog Title</p>

@@ -53,3 +53,11 @@ export const blogDefaultValues = {
   desc: "",
   link: "",
 };
+
+export const contactDefaultValues = {
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+}

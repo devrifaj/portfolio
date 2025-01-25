@@ -119,7 +119,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Project Title */}
         <div>
           <p className="form-label">Project Title</p>

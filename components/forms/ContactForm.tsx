@@ -4,19 +4,33 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { contactFormSchema } from "@/lib/validator";
+import { contactDefaultValues } from "@/constants";
+import toast from "react-hot-toast";
+import { sendMail } from "@/lib/send-mail";
 
 const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: {},
+    defaultValues: contactDefaultValues,
   });
 
   async function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    console.log(values);
+    try {
+      await sendMail({
+        ...values,
+        phone: values.phone || "",
+      });
+      reset();
+      toast.success("Message sent successfully!");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast.error("Failed to send message. Please try again later.");
+    }
   }
 
   return (
