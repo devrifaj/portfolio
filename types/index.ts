@@ -1,6 +1,7 @@
 import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { projectFormSchema } from "@/lib/validator";
 import { z } from "zod";
+import { IconType } from "react-icons";
 
 export type ProjectFormData = z.infer<typeof projectFormSchema>;
 
@@ -118,3 +119,12 @@ export type BlogParams = {
 export type DeleteBlogParams = {
   blogId: string;
 };
+
+// ====== ADMIN CONTACT PARAMS ======
+export interface CombinedContactData {
+  id: number;
+  mediaName: string;
+  mediaData: string;
+  link: string;
+  icon: IconType;
+}

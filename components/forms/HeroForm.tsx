@@ -10,12 +10,14 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useAppContext } from "@/lib/context/appContext";
 import { updateHero } from "@/lib/actions/hero.action";
+import { heroDefaultValues } from "@/constants";
 
 const HeroForm = () => {
   const [imgFiles, setImgFiles] = useState<File[]>([]);
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
   const router = useRouter();
   const { hero, fetchHero } = useAppContext();
+  const initialValues = hero ? { ...hero } : heroDefaultValues;
 
   const {
     register,
@@ -27,7 +29,7 @@ const HeroForm = () => {
     formState: { errors, isSubmitting, isDirty },
   } = useForm<z.infer<typeof heroFormSchema>>({
     resolver: zodResolver(heroFormSchema),
-    defaultValues: {},
+    defaultValues: initialValues,
   });
 
   // hero data dynamically set in form

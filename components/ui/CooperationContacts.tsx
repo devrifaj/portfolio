@@ -1,9 +1,11 @@
-import { contactListData } from "@/data";
+"use client";
+import { useAppContext } from "@/lib/context/appContext";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import Skeleton from "react-loading-skeleton";
 
 const CooperationContacts = () => {
+  const { combinedContactListData } = useAppContext();
   return (
     <div className="flex flex-col md:flex-row items-center gap-4">
       {/* Circle Profile Start */}
@@ -35,27 +37,32 @@ const CooperationContacts = () => {
       {/* Circle Profile End */}
 
       {/* Contacts List Start */}
-      <div className="flex flex-wrap flex-col gap-4 sm:gap-2">
-        {contactListData
-          .filter((contact) => contact.mediaName !== "address") // Exclude Address
-          .map(({ id, mediaName, mediaData, link, icon: Icon }) => (
-            <Link
-              key={id}
-              href={link}
-              className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left sm:justify-start justify-center gap-3 text-neutral-0 group"
-            >
-              <Icon
-                size={24}
-                className="text-neutral-0 group-hover:text-primary-2"
-              />
-              <span className="text-neutral-300">
-                [{mediaName === "phone number" ? "phone" : mediaName}]
+      {combinedContactListData.length > 0 ? (
+        <div className="flex flex-wrap flex-col gap-4 sm:gap-2">
+          {combinedContactListData
+            .filter((contact) => contact.mediaName !== "address") // Exclude Address
+            .map(({ id, mediaName, mediaData, link, icon: Icon }) => (
+              <Link
+                key={id}
+                href={link}
+                className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left sm:justify-start justify-center gap-3 text-neutral-0 group"
+              >
+                <Icon
+                  size={24}
+                  className="text-neutral-0 group-hover:text-primary-2"
+                />
+                <span className="text-neutral-300">
+                  [{mediaName === "phone number" ? "phone" : mediaName}]
                   <span className="text-secondary-2"> {mediaData}</span>
-              </span>
-            </Link>
-          ))}
-      </div>
-
+                </span>
+              </Link>
+            ))}
+        </div>
+      ) : (
+        <div>
+          <Skeleton height={60} style={{ marginBottom: 18 }} />
+        </div>
+      )}
       {/* Contacts List End */}
     </div>
   );

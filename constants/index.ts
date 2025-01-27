@@ -1,3 +1,8 @@
+import { RiSkypeFill } from "react-icons/ri";
+import { RiPhoneFill } from "react-icons/ri";
+import { RiMailFill } from "react-icons/ri";
+import { RiMap2Fill } from "react-icons/ri";
+
 export const navItems = [
   { label: "About me", route: "#about" },
   { label: "Resume", route: "#resume" },
@@ -14,6 +19,37 @@ export const skillDisplayNames: { [key: string]: string } = {
   toolsAndPlatforms: "Tools & Platforms",
   others: "Others",
 };
+
+export const combinedContactListData = [
+  {
+    id: 1,
+    mediaName: "phone number",
+    mediaData: "+8801601016160",
+    link: "tel:+8801601016160",
+    icon: RiPhoneFill,
+  },
+  {
+    id: 2,
+    mediaName: "email",
+    mediaData: "mdrifajulislamrifaj.contact@gmail.com",
+    link: "mailto:mdrifajulislamrifaj.contact@gmail.com",
+    icon: RiMailFill,
+  },
+  {
+    id: 3,
+    mediaName: "skype",
+    mediaData: "rifaj.dev",
+    link: "skype:SKYPENAME?add",
+    icon: RiSkypeFill,
+  },
+  {
+    id: 4,
+    mediaName: "address",
+    mediaData: "0811 Erdman Prairie, Joaville CA",
+    link: "https://maps.app.goo.gl/rxe9RaCbPbN2HYnN8",
+    icon: RiMap2Fill,
+  },
+];
 
 export const projectDefaultValues = {
   title: "",
@@ -60,4 +96,11 @@ export const contactDefaultValues = {
   phone: "",
   subject: "",
   message: "",
+}
+
+export const adminContactDefaultValues = {
+  phone_number: "",
+  email: "",
+  skype: "",
+  address: "",
 }

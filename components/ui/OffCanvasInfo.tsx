@@ -1,4 +1,5 @@
-import { contactListData, socialLinks } from "@/data";
+import { socialLinks } from "@/data";
+import { useAppContext } from "@/lib/context/appContext";
 import Link from "next/link";
 import React from "react";
 import { RiCloseLine } from "react-icons/ri";
@@ -9,6 +10,7 @@ interface OffCanvasInfoProps {
 }
 
 const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
+  const { combinedContactListData } = useAppContext();
   return (
     <>
       <div
@@ -41,7 +43,7 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
               with innovative minds.
             </p>
 
-            {contactListData.map(({ id, mediaName, mediaData }) => (
+            {combinedContactListData.map(({ id, mediaName, mediaData }) => (
               <div key={id} className="mb-4">
                 <span className="text-neutral-400 text-[19px] capitalize">
                   {mediaName}

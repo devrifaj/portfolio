@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import { contactFormSchema } from "@/lib/validator";
-import { contactDefaultValues } from "@/constants";
 import toast from "react-hot-toast";
 import { sendMail } from "@/lib/send-mail";
 
@@ -16,7 +15,6 @@ const ContactForm = () => {
     formState: { errors, isSubmitting },
   } = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: contactDefaultValues,
   });
 
   async function onSubmit(values: z.infer<typeof contactFormSchema>) {
