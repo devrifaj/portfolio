@@ -48,7 +48,7 @@ const Contact = () => {
                           />
                         </div>
                       </div>
-                      <div className="pl-4 h-full flex flex-col sm:flex-row items-center gap-2">
+                      <div className="pl-4 h-full flex flex-wrap sm:flex-row items-center gap-2">
                         <div className="flex-1">
                           <span className="text-neutral-400 text-[16px] capitalize">
                             {mediaName}

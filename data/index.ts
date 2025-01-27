@@ -1,7 +1,3 @@
-import { RiFacebookCircleFill } from "react-icons/ri";
-import { RiTwitterXFill } from "react-icons/ri";
-import { RiLinkedinFill } from "react-icons/ri";
-import { RiGithubFill } from "react-icons/ri";
 import { RiShapeLine } from "react-icons/ri";
 import { RiComputerLine } from "react-icons/ri";
 import { RiServiceLine } from "react-icons/ri";
@@ -12,13 +8,6 @@ import { RiCloudLine } from "react-icons/ri";
 import { RiArchiveDrawerLine } from "react-icons/ri";
 import { RiSpeedLine } from "react-icons/ri";
 import { RiSpeakLine } from "react-icons/ri";
-
-export const socialLinks = [
-  { id:1, link: "https://facebook.com", icon: RiFacebookCircleFill },
-  { id:2, link: "https://twitter.com", icon: RiTwitterXFill },
-  { id:3, link: "http://linkedin.com", icon: RiLinkedinFill },
-  { id:4, link: "https://github.com/", icon: RiGithubFill },
-];
 
 export const statistics = [
   {

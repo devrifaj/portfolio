@@ -3,10 +3,11 @@ import "./globals.css";
 import { AppProvider } from "@/lib/context/appContext";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { Toaster } from "react-hot-toast";
+import { dmMono, urbanist } from "./font";
 
 /* portfolio's title */
 export const metadata: Metadata = {
-  title: "Rifajul's Portfolio",
+  title: "Rifaj's Portfolio",
   description: "Modern and minimalistic portfolio",
   icons: {
     icon: "/favicon.svg",
@@ -35,7 +36,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className={`${dmMono.variable} ${urbanist.variable}`}>
         <SkeletonTheme baseColor="var(--bg-1)" highlightColor="var(--neutral-600)">
           <AppProvider>{children}</AppProvider>
         </SkeletonTheme>

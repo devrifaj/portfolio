@@ -40,7 +40,7 @@ const CooperationContacts = () => {
       {combinedContactListData.length > 0 ? (
         <div className="flex flex-wrap flex-col gap-4 sm:gap-2">
           {combinedContactListData
-            .filter((contact) => contact.mediaName !== "address") // Exclude Address
+            .filter((contact) => contact.mediaName !== "address")
             .map(({ id, mediaName, mediaData, link, icon: Icon }) => (
               <Link
                 key={id}
@@ -59,8 +59,13 @@ const CooperationContacts = () => {
             ))}
         </div>
       ) : (
-        <div>
-          <Skeleton height={60} style={{ marginBottom: 18 }} />
+        <div className="w-full md:w-3/4">
+          <Skeleton
+            containerClassName="flex-1"
+            count={3}
+            height={25}
+            style={{ marginBottom: 10 }}
+          />
         </div>
       )}
       {/* Contacts List End */}

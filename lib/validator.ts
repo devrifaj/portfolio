@@ -57,3 +57,16 @@ export const adminContactFormSchema = object({
   skype: string().nonempty("Skype is required"),
   address: string().nonempty("Address is required"),
 });
+
+export const socialContactFormSchema = object({
+  facebook_link: string()
+    .nonempty("Facebook link is required")
+    .url("Invalid URL"),
+  twitter_link: string()
+    .nonempty("Twitter link is required")
+    .url("Invalid URL"),
+  linkedin_link: string()
+    .nonempty("Linkedin link is required")
+    .url("Invalid URL"),
+  github_link: string().nonempty("Github link is required").url("Invalid URL"),
+});

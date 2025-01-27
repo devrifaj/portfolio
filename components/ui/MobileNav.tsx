@@ -11,7 +11,7 @@ interface MobileNavProps {
 
 const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
   const [activeHash, setActiveHash] = useState("");
-  const pathname = usePathname(); // Get the current pathname
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -42,7 +42,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
           <Link href="/" className="items-center inline-flex">
             <Image src="/favicon.svg" width={36} height={36} alt="logo" />
             <span className="fs-4 ml-2 text-neutral-0 text-[23px]">
-              Rifajul.dev
+              Rifaj.dev
             </span>
           </Link>
           {/* Mobile Nav Logo End */}

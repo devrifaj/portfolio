@@ -6,7 +6,7 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ setIsMobileNavOpen }) => {
   const handleMenuClick = () => {
-    setIsMobileNavOpen((prev) => !prev); // Toggle mobile nav visibility
+    setIsMobileNavOpen((prev) => !prev);
   };
 
   return (

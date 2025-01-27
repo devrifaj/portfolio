@@ -7,7 +7,7 @@ import {
   FC,
   useEffect,
 } from "react";
-import { RiPhoneFill, RiMailFill, RiSkypeFill, RiMap2Fill } from "react-icons/ri";
+import { RiPhoneFill, RiMailFill, RiSkypeFill, RiMap2Fill, RiFacebookCircleFill, RiTwitterXFill, RiLinkedinFill, RiGithubFill } from "react-icons/ri";
 import { IProject } from "../database/models/project.model";
 import { IHero } from "../database/models/hero.model";
 import { getAllProjects } from "@/lib/actions/project.action";
@@ -18,7 +18,9 @@ import { IBlog } from "../database/models/blog.model";
 import { getAllBlogs } from "../actions/blog.action";
 import { IAdminContact } from "../database/models/adminContact.model";
 import { getAdminContacts } from "../actions/adminContact.action";
-import { CombinedContactData } from "@/types";
+import { CombinedContactData, CombinedSocialContactData } from "@/types";
+import { getSocialContacts } from "../actions/socialContact.action";
+import { ISocialContacts } from "../database/models/socialContacts.model";
 
 interface AppContextProps {
   projects: IProject[];
@@ -32,6 +34,9 @@ interface AppContextProps {
   adminContacts: IAdminContact | null;
   fetchAdminContacts: () => Promise<void>;
   combinedContactListData: CombinedContactData[];
+  socialContacts: ISocialContacts | null;
+  fetchSocialContacts: () => Promise<void>;
+  combinedSocialLinkData: CombinedSocialContactData[];
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -47,6 +52,12 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [combinedContactListData, setCombinedContactListData] = useState<
     CombinedContactData[]
   >([]);
+  const [socialContacts, setSocialContacts] = useState<ISocialContacts | null>(
+    null
+  );
+  const [combinedSocialLinkData, setCombinedSocialLinkData] = useState<
+  CombinedSocialContactData[]
+  >([]);
 
   const fetchProjects = async () => {
     const fetchedProjects = await getAllProjects();
@@ -56,6 +67,16 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const fetchHero = async () => {
     const fetchedHero = await getHero();
     setHero(fetchedHero);
+  };
+
+  const fetchTechnology = async () => {
+    const fetchedTechnology = await getAllTechnologies();
+    setTechnologies(fetchedTechnology);
+  };
+
+  const fetchBlogs = async () => {
+    const fetchedBlogs = await getAllBlogs();
+    setBlogs(fetchedBlogs);
   };
 
   const fetchAdminContacts = async () => {
@@ -100,22 +121,31 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }
   };
 
-  const fetchTechnology = async () => {
-    const fetchedTechnology = await getAllTechnologies();
-    setTechnologies(fetchedTechnology);
-  };
+  const fetchSocialContacts = async () => {
+    try {
+      const fetchedSocialContacts = await getSocialContacts();
+      setSocialContacts(fetchedSocialContacts);
 
-  const fetchBlogs = async () => {
-    const fetchedBlogs = await getAllBlogs();
-    setBlogs(fetchedBlogs);
+      // Combine MongoDB data with default structure
+      const combineData = [
+         { id:1, link: fetchedSocialContacts.facebook_link, icon: RiFacebookCircleFill },
+          { id:2, link: fetchedSocialContacts.twitter_link, icon: RiTwitterXFill },
+          { id:3, link: fetchedSocialContacts.linkedin_link, icon: RiLinkedinFill },
+          { id:4, link: fetchedSocialContacts.github_link, icon: RiGithubFill },
+      ]
+      setCombinedSocialLinkData(combineData);
+    } catch (error) {
+      console.error("Error fetching social contacts:", error);
+    }
   };
 
   useEffect(() => {
     fetchProjects();
     fetchHero();
-    fetchAdminContacts();
     fetchTechnology();
     fetchBlogs();
+    fetchAdminContacts();
+    fetchSocialContacts();
   }, []);
 
   return (
@@ -132,6 +162,9 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         adminContacts,
         fetchAdminContacts,
         combinedContactListData,
+        socialContacts,
+        fetchSocialContacts,
+        combinedSocialLinkData,
       }}
     >
       {children}

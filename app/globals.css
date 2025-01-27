@@ -1,17 +1,9 @@
-/* Google font */
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* font */
-    --font-dm-mono: "DM Mono", monospace;
-    --font-urbanist: "Urbanist", sans-serif;
-
     /* bg image */
     --hero-bg-img: url("/hero/hero-bg.png");
 

@@ -1,4 +1,3 @@
-import { socialLinks } from "@/data";
 import { useAppContext } from "@/lib/context/appContext";
 import Link from "next/link";
 import React from "react";
@@ -10,7 +9,7 @@ interface OffCanvasInfoProps {
 }
 
 const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
-  const { combinedContactListData } = useAppContext();
+  const { combinedContactListData, combinedSocialLinkData } = useAppContext();
   return (
     <>
       <div
@@ -58,7 +57,7 @@ const OffCanvasInfo: React.FC<OffCanvasInfoProps> = ({ isOpen, setIsOpen }) => {
           <div>
             <p className="text-neutral-400 text-[19px] mb-2">Social</p>
             <div className="flex items-center gap-4 text-neutral-0">
-              {socialLinks.map(({id, link, icon: Icon}) => (
+              {combinedSocialLinkData.map(({id, link, icon: Icon}) => (
                 <Link
                 key={id}
                 className="transition-all duration-300 hover:text-primary-2"

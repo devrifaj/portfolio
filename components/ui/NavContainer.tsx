@@ -4,9 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { socialLinks } from "@/data";
+import { useAppContext } from "@/lib/context/appContext";
 
 const NavContainer = () => {
+  const {combinedSocialLinkData} = useAppContext();
   const [activeHash, setActiveHash] = useState("");
   const pathname = usePathname();
 
@@ -47,7 +48,7 @@ const NavContainer = () => {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Rifajul.dev
+            Rifaj.dev
           </span>
         </Link>
       </div>
@@ -56,7 +57,7 @@ const NavContainer = () => {
       {/* Nav Links Start */}
       <ul className="hidden xl:flex">
         {navItems.map(({ label, route }) => {
-          const isActive = activeHash === route; // Compare the active hash with the link
+          const isActive = activeHash === route;
 
           return (
             <li key={route}>
@@ -76,11 +77,12 @@ const NavContainer = () => {
 
       {/* Nav Social Links Start */}
       <ul className="hidden md:flex gap-4 text-white">
-        {socialLinks.map(({ id, link, icon: Icon }) => (
+        {combinedSocialLinkData.map(({ id, link, icon: Icon }) => (
           <li key={id}>
             <Link
               href={link}
               className="flex items-center gap-2 hover:text-primary-2 transition"
+              target="_blank"
             >
               <Icon size={18} className="text-xl" />
             </Link>

@@ -128,3 +128,10 @@ export interface CombinedContactData {
   link: string;
   icon: IconType;
 }
+
+// ====== SOCIAL CONTACT PARAMS ======
+export interface CombinedSocialContactData {
+  id: number;
+  link: string;
+  icon: IconType;
+}
