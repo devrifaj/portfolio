@@ -10,7 +10,6 @@ import { FaRegEdit } from "react-icons/fa";
 
 const AdminDashboardBlog = () => {
   const { technologies, fetchTechnology } = useAppContext();
-  console.log(technologies);
 
   // handling delete technology
   const handleDelete = async (id: string) => {

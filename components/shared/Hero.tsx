@@ -10,7 +10,6 @@ import Skeleton from "react-loading-skeleton";
 
 const Hero = () => {
   const { hero } = useAppContext();
-  // const hero = null;
 
   const description = hero?.desc.replace(
     new RegExp(`(${hero?.desc_highlighted_text})`, "g"),

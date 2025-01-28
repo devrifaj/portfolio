@@ -43,7 +43,6 @@ const ProjectsSlider = () => {
                 {/* Left side */}
                 <div className="xl:w-1/2 lg:w-3/4 mx-auto">
                   <Image
-                    layout="responsive"
                     width={800}
                     height={600}
                     className="w-full"

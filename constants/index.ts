@@ -3,7 +3,7 @@ export const navItems = [
   { label: "Resume", route: "#resume" },
   { label: "Projects", route: "#projects" },
   { label: "Portfolio", route: "#portfolio" },
-  { label: "Blog", route: "#blog" },
+  { label: "Skills", route: "#skills" },
   { label: "Contact", route: "#contact" },
 ];
 

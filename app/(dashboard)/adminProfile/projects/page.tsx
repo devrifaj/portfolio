@@ -65,7 +65,6 @@ const AdminDashboardProjects = () => {
                       className="w-full rounded-md"
                       src={project_img_url}
                       alt="project"
-                      layout="responsive"
                       width={500}
                       height={300}
                     />

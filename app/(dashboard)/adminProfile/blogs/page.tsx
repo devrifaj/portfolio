@@ -59,7 +59,6 @@ const AdminDashboardBlog = () => {
                       className="w-full rounded-md"
                       src={img_url}
                       alt="project"
-                      layout="responsive"
                       width={500}
                       height={300}
                     />
