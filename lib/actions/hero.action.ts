@@ -19,13 +19,11 @@ export const updateHero = async (data: Partial<IHero>) => {
   try {
     await connectToDatabase();
 
-    // Find the existing hero
     const existingHero = await Hero.findOne({});
     if (!existingHero) {
       throw new Error("No hero found to update.");
     }
 
-    // Update the existing hero with the provided data
     await Hero.updateOne({ _id: existingHero._id }, { $set: data });
 
     return { message: "Hero updated successfully" };

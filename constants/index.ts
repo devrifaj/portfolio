@@ -8,11 +8,11 @@ export const navItems = [
 ];
 
 export const skillDisplayNames: { [key: string]: string } = {
-  frontEnd: "Front-End",
-  backEnd: "Back-End",
-  databases: "Databases",
-  toolsAndPlatforms: "Tools & Platforms",
-  others: "Others",
+  front_end_technologies: "Front-End",
+  back_end_technologies: "Back-End",
+  database_technologies: "Databases",
+  tools_platform_technologies: "Tools & Platforms",
+  others_technologies: "Others",
 };
 
 export const projectDefaultValues = {
@@ -73,4 +73,12 @@ export const socialContactDefaultValues = {
   twitter_link: "",
   linkedin_link: "",
   github_link: "",
+}
+
+export const mySkillDefaultValues = {
+  front_end_technologies: [],
+  back_end_technologies: [],
+  database_technologies: [],
+  tools_platform_technologies: [],
+  others_technologies: [],
 }

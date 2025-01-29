@@ -21,6 +21,8 @@ import { getAdminContacts } from "../actions/adminContact.action";
 import { CombinedContactData, CombinedSocialContactData } from "@/types";
 import { getSocialContacts } from "../actions/socialContact.action";
 import { ISocialContacts } from "../database/models/socialContacts.model";
+import { IMySkill } from "../database/models/mySkill.model";
+import { getSkills } from "../actions/mySkill.action";
 
 interface AppContextProps {
   projects: IProject[];
@@ -37,6 +39,8 @@ interface AppContextProps {
   socialContacts: ISocialContacts | null;
   fetchSocialContacts: () => Promise<void>;
   combinedSocialLinkData: CombinedSocialContactData[];
+  skills: IMySkill | null;
+  fetchSkills: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -58,6 +62,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [combinedSocialLinkData, setCombinedSocialLinkData] = useState<
   CombinedSocialContactData[]
   >([]);
+  const [skills, setSkills] = useState<IMySkill | null>(null);
 
   const fetchProjects = async () => {
     const fetchedProjects = await getAllProjects();
@@ -139,6 +144,11 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }
   };
 
+  const fetchSkills = async () => {
+    const fetchedSkills = await getSkills();
+    setSkills(fetchedSkills)
+  }
+
   useEffect(() => {
     fetchProjects();
     fetchHero();
@@ -146,6 +156,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     fetchBlogs();
     fetchAdminContacts();
     fetchSocialContacts();
+    fetchSkills();
   }, []);
 
   return (
@@ -165,6 +176,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         socialContacts,
         fetchSocialContacts,
         combinedSocialLinkData,
+        skills,
+        fetchSkills,
       }}
     >
       {children}

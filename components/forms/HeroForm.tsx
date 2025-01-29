@@ -32,7 +32,7 @@ const HeroForm = () => {
     defaultValues: initialValues,
   });
 
-  // hero data dynamically set in form
+  // hero data dynamically set in form because it's not showing the data from db after refreshing the page
   useEffect(() => {
     if (hero) {
       reset(hero); 

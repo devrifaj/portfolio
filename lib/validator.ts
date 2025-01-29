@@ -70,3 +70,11 @@ export const socialContactFormSchema = object({
     .url("Invalid URL"),
   github_link: string().nonempty("Github link is required").url("Invalid URL"),
 });
+
+export const mySkillFormSchema = object({
+  front_end_technologies: array(string()).min(1, "At least one technology is required"),
+  back_end_technologies: array(string()).min(1, "At least one technology is required"),
+  database_technologies: array(string()).min(1, "At least one technology is required"),
+  tools_platform_technologies: array(string()).min(1, "At least one technology is required"),
+  others_technologies: array(string()).min(1, "At least one technology is required"),
+})
