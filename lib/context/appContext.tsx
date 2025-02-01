@@ -23,6 +23,10 @@ import { getSocialContacts } from "../actions/socialContact.action";
 import { ISocialContacts } from "../database/models/socialContacts.model";
 import { IMySkill } from "../database/models/mySkill.model";
 import { getSkills } from "../actions/mySkill.action";
+import { IEducation } from "../database/models/education.model";
+import { getAllEducation } from "../actions/education.action";
+import { IGit } from "../database/models/gitJournaling.model";
+import { getAllGits } from "../actions/gitJournaling.action";
 
 interface AppContextProps {
   projects: IProject[];
@@ -41,6 +45,10 @@ interface AppContextProps {
   combinedSocialLinkData: CombinedSocialContactData[];
   skills: IMySkill | null;
   fetchSkills: () => Promise<void>;
+  educations: IEducation[];
+  fetchEducations: () => Promise<void>;
+  gits: IGit[];
+  fetchGits: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -63,6 +71,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   CombinedSocialContactData[]
   >([]);
   const [skills, setSkills] = useState<IMySkill | null>(null);
+  const [educations, setEducations] = useState<IEducation[]>([]);
+  const [gits, setGits] = useState<IGit[]>([]);
 
   const fetchProjects = async () => {
     const fetchedProjects = await getAllProjects();
@@ -149,6 +159,16 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setSkills(fetchedSkills)
   }
 
+  const fetchEducations = async () => {
+    const fetchedEducations = await getAllEducation();
+    setEducations(fetchedEducations);
+  };
+
+  const fetchGits = async () => {
+    const fetchedGits = await getAllGits();
+    setGits(fetchedGits)
+  }
+
   useEffect(() => {
     fetchProjects();
     fetchHero();
@@ -157,6 +177,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     fetchAdminContacts();
     fetchSocialContacts();
     fetchSkills();
+    fetchEducations();
+    fetchGits();
   }, []);
 
   return (
@@ -178,6 +200,10 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         combinedSocialLinkData,
         skills,
         fetchSkills,
+        educations,
+        fetchEducations,
+        gits,
+        fetchGits,
       }}
     >
       {children}

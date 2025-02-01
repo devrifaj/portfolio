@@ -60,20 +60,20 @@ export const contactDefaultValues = {
   phone: "",
   subject: "",
   message: "",
-}
+};
 
 export const adminContactDefaultValues = {
   phone_number: "",
   email: "",
   skype: "",
   address: "",
-}
+};
 
 export const socialContactDefaultValues = {
   twitter_link: "",
   linkedin_link: "",
   github_link: "",
-}
+};
 
 export const mySkillDefaultValues = {
   front_end_technologies: [],
@@ -81,4 +81,17 @@ export const mySkillDefaultValues = {
   database_technologies: [],
   tools_platform_technologies: [],
   others_technologies: [],
+};
+
+export const educationDefaultValues = {
+  start_date: new Date(),
+  end_date: new Date(),
+  isPresent: false,
+  institute: "",
+  desc: "",
+};
+
+export const gitJournalingDefaultValues = {
+  date: new Date(),
+  title: "",
 }

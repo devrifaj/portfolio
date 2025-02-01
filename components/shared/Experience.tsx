@@ -9,7 +9,7 @@ import {
 
 const Experience = () => {
   return (
-    <section id="portfolio">
+    <section id="portfolio" className="mb-8">
       <SectionAnimatedBorder>
         <div className="lg:p-16 md:p-10 p-4 relative z-50">
           {/* Section Heading Start */}

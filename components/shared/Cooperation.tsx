@@ -1,7 +1,5 @@
-import React from "react";
 import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
 import CooperationSlide from "../ui/CooperationSlide";
-import CooperationGitJournaling from "../ui/CooperationGitJournaling";
 import RotateAnimation from "../ui/RotateAnimation";
 import SectionHeading from "../ui/SectionHeading";
 import CooperationContacts from "../ui/CooperationContacts";
@@ -9,9 +7,8 @@ import CooperationContacts from "../ui/CooperationContacts";
 const Cooperation = () => {
   return (
     <section className="mb-8">
-      <div className="flex lg:flex-row flex-col gap-6">
         {/* Cooperation Left Start */}
-        <div className="w-full lg:w-2/3 overflow-hidden">
+        <div>
           <SectionAnimatedBorder>
             <div className="lg:p-16 md:p-10 p-4 ">
               {/* Section Heading Start */}
@@ -38,13 +35,6 @@ const Cooperation = () => {
           </SectionAnimatedBorder>
         </div>
         {/* Cooperation Left End */}
-
-        {/* Git Journaling Start*/}
-        <div className="w-full lg:w-1/3">
-          <CooperationGitJournaling />
-        </div>
-        {/* Git Journaling End */}
-      </div>
     </section>
   );
 };

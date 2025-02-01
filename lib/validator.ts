@@ -33,7 +33,7 @@ export const technologyFormSchema = object({
 export const blogFormSchema = object({
   tag: string().nonempty("Tag is required"),
   img_url: string().url("Image is required"),
-  date: date(),
+  date: date().max(new Date(), "Blog date cannot be in the future"),
   read_time: string().nonempty("Read time is required"),
   title: string().nonempty("Title is required"),
   desc: string().nonempty("Description is required"),
@@ -72,9 +72,54 @@ export const socialContactFormSchema = object({
 });
 
 export const mySkillFormSchema = object({
-  front_end_technologies: array(string()).min(1, "At least one technology is required"),
-  back_end_technologies: array(string()).min(1, "At least one technology is required"),
-  database_technologies: array(string()).min(1, "At least one technology is required"),
-  tools_platform_technologies: array(string()).min(1, "At least one technology is required"),
-  others_technologies: array(string()).min(1, "At least one technology is required"),
+  front_end_technologies: array(string()).min(
+    1,
+    "At least one technology is required"
+  ),
+  back_end_technologies: array(string()).min(
+    1,
+    "At least one technology is required"
+  ),
+  database_technologies: array(string()).min(
+    1,
+    "At least one technology is required"
+  ),
+  tools_platform_technologies: array(string()).min(
+    1,
+    "At least one technology is required"
+  ),
+  others_technologies: array(string()).min(
+    1,
+    "At least one technology is required"
+  ),
+});
+
+export const educationFormSchema = object({
+  institute: string().nonempty("Institute is required"),
+  desc: string().nonempty("Description is required"),
+  start_date: date({
+    required_error: "Start date is required",
+    invalid_type_error: "Start date must be a valid date",
+  }),
+  end_date: date({
+    required_error: "End date is required",
+    invalid_type_error: "End date must be a valid date",
+  }).optional(),
+  isPresent: boolean().default(false),
 })
+  .refine((data) => !data.end_date || data.end_date >= data.start_date, {
+    path: ["end_date"],
+    message: "End date cannot be earlier than the start date",
+  })
+  .refine((data) => data.isPresent || !!data.end_date, {
+    path: ["end_date"],
+    message: "End date is required unless 'Present' is checked",
+  });
+
+export const gitJournalingFormSchema = object({
+  date: date({
+    required_error: "Date is required",
+    invalid_type_error: "Date must be a valid date",
+  }),
+  title: string().nonempty("Title is required"),
+});

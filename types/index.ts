@@ -135,3 +135,49 @@ export interface CombinedSocialContactData {
   link: string;
   icon: IconType;
 }
+
+// ====== EDUCATION PARAMS ======
+export type CreateEducationParams = {
+  education: {
+    start_date: Date;
+    end_date?: Date;
+    isPresent: boolean;
+    institute: string;
+    desc: string;
+  }
+};
+
+export type EducationParams = {
+  education: {
+    _id: string;
+    start_date: Date;
+    end_date?: Date;
+    isPresent: boolean;
+    institute: string;
+    desc: string;
+  }
+};
+
+export type DeleteEducationParams = {
+  educationId: string;
+};
+
+// ====== Git PARAMS ======
+export type CreateGitParams = {
+  git: {
+    title: string;
+    date: Date;
+  }
+};
+
+export type GitParams = {
+  git: {
+    _id: string;
+    title: string;
+    date: Date;
+  }
+};
+
+export type DeleteGitParams = {
+  gitId: string;
+};

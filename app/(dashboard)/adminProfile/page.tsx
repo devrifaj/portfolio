@@ -34,14 +34,6 @@ const AdminProfile = () => {
           </Link>
         </li>
         <li>
-          <Link
-            className="admin-link group"
-            href="/adminProfile/git-journaling"
-          >
-            Git Journaling <RiArrowRightLine className="admin-link-icon" />
-          </Link>
-        </li>
-        <li>
           <Link className="admin-link group" href="/adminProfile/services">
             Services
             <RiArrowRightLine className="admin-link-icon" />
@@ -60,9 +52,11 @@ const AdminProfile = () => {
           </Link>
         </li>
         <li>
-          <Link className="admin-link group" href="/adminProfile/researched">
-            Researched
-            <RiArrowRightLine className="admin-link-icon" />
+          <Link
+            className="admin-link group"
+            href="/adminProfile/git-journaling"
+          >
+            Git Journaling <RiArrowRightLine className="admin-link-icon" />
           </Link>
         </li>
         <li>

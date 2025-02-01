@@ -185,10 +185,13 @@ const BlogForm = ({ type, blog, blogId }: BlogFormProps) => {
           <DatePicker
             selected={selectedDate}
             onChange={(date: Date | null) => {
-              // Replace `null` with the default date
-              setValue("date", date || new Date(), { shouldDirty: true });
+              if(date) {
+                setValue("date", date, { shouldDirty: true });
+                trigger("date")
+              }
             }}
             dateFormat="dd-MM-yyyy"
+            maxDate={new Date()}
             className="form-control"
             placeholderText="Select a date"
           />

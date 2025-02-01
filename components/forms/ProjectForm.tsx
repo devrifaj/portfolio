@@ -25,7 +25,7 @@ const ProjectForm = ({ type, project, projectId }: ProjectFormProps) => {
   const [files, setFiles] = useState<File[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const initialValues =
-    project && type === "Update" ? { ...project } : projectDefaultValues;
+    project && type === "Update" ? project : projectDefaultValues;
   const router = useRouter();
 
   const {
