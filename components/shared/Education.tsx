@@ -1,4 +1,3 @@
-import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
 import EducationDetails from "../ui/EducationDetails";
 import CooperationGitJournaling from "../ui/CooperationGitJournaling";
 
@@ -7,12 +6,12 @@ const Education = () => {
     <section id="resume" className="mb-8">
       <div className="flex lg:flex-row flex-col gap-6">
         {/* Left side */}
-        <div className="w-full lg:w-2/3 overflow-hidden">
+        <div className="w-full lg:w-3/5 xl:w-2/3 overflow-hidden">
           <EducationDetails />
         </div>
 
         {/* Right side */}
-        <div className="w-full lg:w-1/3">
+        <div className="w-full lg:w-2/5 xl:w-1/3">
           <CooperationGitJournaling />
         </div>
       </div>

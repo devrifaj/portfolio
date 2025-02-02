@@ -19,9 +19,9 @@ const Hero = () => {
   return (
     <section id="about" className="pb-4">
       <SectionAnimatedBorder>
-        <div className="flex flex-wrap  py-[60px]">
+        <div className="flex flex-wrap py-[60px] items-start lg:items-center xl:items-start">
           {/* Hero Left Start */}
-          <div className="w-full lg:w-5/12 lg:pl-6 lg:pr-[12px] lg:text-start text-center">
+          <div className="w-full lg:w-1/2 xl:w-5/12 lg:pl-6 lg:pr-[12px] lg:text-start text-center">
             {hero ? (
               <div className="relative lg:mb-0 mb-8 flex-center md:flex-none">
                 <Image
@@ -54,7 +54,7 @@ const Hero = () => {
 
           {/* Hero Right Start */}
           <div className="flex-none lg:w-1/2 lg:mx-auto w-full pl-[12px] pr-[12px]">
-            <div className="lg:p-0 md:p-16 p-4">
+            <div className="lg:p-0 md:p-12 p-4">
               {/* Typewriter Start */}
               {hero ? (
                 <div className="text-secondary-2 flex items-center">
