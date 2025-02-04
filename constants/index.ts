@@ -113,3 +113,10 @@ export const experienceDefaultValues = {
   job_end_date: new Date(),
   isPresent: false,
 };
+
+export const serviceDefaultValues = {
+  title: "",
+  icon_name: "",
+  desc: "",
+  highlightText: "",
+};

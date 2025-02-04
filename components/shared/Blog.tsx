@@ -79,24 +79,17 @@ const Blog = () => {
           )
         ) : (
           <>
-            <div className="blog-card rounded-t-md lg:mb-4 md:mb-8 mb-4">
-              <Skeleton height={270} style={{marginBottom: "20px"}}/>
-              <Skeleton height={25} style={{marginBottom: "10px"}}/>
-              <Skeleton height={45} style={{marginBottom: "20px"}}/>
-              <Skeleton count={2} height={20}/>
-            </div>
-            <div className="blog-card rounded-t-md lg:mb-4 md:mb-8 mb-4">
-              <Skeleton height={270} style={{marginBottom: "20px"}}/>
-              <Skeleton height={25} style={{marginBottom: "10px"}}/>
-              <Skeleton height={45} style={{marginBottom: "20px"}}/>
-              <Skeleton count={2} height={20}/>
-            </div>
-            <div className="blog-card rounded-t-md lg:mb-4 md:mb-8 mb-4">
-              <Skeleton height={270} style={{marginBottom: "20px"}}/>
-              <Skeleton height={25} style={{marginBottom: "10px"}}/>
-              <Skeleton height={45} style={{marginBottom: "20px"}}/>
-              <Skeleton count={2} height={20}/>
-            </div>
+            {Array.from({ length: 3 }).map((_, index) => (
+              <div
+                key={index}
+                className="blog-card rounded-t-md lg:mb-4 md:mb-8 mb-4"
+              >
+                <Skeleton height={270} style={{ marginBottom: "20px" }} />
+                <Skeleton height={25} style={{ marginBottom: "10px" }} />
+                <Skeleton height={45} style={{ marginBottom: "20px" }} />
+                <Skeleton count={2} height={20} />
+              </div>
+            ))}
           </>
         )}
       </div>

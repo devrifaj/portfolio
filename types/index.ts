@@ -213,3 +213,27 @@ export type ExperienceParams = {
 export type DeleteExperienceParams = {
   experienceId: string;
 };
+
+// ====== SERVICE PARAMS ======
+export type CreateServiceParams = {
+  service: {
+    title: string;
+    desc: string;
+    icon_name: string;
+    highlightText?: string;
+  };
+};
+
+export type ServiceParams = {
+  service: {
+    _id: string;
+    title: string;
+    desc: string;
+    icon_name: string;
+    highlightText?: string;
+  };
+};
+
+export type DeleteServiceParams = {
+  serviceId: string;
+};

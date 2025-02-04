@@ -166,3 +166,10 @@ export const experienceFormSchema = object({
     path: ["job_end_date"],
     message: "End date is required unless 'Present' is checked",
   });
+
+  export const serviceFormSchema = object({
+    title: string().nonempty("Title is required"),
+    icon_name: string().nonempty("Icon name is required"),
+    desc: string().nonempty("Description is required"),
+    highlightText: string().optional(),
+  })

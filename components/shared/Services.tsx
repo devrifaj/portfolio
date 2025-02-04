@@ -1,10 +1,14 @@
-import React from "react";
+"use client";
 import SectionHeading from "../ui/SectionHeading";
 import SectionAnimatedBorder from "../ui/SectionAnimatedBorder";
-import { servicesData } from "@/data";
 import Link from "next/link";
+import { useAppContext } from "@/lib/context/appContext";
+import * as RiIcons from "react-icons/ri";
+import Skeleton from "react-loading-skeleton";
 
 const Services = () => {
+  const { services } = useAppContext();
+
   return (
     <section id="services" className="mb-8">
       <SectionAnimatedBorder className="lg:p-8 p-4 md:p-6">
@@ -23,36 +27,68 @@ const Services = () => {
         <div className="mt-7 relative z-20">
           {/* Service Card Start */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {servicesData.map(
-              ({ id, title, icon: Icon, description, highlightText }) => (
-                <div
-                  key={id}
-                  className="lg:px-[42px] px-[35px] lg:pt-[93px] pt-[70px] lg:pb-[42px] pb-[35px] bg-bg-3 border border-border-1 rounded-md h-full transition-all duration-300 ease-in-out hover:translate-y-[-3px] group"
-                >
-                  <Icon
-                    size={24}
-                    className="text-neutral-0 group-hover:text-primary-2 transition-all duration-300"
-                  />
+            {services.length > 0 ? (
+              services.map(({ _id, title, icon_name, desc, highlightText }) => {
+                const IconComponent =
+                  RiIcons[icon_name as keyof typeof RiIcons];
 
-                  <h6 className="my-4 font-medium text-[20px] leading-tight">
-                    {title}
-                  </h6>
+                return (
+                  <div
+                    key={_id}
+                    className="lg:px-[42px] px-[35px] lg:pt-[93px] pt-[70px] lg:pb-[42px] pb-[35px] bg-bg-3 border border-border-1 rounded-md h-full transition-all duration-300 ease-in-out hover:translate-y-[-8px] group"
+                  >
+                    {IconComponent ? (
+                      <IconComponent className="w-6 h-6 text-neutral-0 group-hover:text-primary-2 transition-all duration-300" />
+                    ) : null}
 
-                  {/* Description with Highlighted Text */}
-                  <p
-                    className="text-[14px] text-neutral-300 mb-4 font-normal leading-normal"
-                    dangerouslySetInnerHTML={{
-                      __html: highlightText.reduce((text, phrase) => {
-                        const regex = new RegExp(`(${phrase})`, "gi");
-                        return text.replace(
-                          regex,
-                          '<span class="text-secondary-2">$1</span>'
-                        );
-                      }, description),
-                    }}
-                  ></p>
-                </div>
-              )
+                    <h6 className="my-4 font-medium text-[20px] leading-tight">
+                      {title}
+                    </h6>
+
+                    {/* Description with Highlighted Text */}
+                    <p
+                      className="text-base text-neutral-300 mb-4 font-normal leading-normal"
+                      dangerouslySetInnerHTML={{
+                        __html: highlightText
+                          ? (desc || "").replace(
+                              new RegExp(
+                                `(${highlightText.split(" ").join("|")})`,
+                                "gi"
+                              ),
+                              '<span class="text-secondary-2">$1</span>'
+                            )
+                          : desc || "",
+                      }}
+                    ></p>
+                  </div>
+                );
+              })
+            ) : (
+              <>
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col lg:px-[42px] px-[35px] lg:pt-[93px] pt-[70px] lg:pb-[42px] pb-[35px] bg-bg-3 border border-border-1 rounded-md h-full transition-all duration-300 ease-in-out hover:translate-y-[-8px] group"
+                  >
+                    <Skeleton
+                      height={30}
+                      containerClassName="flex-1"
+                      style={{ marginBottom: "15px" }}
+                    />
+                    <Skeleton
+                      height={40}
+                      containerClassName="flex-1"
+                      style={{ marginBottom: "15px" }}
+                    />
+                    <Skeleton
+                      count={3}
+                      height={20}
+                      containerClassName="flex-1"
+                      style={{ marginBottom: "5px" }}
+                    />
+                  </div>
+                ))}
+              </>
             )}
           </div>
           {/* Service Card End */}

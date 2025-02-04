@@ -12,7 +12,6 @@ import { FaRegEdit } from "react-icons/fa";
 
 const AdminExperience = () => {
   const { experiences, fetchExperiences } = useAppContext();
-  console.log(experiences);
   const router = useRouter();
 
   const handleDelete = async (id: string) => {

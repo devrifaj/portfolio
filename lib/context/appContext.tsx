@@ -31,6 +31,8 @@ import { IExperienceTitle } from "../database/models/experienceTitle.model";
 import { getExperienceTitle } from "../actions/experienceTitle.action";
 import { IExperience } from "../database/models/experience.model";
 import { getAllExperiences } from "../actions/experience.action";
+import { IService } from "../database/models/service.model";
+import { getAllServices } from "../actions/service.action";
 
 interface AppContextProps {
   projects: IProject[];
@@ -57,6 +59,8 @@ interface AppContextProps {
   fetchExperienceTitle: () => Promise<void>;
   experiences: IExperience[];
   fetchExperiences: () => Promise<void>;
+  services: IService[];
+  fetchServices: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -83,6 +87,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [gits, setGits] = useState<IGit[]>([]);
   const [experienceTitle, setExperienceTitle] = useState<IExperienceTitle | null>(null);
   const [experiences, setExperiences] = useState<IExperience[]>([]);
+  const [services, setServices] = useState<IService[]>([]);
 
   const fetchProjects = async () => {
     const fetchedProjects = await getAllProjects();
@@ -189,6 +194,11 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setExperiences(fetchedExperiences);
   };
 
+  const fetchServices = async () => {
+    const fetchedServices = await getAllServices();
+    setServices(fetchedServices);
+  };
+
   useEffect(() => {
     fetchProjects();
     fetchHero();
@@ -201,6 +211,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     fetchGits();
     fetchExperienceTitle();
     fetchExperiences();
+    fetchServices();
   }, []);
 
   return (
@@ -230,6 +241,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         fetchExperienceTitle,
         experiences,
         fetchExperiences,
+        services,
+        fetchServices,
       }}
     >
       {children}
