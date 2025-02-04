@@ -1,7 +1,6 @@
 'use client'
 import SectionHeading from "../ui/SectionHeading";
 import RotateAnimation from "../ui/RotateAnimation";
-import { mySkills } from "@/data";
 import MySkillsSlide from "../ui/MySkillsSlide";
 import { skillDisplayNames } from "@/constants";
 import { useAppContext } from "@/lib/context/appContext";

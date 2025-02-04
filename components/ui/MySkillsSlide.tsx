@@ -25,7 +25,7 @@ const MySkillsSlide = () => {
             <Marquee pauseOnHover={true} speed={35} direction="right">
               {topTechs.map(
                 ({ _id, tech_name, tech_img_url, tech_official_url }) => (
-                  <li key={_id} className="mx-[15px] text-center float-right">
+                  <li key={_id} className="mx-[15px] text-center float-right" title={tech_name}>
                     <Link
                       href={tech_official_url}
                       target="_blank"
@@ -54,7 +54,7 @@ const MySkillsSlide = () => {
             <Marquee pauseOnHover={true} speed={35} direction="left">
               {bottomTechs.map(
                 ({ _id, tech_name, tech_img_url, tech_official_url }) => (
-                  <li key={_id} className="mx-[15px] text-center float-left">
+                  <li key={_id} className="mx-[15px] text-center float-left" title={tech_name}>
                     <Link
                       href={tech_official_url}
                       target="_blank"

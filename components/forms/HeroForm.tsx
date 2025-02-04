@@ -17,7 +17,7 @@ const HeroForm = () => {
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
   const router = useRouter();
   const { hero, fetchHero } = useAppContext();
-  const initialValues = hero ? { ...hero } : heroDefaultValues;
+  const initialValues = hero ? hero : heroDefaultValues;
 
   const {
     register,

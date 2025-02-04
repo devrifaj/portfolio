@@ -6,14 +6,14 @@ const page = () => {
   return (
     <DashboardPageLayout title="Contacts">
       <div className="mb-12">
-        <h1 className="text-xl font-medium mb-4 text-secondary-2">
+        <h1 className="form-heading">
           Update Contacts
         </h1>
         <AdminContactForm />
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-secondary-2">
+        <h1 className="form-heading">
           Update Social links
         </h1>
         <SocialContactForm />

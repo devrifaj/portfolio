@@ -6,7 +6,7 @@ export const projectFormSchema = object({
   client: string().nonempty("Client is required"),
   completion_time: string().nonempty("Completion time is required"),
   technologies: array(string()).min(1, "At least one technology is required"),
-  project_img_url: string().url("Image is required"),
+  project_img_url: string().url("Project image is required"),
   live_link: string().url("Invalid live link URL"),
   github_link: string().url("Invalid GitHub link URL"),
 });
@@ -15,10 +15,10 @@ export const heroFormSchema = object({
   headline: string().nonempty("Headline is required"),
   first_title: string().nonempty("First Title is required"),
   middle_title: string().nonempty("Middle Title is required"),
-  hero_img_url: string().url("Image is required"),
-  hero_pdf_url: string().url("Pdf is required"),
+  hero_img_url: string().url("Hero image is required"),
+  hero_pdf_url: string().url("Resume Pdf is required"),
   last_title: string().nonempty("Last Title is required"),
-  desc: string().nonempty("Description is required"),
+  desc: string().nonempty("Hero Description is required"),
   desc_highlighted_text: string().optional(),
 });
 
@@ -47,7 +47,7 @@ export const contactFormSchema = object({
   subject: string().nonempty("Please give a subject."),
   message: string().min(
     30,
-    "Please provide your message with min 30 characters."
+    "Please provide your message with minimum 30 characters."
   ),
 });
 
@@ -123,3 +123,46 @@ export const gitJournalingFormSchema = object({
   }),
   title: string().nonempty("Title is required"),
 });
+
+export const experienceTitleFormSchema = object({
+  first_title: string().nonempty("First title is required"),
+  second_title: string().nonempty("Second title is required"),
+  third_title: string().nonempty("Third title is required"),
+  fourth_title: string().nonempty("Fourth title is required"),
+});
+
+export const experienceFormSchema = object({
+  job_desc_list: array(
+    object({
+      text: string().min(1, "Description is required"),
+      highlight: string().optional(),
+    })
+  ).min(1, "At least one description is required"),
+  experi_technologies: array(string())
+    .min(1, "At least one technology must be added.")
+    ,
+  company_name: string().nonempty("Company name is required"),
+  company_logo_url: string().url("Company logo is required"),
+  role: string().nonempty("Role is required"),
+
+  job_start_date: date({
+    required_error: "Job start date is required",
+    invalid_type_error: "Job start date must be a valid date",
+  }),
+  job_end_date: date({
+    required_error: "Job end date is required",
+    invalid_type_error: "Job end date must be a valid date",
+  }).optional(),
+  isPresent: boolean().default(false),
+})
+  .refine(
+    (data) => !data.job_end_date || data.job_end_date >= data.job_start_date,
+    {
+      path: ["job_end_date"],
+      message: "End date cannot be earlier than the start date",
+    }
+  )
+  .refine((data) => data.isPresent || !!data.job_end_date, {
+    path: ["job_end_date"],
+    message: "End date is required unless 'Present' is checked",
+  });

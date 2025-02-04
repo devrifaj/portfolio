@@ -15,7 +15,7 @@ import { updateSkills } from "@/lib/actions/mySkill.action";
 const MySkillForm: React.FC = () => {
   const { skills, fetchSkills } = useAppContext();
   const router = useRouter();
-  const initialValues = skills ? { ...skills } : mySkillDefaultValues;
+  const initialValues = skills ? skills : mySkillDefaultValues;
 
   const {
     handleSubmit,

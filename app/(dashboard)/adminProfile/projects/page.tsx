@@ -24,15 +24,15 @@ const AdminDashboardProjects = () => {
   return (
     <DashboardPageLayout title="Projects">
       <div className="mb-12">
-        <h1 className="text-xl font-medium mb-4 text-secondary-2">
+        <h1 className="form-heading">
           Create New Project
         </h1>
         <ProjectForm type="Create" />
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-secondary-2">All Projects</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <h1 className="form-heading">All Projects</h1>
+        <div className="form-container">
           {projects.map(
             ({
               _id,

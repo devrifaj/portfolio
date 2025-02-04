@@ -11,7 +11,6 @@ import { IGit } from "@/lib/database/models/gitJournaling.model";
 import toast from "react-hot-toast";
 import { createGit, updateGit } from "@/lib/actions/gitJournaling.action";
 import { useAppContext } from "@/lib/context/appContext";
-import { useEffect } from "react";
 
 export interface BlogFormProps {
   type: "Create" | "Update";

@@ -25,14 +25,14 @@ const AdminEducation = () => {
   return (
     <DashboardPageLayout title="Education">
       <div className="mb-12">
-        <h1 className="text-xl font-medium mb-4 text-secondary-2">
+        <h1 className="form-heading">
           Create New Education
         </h1>
         <EducationForm type="Create" />
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-secondary-2">All Educations</h1>
+        <h1 className="form-heading">All Educations</h1>
 
         <div className="flex flex-col gap-4">
           {educations.map(

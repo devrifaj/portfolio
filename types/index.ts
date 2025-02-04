@@ -36,7 +36,7 @@ export type CreateProjectParams = {
     project_img_url: string;
     live_link: string;
     github_link: string;
-  }
+  };
 };
 
 export type ProjectParams = {
@@ -50,7 +50,7 @@ export type ProjectParams = {
     project_img_url: string;
     live_link: string;
     github_link: string;
-  }
+  };
 };
 
 export type DeleteProjectParams = {
@@ -61,7 +61,7 @@ export type DeleteProjectParams = {
 export type CreateFormTechnologyParams = {
   formTechnology: {
     name: string;
-  }
+  };
 };
 
 // ====== TECHNOLOGY PARAMS ======
@@ -72,8 +72,8 @@ export type CreateTechnologyParams = {
     tech_official_url: string;
     show_in_hero: boolean;
     skill_position: string;
-  }
-}
+  };
+};
 
 export type TechnologyParams = {
   technology: {
@@ -83,8 +83,8 @@ export type TechnologyParams = {
     tech_official_url: string;
     show_in_hero: boolean;
     skill_position: string;
-  }
-}
+  };
+};
 
 export type DeleteTechnologyParams = {
   technologyId: string;
@@ -100,7 +100,7 @@ export type CreateBlogParams = {
     title: string;
     desc: string;
     link: string;
-  }
+  };
 };
 
 export type BlogParams = {
@@ -113,7 +113,7 @@ export type BlogParams = {
     title: string;
     desc: string;
     link: string;
-  }
+  };
 };
 
 export type DeleteBlogParams = {
@@ -144,7 +144,7 @@ export type CreateEducationParams = {
     isPresent: boolean;
     institute: string;
     desc: string;
-  }
+  };
 };
 
 export type EducationParams = {
@@ -155,19 +155,19 @@ export type EducationParams = {
     isPresent: boolean;
     institute: string;
     desc: string;
-  }
+  };
 };
 
 export type DeleteEducationParams = {
   educationId: string;
 };
 
-// ====== Git PARAMS ======
+// ====== GIT PARAMS ======
 export type CreateGitParams = {
   git: {
     title: string;
     date: Date;
-  }
+  };
 };
 
 export type GitParams = {
@@ -175,9 +175,41 @@ export type GitParams = {
     _id: string;
     title: string;
     date: Date;
-  }
+  };
 };
 
 export type DeleteGitParams = {
   gitId: string;
+};
+
+// ====== EXPERIENCE PARAMS ======
+export type CreateExperienceParams = {
+  experience: {
+    job_desc_list: Array<{ text: string; highlight?: string }>;
+    experi_technologies: string[];
+    company_name: string;
+    company_logo_url: string;
+    role: string;
+    job_start_date: Date;
+    job_end_date?: Date;
+    isPresent: boolean;
+  };
+};
+
+export type ExperienceParams = {
+  experience: {
+    _id: string;
+    job_desc_list: Array<{ text: string; highlight?: string }>;
+    experi_technologies: string[];
+    company_name: string;
+    company_logo_url: string;
+    role: string;
+    job_start_date: Date;
+    job_end_date?: Date;
+    isPresent: boolean;
+  };
+};
+
+export type DeleteExperienceParams = {
+  experienceId: string;
 };

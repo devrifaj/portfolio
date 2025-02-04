@@ -94,4 +94,22 @@ export const educationDefaultValues = {
 export const gitJournalingDefaultValues = {
   date: new Date(),
   title: "",
-}
+};
+
+export const experienceTitleDefaultValues = {
+  first_title: "",
+  second_title: "",
+  third_title: "",
+  fourth_title: "",
+};
+
+export const experienceDefaultValues = {
+  job_desc_list: [] as Array<{ text: string; highlight?: string }>,
+  experi_technologies: [],
+  company_name: "",
+  company_logo_url: "",
+  role: "",
+  job_start_date: new Date(),
+  job_end_date: new Date(),
+  isPresent: false,
+};

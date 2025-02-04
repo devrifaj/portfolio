@@ -27,6 +27,10 @@ import { IEducation } from "../database/models/education.model";
 import { getAllEducation } from "../actions/education.action";
 import { IGit } from "../database/models/gitJournaling.model";
 import { getAllGits } from "../actions/gitJournaling.action";
+import { IExperienceTitle } from "../database/models/experienceTitle.model";
+import { getExperienceTitle } from "../actions/experienceTitle.action";
+import { IExperience } from "../database/models/experience.model";
+import { getAllExperiences } from "../actions/experience.action";
 
 interface AppContextProps {
   projects: IProject[];
@@ -49,6 +53,10 @@ interface AppContextProps {
   fetchEducations: () => Promise<void>;
   gits: IGit[];
   fetchGits: () => Promise<void>;
+  experienceTitle: IExperienceTitle | null;
+  fetchExperienceTitle: () => Promise<void>;
+  experiences: IExperience[];
+  fetchExperiences: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -73,6 +81,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [skills, setSkills] = useState<IMySkill | null>(null);
   const [educations, setEducations] = useState<IEducation[]>([]);
   const [gits, setGits] = useState<IGit[]>([]);
+  const [experienceTitle, setExperienceTitle] = useState<IExperienceTitle | null>(null);
+  const [experiences, setExperiences] = useState<IExperience[]>([]);
 
   const fetchProjects = async () => {
     const fetchedProjects = await getAllProjects();
@@ -169,6 +179,16 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setGits(fetchedGits)
   }
 
+  const fetchExperienceTitle = async () => {
+    const fetchedExperienceTitle = await getExperienceTitle();
+    setExperienceTitle(fetchedExperienceTitle);
+  };
+
+  const fetchExperiences = async () => {
+    const fetchedExperiences = await getAllExperiences();
+    setExperiences(fetchedExperiences);
+  };
+
   useEffect(() => {
     fetchProjects();
     fetchHero();
@@ -179,6 +199,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     fetchSkills();
     fetchEducations();
     fetchGits();
+    fetchExperienceTitle();
+    fetchExperiences();
   }, []);
 
   return (
@@ -204,6 +226,10 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         fetchEducations,
         gits,
         fetchGits,
+        experienceTitle,
+        fetchExperienceTitle,
+        experiences,
+        fetchExperiences,
       }}
     >
       {children}

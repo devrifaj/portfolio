@@ -22,14 +22,14 @@ const AdminDashboardBlog = () => {
   return (
     <DashboardPageLayout title="Technologies">
       <div className="mb-12">
-        <h1 className="text-xl font-medium mb-4 text-secondary-2">
+        <h1 className="form-heading">
           Create New Technology
         </h1>
         <TechnologyForm type="Create" />
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-secondary-2">
+        <h1 className="form-heading">
           All Technologies
         </h1>
 

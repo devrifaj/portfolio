@@ -25,16 +25,16 @@ const AdminDashboardBlog = () => {
   return (
     <DashboardPageLayout title="Blogs">
       <div className="mb-12">
-        <h1 className="text-xl font-medium mb-4 text-secondary-2">
+        <h1 className="form-heading">
           Create New Blog
         </h1>
         <BlogForm type="Create" />
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-secondary-2">All Blogs</h1>
+        <h1 className="form-heading">All Blogs</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="form-container">
           {blogs.map(
             ({ _id, tag, img_url, date, read_time, title, desc, link }) => (
               <div key={_id} className="flex flex-col justify-stretch">

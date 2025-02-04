@@ -22,14 +22,14 @@ const AdminGitJournaling = () => {
   return (
     <DashboardPageLayout title="Git journaling">
       <div className="mb-12">
-        <h1 className="text-xl font-medium mb-4 text-secondary-2">
+        <h1 className="form-heading">
           Create New Git
         </h1>
         <GitJournalingForm type="Create" />
       </div>
 
       <div>
-        <h1 className="text-xl font-medium text-secondary-2">Latest 5 gits</h1>
+        <h1 className="form-heading">Latest 5 gits</h1>
 
         <div className="flex flex-col gap-4">
           {gits.map(({ _id, date, title }) => {
