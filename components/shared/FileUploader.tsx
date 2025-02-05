@@ -1,7 +1,9 @@
 "use client";
 
 import { useCallback } from "react";
-import { useDropzone, type FileWithPath } from "@uploadthing/react";
+import { useDropzone } from "@uploadthing/react";
+import type { FileWithPath } from "react-dropzone";
+
 import { generateClientDropzoneAccept } from "uploadthing/client";
 import { MdCloudUpload } from "react-icons/md";
 import Image from "next/image";
