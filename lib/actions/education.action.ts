@@ -11,7 +11,6 @@ import Education from "../database/models/education.model";
 // Create a new education
 export const createEducation = async ({ education }: CreateEducationParams) => {
   try {
-    console.log(education);
     await connectToDatabase();
 
     const newEducation = await Education.create(education);
