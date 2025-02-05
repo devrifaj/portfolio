@@ -110,7 +110,6 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   const fetchAdminContacts = async () => {
-    try {
       const fetchedAdminContacts = await getAdminContacts();
       setAdminContacts(fetchedAdminContacts);
 
@@ -146,9 +145,6 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         },
       ];
       setCombinedContactListData(combinedData);
-    } catch (error) {
-      console.error("Error fetching admin contacts:", error);
-    }
   };
 
   const fetchSocialContacts = async () => {

@@ -1,8 +1,8 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { adminContactFormSchema } from "@/lib/validator";
 import { z } from "zod";
+import { adminContactFormSchema } from "@/lib/validator";
 import { adminContactDefaultValues } from "@/constants";
 import toast from "react-hot-toast";
 import { updateAdminContacts } from "@/lib/actions/adminContact.action";
@@ -14,7 +14,7 @@ const AdminContactForm = () => {
   const router = useRouter();
   const { adminContacts, fetchAdminContacts } = useAppContext();
   const initialValues = adminContacts
-    ? { ...adminContacts }
+    ? adminContacts
     : adminContactDefaultValues;
 
   const {
