@@ -33,6 +33,12 @@ import { IExperience } from "../database/models/experience.model";
 import { getAllExperiences } from "../actions/experience.action";
 import { IService } from "../database/models/service.model";
 import { getAllServices } from "../actions/service.action";
+import { ICooperationTitle } from "../database/models/cooperationTitle.model";
+import { getCooperationTitle } from "../actions/cooperationTitle.action";
+import { ICooperation } from "../database/models/cooperation.model";
+import { getAllCooperations } from "../actions/cooperation.action";
+import { ICooperationAvatar } from "../database/models/cooperationAvatar.model";
+import { getCooperationAvatar } from "../actions/cooperationAvatar.action";
 
 interface AppContextProps {
   projects: IProject[];
@@ -61,6 +67,12 @@ interface AppContextProps {
   fetchExperiences: () => Promise<void>;
   services: IService[];
   fetchServices: () => Promise<void>;
+  cooperationTitle: ICooperationTitle | null;
+  fetchCooperationTitle: () => Promise<void>;
+  cooperations: ICooperation[];
+  fetchCooperations: () => Promise<void>;
+  cooperationAvatar: ICooperationAvatar | null;
+  fetchCooperationAvatar: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -88,6 +100,9 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [experienceTitle, setExperienceTitle] = useState<IExperienceTitle | null>(null);
   const [experiences, setExperiences] = useState<IExperience[]>([]);
   const [services, setServices] = useState<IService[]>([]);
+  const [cooperationTitle, setCooperationTitle] = useState<ICooperationTitle | null>(null);
+  const [cooperations, setCooperations] = useState<ICooperation[]>([]);
+  const [cooperationAvatar, setCooperationAvatar] = useState<ICooperationAvatar | null>(null);
 
   const fetchProjects = async () => {
     const fetchedProjects = await getAllProjects();
@@ -195,6 +210,21 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setServices(fetchedServices);
   };
 
+  const fetchCooperationTitle = async () => {
+    const fetchedCooperationTitle = await getCooperationTitle();
+    setCooperationTitle(fetchedCooperationTitle);
+  };
+
+  const fetchCooperations = async () => {
+    const fetchedCooperations = await getAllCooperations();
+    setCooperations(fetchedCooperations);
+  };
+
+  const fetchCooperationAvatar = async () => {
+    const fetchedCooperationAvatar = await getCooperationAvatar();
+    setCooperationAvatar(fetchedCooperationAvatar);
+  };
+  
   useEffect(() => {
     fetchProjects();
     fetchHero();
@@ -208,6 +238,9 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     fetchExperienceTitle();
     fetchExperiences();
     fetchServices();
+    fetchCooperationTitle();
+    fetchCooperations();
+    fetchCooperationAvatar();
   }, []);
 
   return (
@@ -239,6 +272,12 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         fetchExperiences,
         services,
         fetchServices,
+        cooperationTitle,
+        fetchCooperationTitle,
+        cooperations,
+        fetchCooperations,
+        cooperationAvatar,
+        fetchCooperationAvatar,
       }}
     >
       {children}

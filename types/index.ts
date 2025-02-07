@@ -237,3 +237,16 @@ export type ServiceParams = {
 export type DeleteServiceParams = {
   serviceId: string;
 };
+
+// ====== Cooperation PARAMS ======
+export type CreateCooperationParams = {
+  cooperation: {
+    company_name: string;
+    logo_url: string;
+    company_position: string;
+  };
+};
+
+export type DeleteCooperationParams = {
+  cooperationId: string;
+};

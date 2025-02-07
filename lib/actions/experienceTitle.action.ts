@@ -33,7 +33,7 @@ export const updateExperienceTitle = async (
       { $set: data }
     );
     
-    return { message: "Experience updated successfully" };
+    return { message: "Experience title updated successfully" };
   } catch (error) {
     handleError(error);
   }

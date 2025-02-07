@@ -8,7 +8,7 @@ import Skeleton from "react-loading-skeleton";
 const MySkillsSlide = () => {
   const { technologies } = useAppContext();
 
-  // Separate Brands by Direction
+  // Separate Brands by Position
   const topTechs = technologies.filter(
     (skill) => skill.skill_position === "Top"
   );

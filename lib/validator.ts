@@ -138,9 +138,10 @@ export const experienceFormSchema = object({
       highlight: string().optional(),
     })
   ).min(1, "At least one description is required"),
-  experi_technologies: array(string())
-    .min(1, "At least one technology must be added.")
-    ,
+  experi_technologies: array(string()).min(
+    1,
+    "At least one technology must be added."
+  ),
   company_name: string().nonempty("Company name is required"),
   company_logo_url: string().url("Company logo is required"),
   role: string().nonempty("Role is required"),
@@ -167,9 +168,26 @@ export const experienceFormSchema = object({
     message: "End date is required unless 'Present' is checked",
   });
 
-  export const serviceFormSchema = object({
-    title: string().nonempty("Title is required"),
-    icon_name: string().nonempty("Icon name is required"),
-    desc: string().nonempty("Description is required"),
-    highlightText: string().optional(),
-  })
+export const serviceFormSchema = object({
+  title: string().nonempty("Title is required"),
+  icon_name: string().nonempty("Icon name is required"),
+  desc: string().nonempty("Description is required"),
+  highlightText: string().optional(),
+});
+
+export const cooperationTitleFormSchema = object({
+  first_title: string().nonempty("First title is required"),
+  second_title: string().nonempty("Second title is required"),
+  third_title: string().nonempty("Third title is required"),
+  fourth_title: string().nonempty("Fourth title is required"),
+});
+
+export const cooperationFormSchema = object({
+  company_name: string().nonempty("Company name is required"),
+  logo_url: string().url("Company logo is required"),
+  company_position: string().nonempty("Position of Company is required"),
+});
+
+export const cooperationAvatarFormSchema = object({
+  avatar_url: string().url("Avatar is required"),
+})

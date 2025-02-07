@@ -120,3 +120,16 @@ export const serviceDefaultValues = {
   desc: "",
   highlightText: "",
 };
+
+export const cooperationTitleDefaultValues = {
+  first_title: "",
+  second_title: "",
+  third_title: "",
+  fourth_title: "",
+};
+
+export const cooperationDefaultValues = {
+  company_name: "",
+  logo_url: "",
+  company_position: "",
+};
