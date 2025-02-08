@@ -7,7 +7,7 @@ import { dmMono, urbanist } from "./font";
 
 /* portfolio's title */
 export const metadata: Metadata = {
-  title: "Rifaj's Portfolio",
+  title: "Rifajul Islam - Web Developer",
   description: "Modern and minimalistic portfolio",
   icons: {
     icon: "/favicon.svg",
