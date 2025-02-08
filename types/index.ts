@@ -250,3 +250,25 @@ export type CreateCooperationParams = {
 export type DeleteCooperationParams = {
   cooperationId: string;
 };
+
+// ====== STATISTICS PARAMS ======
+export type CreateStatsParams = {
+  stats: {
+    stats_title: string;
+    icon_name: string;
+    count: number;
+  };
+};
+
+export type StatsParams = {
+  stats: {
+    _id: string;
+    stats_title: string;
+    icon_name: string;
+    count: number;
+  };
+};
+
+export type DeleteStatParams = {
+  statId: string;
+};

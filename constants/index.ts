@@ -133,3 +133,9 @@ export const cooperationDefaultValues = {
   logo_url: "",
   company_position: "",
 };
+
+export const statisticsDefaultValues = {
+  stats_title: "",
+  icon_name: "",
+  count: 0,
+};

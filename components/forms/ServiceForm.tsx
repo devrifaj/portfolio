@@ -64,8 +64,6 @@ const ServiceForm = ({ type, service, serviceId }: ServiceFormProps) => {
       console.error(error);
       toast.error("An error occurred while saving the service.");
     }
-
-    console.log(values);
   }
 
   return (

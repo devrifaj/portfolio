@@ -39,6 +39,8 @@ import { ICooperation } from "../database/models/cooperation.model";
 import { getAllCooperations } from "../actions/cooperation.action";
 import { ICooperationAvatar } from "../database/models/cooperationAvatar.model";
 import { getCooperationAvatar } from "../actions/cooperationAvatar.action";
+import { IStatistics } from "../database/models/statistics.model";
+import { getAllStats } from "../actions/statistics.action";
 
 interface AppContextProps {
   projects: IProject[];
@@ -73,6 +75,8 @@ interface AppContextProps {
   fetchCooperations: () => Promise<void>;
   cooperationAvatar: ICooperationAvatar | null;
   fetchCooperationAvatar: () => Promise<void>;
+  statistics: IStatistics[];
+  fetchStatistics: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -103,6 +107,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [cooperationTitle, setCooperationTitle] = useState<ICooperationTitle | null>(null);
   const [cooperations, setCooperations] = useState<ICooperation[]>([]);
   const [cooperationAvatar, setCooperationAvatar] = useState<ICooperationAvatar | null>(null);
+  const [statistics, setStatistics] = useState<IStatistics[]>([]);
 
   const fetchProjects = async () => {
     const fetchedProjects = await getAllProjects();
@@ -224,6 +229,11 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const fetchedCooperationAvatar = await getCooperationAvatar();
     setCooperationAvatar(fetchedCooperationAvatar);
   };
+
+  const fetchStatistics = async () => {
+    const fetchedStatistics = await getAllStats();
+    setStatistics(fetchedStatistics);
+  };
   
   useEffect(() => {
     fetchProjects();
@@ -241,6 +251,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
     fetchCooperationTitle();
     fetchCooperations();
     fetchCooperationAvatar();
+    fetchStatistics();
   }, []);
 
   return (
@@ -278,6 +289,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         fetchCooperations,
         cooperationAvatar,
         fetchCooperationAvatar,
+        statistics,
+        fetchStatistics,
       }}
     >
       {children}

@@ -1,4 +1,12 @@
-import { array, boolean, date, object, string } from "zod";
+import {
+  array,
+  boolean,
+  date,
+  number,
+  object,
+  string,
+  union,
+} from "zod";
 
 export const projectFormSchema = object({
   title: string().nonempty("Title is required"),
@@ -190,4 +198,15 @@ export const cooperationFormSchema = object({
 
 export const cooperationAvatarFormSchema = object({
   avatar_url: string().url("Avatar is required"),
-})
+});
+
+export const statisticsFormSchema = object({
+  stats_title: string().nonempty("Statistics Title is required"),
+  icon_name: string().nonempty("Icon name is required"),
+  count: union([
+    string()
+      .min(1, "Count is required")
+      .transform((val) => parseFloat(val)),
+    number().nonnegative("Count must be a non-negative number"),
+  ]).refine((val) => !isNaN(val), { message: "Count must be a valid number" }),
+});
