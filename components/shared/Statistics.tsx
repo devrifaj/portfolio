@@ -17,15 +17,19 @@ const Statistics = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    const triggerAnimation = () => {
+      setKey((prev) => prev + 1);
+      setDisplayCounts(statistics.map(() => 0));
+      setTimeout(() => {
+        setDisplayCounts(statistics.map(({ count }) => count));
+      }, 100);
+    };
+
     const currentSectionRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setKey((prev) => prev + 1);
-          setDisplayCounts(statistics.map(() => 0));
-          setTimeout(() => {
-            setDisplayCounts(statistics.map(({ count }) => count));
-          }, 100);
+          triggerAnimation();
         }
       },
       { threshold: 0.5 }
