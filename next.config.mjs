@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
 const nextConfig = {
   images: {
       // domains: ['utfs.io'],
@@ -18,9 +17,8 @@ const nextConfig = {
     images: {
       unoptimized: true,
     },
-    assetPrefix: isProd ? '/portfolio/' : '',
-  basePath: isProd ? '/portfolio' : '',
-  output: 'export'
+  basePath: '/portfolio',
+  // output: 'export'
 };
 
 export default nextConfig;
