@@ -14,11 +14,8 @@ const nextConfig = {
       esmExternals: true,
     },
     reactStrictMode: false,
-    images: {
-      unoptimized: true,
-    },
-  basePath: '/portfolio',
-  // output: 'export'
+    basePath: '/portfolio',
+    output: 'export',
 };
 
 export default nextConfig;
