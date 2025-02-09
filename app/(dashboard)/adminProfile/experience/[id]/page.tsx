@@ -8,6 +8,8 @@ type UpdateExperienceParams = {
   };
 };
 
+export const dynamic = "force-dynamic";
+
 const UpdateExperience = async ({ params: { id } }: UpdateExperienceParams) => {
   const experience = await getExperienceById(id);
 
