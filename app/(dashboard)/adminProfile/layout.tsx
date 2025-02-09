@@ -1,21 +1,18 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+"use client";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default async function AdminLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   if (!session) {
-    redirect("/login");
+    router.push("/login");
   }
 
-  return (
-    <>
-      <div className="container py-5">{children}</div>
-    </>
-  );
+  return <div className="container py-5">{children}</div>;
 }
