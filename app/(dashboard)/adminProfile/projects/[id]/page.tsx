@@ -8,6 +8,8 @@ type UpdateProjectProps = {
   };
 };
 
+export const dynamic = "force-dynamic";
+
 const UpdateProject = async ({ params: { id } }: UpdateProjectProps) => {
   const project = await getProjectById(id);
   

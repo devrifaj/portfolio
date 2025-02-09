@@ -8,6 +8,8 @@ type UpdateEducationParams = {
   };
 };
 
+export const dynamic = "force-dynamic";
+
 const UpdateEducation = async ({ params: { id } }: UpdateEducationParams) => {
   const education = await getEducationById(id);
 

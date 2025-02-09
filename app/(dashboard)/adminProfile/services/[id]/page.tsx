@@ -8,6 +8,8 @@ type UpdateServiceProps = {
   };
 };
 
+export const dynamic = "force-dynamic";
+
 const UpdateService = async ({ params: { id } }: UpdateServiceProps) => {
   const service = await getServiceById(id);
   

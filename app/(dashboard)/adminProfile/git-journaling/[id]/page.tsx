@@ -8,6 +8,8 @@ type UpdateGitParams = {
   };
 };
 
+export const dynamic = "force-dynamic";
+
 const UpdateGit = async ({ params: { id } }: UpdateGitParams) => {
   const git = await getGitById(id);
 

@@ -8,6 +8,8 @@ type UpdateTechnologyParams = {
   };
 };
 
+export const dynamic = "force-dynamic";
+
 const UpdateTechnology = async ({ params: { id } }: UpdateTechnologyParams) => {
   const technology = await getTechnologyById(id);
 
