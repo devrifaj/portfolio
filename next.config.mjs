@@ -11,7 +11,7 @@ const nextConfig = {
       ]
     },
     experimental: {
-      esmExternals: true, // Enable ESM module support
+      esmExternals: true,
     },
     reactStrictMode: false
 };

@@ -4,6 +4,7 @@ import { AppProvider } from "@/lib/context/appContext";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { Toaster } from "react-hot-toast";
 import { dmMono, urbanist } from "./font";
+import CustomSessionProvider from "@/lib/auth/CustomSessionProvider";
 
 /* portfolio's title */
 export const metadata: Metadata = {
@@ -37,8 +38,13 @@ export default function RootLayout({
         />
       </head>
       <body className={`${dmMono.variable} ${urbanist.variable}`}>
-        <SkeletonTheme baseColor="var(--bg-1)" highlightColor="var(--neutral-600)">
-          <AppProvider>{children}</AppProvider>
+        <SkeletonTheme
+          baseColor="var(--bg-1)"
+          highlightColor="var(--neutral-600)"
+        >
+          <CustomSessionProvider>
+            <AppProvider>{children}</AppProvider>
+          </CustomSessionProvider>
         </SkeletonTheme>
         <Toaster position="top-center" reverseOrder={false} />
       </body>

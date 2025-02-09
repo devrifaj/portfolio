@@ -210,3 +210,8 @@ export const statisticsFormSchema = object({
     number().nonnegative("Count must be a non-negative number"),
   ]).refine((val) => !isNaN(val), { message: "Count must be a valid number" }),
 });
+
+export const loginFormSchema = object({
+  email: string().email("Please provide the email."),
+  password: string().nonempty("Please provide the password"),
+})

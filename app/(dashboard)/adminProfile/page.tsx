@@ -1,12 +1,15 @@
+import LogoutButton from "@/components/shared/LogoutButton";
 import Link from "next/link";
 import { RiArrowRightLine } from "react-icons/ri";
 
-const AdminProfile = () => {
+const AdminProfile = async () => {
   return (
     <div>
       <h3 className="text-center">Admin Dashboard</h3>
 
-      <p className="mb-4 text-secondary-2">All Sections (in sequence):</p>
+      <div className="flex justify-end flex-wrap mb-4">
+        <LogoutButton/>
+      </div>
 
       <ul className="flex flex-col gap-6 ">
         <li>
