@@ -8,8 +8,6 @@ type UpdateBlogProps = {
   };
 };
 
-export const dynamic = "force-dynamic";
-
 const UpdateBlog = async ({ params: { id } }: UpdateBlogProps) => {
   const blog = await getBlogById(id);
 

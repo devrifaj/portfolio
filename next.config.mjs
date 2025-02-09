@@ -14,8 +14,6 @@ const nextConfig = {
       esmExternals: true,
     },
     reactStrictMode: false,
-    basePath: '/portfolio',
-    output: 'export',
 };
 
 export default nextConfig;

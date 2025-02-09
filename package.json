@@ -1,16 +1,12 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://rifaj007.github.io/portfolio",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "export": "next export",
-    "deploy": "npm run build && touch ./out/.nojekyll && gh-pages -d out -t true"
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -46,7 +42,6 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
-    "gh-pages": "^6.3.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "typescript": "^5"

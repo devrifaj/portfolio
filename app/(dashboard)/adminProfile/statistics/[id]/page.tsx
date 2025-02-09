@@ -8,8 +8,6 @@ type UpdateStatisticsProps = {
   };
 };
 
-export const dynamic = "force-dynamic";
-
 const UpdateStatistics = async ({ params: { id } }: UpdateStatisticsProps) => {
   const statistic = await getStatisticsById(id);
   
