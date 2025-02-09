@@ -11,7 +11,7 @@ const AdminProfile = async () => {
         <LogoutButton/>
       </div>
 
-      <ul className="flex flex-col gap-6 ">
+      <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
         <li>
           <Link className="admin-link group" href="/adminProfile/hero">
             Hero <RiArrowRightLine className="admin-link-icon" />

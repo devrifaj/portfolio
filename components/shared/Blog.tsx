@@ -8,7 +8,6 @@ import Skeleton from "react-loading-skeleton";
 
 const Blog = () => {
   const { blogs } = useAppContext();
-  // const blogs = []
 
   return (
     <section id="blog" className="relative pb-[60px]">
