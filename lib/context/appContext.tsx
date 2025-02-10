@@ -153,7 +153,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
           id: 3,
           mediaName: "skype",
           mediaData: fetchedAdminContacts.skype,
-          link: `skype:${fetchedAdminContacts.skype}?add`,
+          link: "https://join.skype.com/invite/psj0gVONgLlO",
           icon: RiSkypeFill,
         },
         {
