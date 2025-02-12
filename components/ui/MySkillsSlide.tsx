@@ -22,7 +22,7 @@ const MySkillsSlide = () => {
         {/* Marquee For Left-direction Brands */}
         {technologies.length > 0 ? (
           <ul className="flex p-0 overflow-hidden">
-            <Marquee pauseOnHover={true} speed={35} direction="right">
+            <Marquee pauseOnHover={true} speed={60} direction="right">
               {topTechs.map(
                 ({ _id, tech_name, tech_img_url, tech_official_url }) => (
                   <li key={_id} className="mx-[15px] text-center float-right" title={tech_name}>
@@ -51,7 +51,7 @@ const MySkillsSlide = () => {
         {/* Marquee For Right-direction Brands */}
         {technologies.length > 0 ? (
           <ul className="flex p-0 overflow-hidden">
-            <Marquee pauseOnHover={true} speed={35} direction="left">
+            <Marquee pauseOnHover={true} speed={60} direction="left">
               {bottomTechs.map(
                 ({ _id, tech_name, tech_img_url, tech_official_url }) => (
                   <li key={_id} className="mx-[15px] text-center float-left" title={tech_name}>
