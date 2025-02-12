@@ -56,11 +56,19 @@ const Contact = () => {
                         aria-label="Copy email"
                         title="Copy email"
                       >
-                        {copiedId === id ? <HiCheck size={20}/> : <RiFileCopyLine size={20} />}
+                        {copiedId === id ? (
+                          <HiCheck size={20} />
+                        ) : (
+                          <RiFileCopyLine size={20} />
+                        )}
                       </button>
                     </div>
                   ) : (
-                    <Link href={link} target="_blank" className="flex items-center gap-4">
+                    <Link
+                      href={link}
+                      target="_blank"
+                      className="flex items-center gap-4"
+                    >
                       <div className="icon-flip flex items-center justify-center w-12 h-12 border border-border-1 rounded-lg bg-bg-3">
                         <Icon className="text-primary-2" size={26} />
                       </div>
@@ -68,7 +76,11 @@ const Contact = () => {
                         <span className="text-neutral-400 text-sm capitalize">
                           {mediaName}
                         </span>
-                        <h6 className="text-lg break-all">{mediaData}</h6>
+                        <h6
+                          className="text-lg break-words"
+                        >
+                          {mediaData}
+                        </h6>
                       </div>
                     </Link>
                   )}
