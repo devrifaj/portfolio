@@ -8,7 +8,7 @@ import CustomSessionProvider from "@/lib/auth/CustomSessionProvider";
 
 /* portfolio's title */
 export const metadata: Metadata = {
-  title: "Md Rifajul Islam - Web Developer",
+  title: "Md Rifajul Islam - Frontend Web Developer",
   description: "Modern and minimalistic portfolio",
   icons: {
     icon: "/favicon.svg",
@@ -36,6 +36,7 @@ export default function RootLayout({
             `,
           }}
         />
+        <meta name="google-site-verification" content="Y9GZmEm29UPq3SRIQKerJuZ8nDXtH8WMF35VSCtAu_Q" />
       </head>
       <body className={`${dmMono.variable} ${urbanist.variable}`}>
         <SkeletonTheme

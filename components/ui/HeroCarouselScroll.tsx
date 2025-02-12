@@ -6,7 +6,6 @@ import Skeleton from "react-loading-skeleton";
 
 const HeroCarouselScroll = () => {
   const { technologies } = useAppContext();
-  console.log(technologies);
 
   return (
     <>
