@@ -84,16 +84,16 @@ const AdminContactForm = () => {
           )}
         </div>
 
-        {/* Skype */}
+        {/* Whatsapp */}
         <div>
-          <p className="form-label">Skype</p>
+          <p className="form-label">Whatsapp</p>
           <input
-            {...register("skype")}
-            placeholder="Skype"
+            {...register("whatsapp")}
+            placeholder="Whatsapp"
             className="form-control"
           />
-          {errors.skype && (
-            <p className="form-validation-error">{errors.skype.message}</p>
+          {errors.whatsapp && (
+            <p className="form-validation-error">{errors.whatsapp.message}</p>
           )}
         </div>
 

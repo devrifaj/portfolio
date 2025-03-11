@@ -65,7 +65,7 @@ export const contactDefaultValues = {
 export const adminContactDefaultValues = {
   phone_number: "",
   email: "",
-  skype: "",
+  whatsapp: "",
   address: "",
 };
 

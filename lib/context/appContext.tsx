@@ -7,7 +7,7 @@ import {
   FC,
   useEffect,
 } from "react";
-import { RiPhoneFill, RiMailFill, RiSkypeFill, RiMap2Fill, RiFacebookCircleFill, RiTwitterXFill, RiLinkedinFill, RiGithubFill } from "react-icons/ri";
+import { RiPhoneFill, RiMailFill, RiWhatsappLine , RiMap2Fill, RiFacebookCircleFill, RiTwitterXFill, RiLinkedinFill, RiGithubFill } from "react-icons/ri";
 import { IProject } from "../database/models/project.model";
 import { IHero } from "../database/models/hero.model";
 import { getAllProjects } from "@/lib/actions/project.action";
@@ -151,10 +151,10 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         },
         {
           id: 3,
-          mediaName: "skype",
-          mediaData: fetchedAdminContacts.skype,
-          link: "https://join.skype.com/invite/psj0gVONgLlO",
-          icon: RiSkypeFill,
+          mediaName: "whatsapp",
+          mediaData: fetchedAdminContacts.whatsapp,
+          link: "https://wa.me/+8801601016160",
+          icon: RiWhatsappLine ,
         },
         {
           id: 4,

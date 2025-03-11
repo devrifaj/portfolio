@@ -62,7 +62,7 @@ export const contactFormSchema = object({
 export const adminContactFormSchema = object({
   phone_number: string().nonempty("Phone number is required"),
   email: string().email("Email is required"),
-  skype: string().nonempty("Skype is required"),
+  whatsapp: string().nonempty("Whatsapp is required"),
   address: string().nonempty("Address is required"),
 });
 
