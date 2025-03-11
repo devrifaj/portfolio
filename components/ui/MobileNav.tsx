@@ -4,12 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navItems } from "@/constants";
+import { useAppContext } from "@/lib/context/appContext";
 
 interface MobileNavProps {
   setIsMobileNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
+  const {combinedSocialLinkData} = useAppContext();
   const [activeHash, setActiveHash] = useState("");
   const pathname = usePathname();
 
@@ -61,7 +63,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
         {/* Nav Heading End */}
 
         {/* Nav Body Start */}
-        <div className="px-[30px]">
+        <div className="px-[30px] mb-10">
           <div className="border-b border-[#FFFFFF26]">
             {/* Mobile Nav Links Start */}
             <nav>
@@ -91,6 +93,21 @@ const MobileNav: React.FC<MobileNavProps> = ({ setIsMobileNavOpen }) => {
           </div>
         </div>
         {/* Nav Body End */}
+
+        <ul className="px-[30px] md:hidden flex gap-6 text-white">
+        {combinedSocialLinkData.map(({ id, link, icon: Icon }) => (
+          <li key={id}>
+            <Link
+              href={link}
+              className="flex items-center gap-2 hover:text-primary-2 transition"
+              target="_blank"
+            >
+              <Icon size={22} className="text-xl" />
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {/* Nav Social Links End */}
       </div>
     </div>
   );
